@@ -2,4 +2,4 @@
 
 Deatils and contact information about me on this site 
 
-visit www.sksdbest.github.io
+visit https://sksdbest.github.io
