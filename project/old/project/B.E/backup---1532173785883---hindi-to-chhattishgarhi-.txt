@@ -1,0 +1,236 @@
+﻿https://lingojam.com/edit/7fd95c7fede56e35b3bd9efe5cd617a2
+
+
+###name, Name of your translator...:
+hindi to chhattishgarhi 
+
+
+###subtitle, Subtitle (optional):
+contact @gmail.com for details
+
+
+###language1, Language1 name...:
+Hindi 
+
+
+###language2, Language2 name...:
+chhattishgarhi
+
+
+###description, Description...:
+language translator for converting Hindi language to Chhattisgarhi and vice versa
+
+
+###email, Admin email (optional)...:
+sksdbest@gmail.com
+
+
+###phrases1, Hindi  list...:
+रहता हूँ 
+खेल रहा
+तुमसे
+करता हूँ 
+जा रहा हूँ 
+नमस्ते
+नाचता है
+रहता हूँ
+गये हैं
+
+
+###phrases2, chhattishgarhi list...:
+रथों
+खेलत 
+तोर ले 
+करथो
+जाथो
+राम-राम
+नाचथे
+रथों
+गेहे
+
+
+###words1, Hindi  list...:
+निमन्त्रण
+प्याज
+अच्छा
+सब्जी
+लड्का
+किताब
+प्यार
+ मिला
+पत्नि
+ चाचा
+नाचता
+दोस्त
+टमाटर
+तुमने
+मेरा
+तुझे
+चाची
+चाचा
+शादी
+लड़का
+लेने
+खाया
+क्या
+मेरे
+मेरी
+बहुत
+मिला
+मुझे
+देने
+पति
+मैं
+लिए
+बहन
+गया
+नाम
+समय
+की
+मै
+मे
+वह
+ये
+कल
+का
+है
+आऊंगा
+
+
+###words2, chhattishgarhi list...:
+नेवता
+गोन्दली
+बने
+साग
+टुरा
+पुस्तक
+मया
+मिलिस
+डउकी
+कका
+नाचथे
+सन्गी
+पताल
+ते 
+मोर
+तोला
+काकी
+कका
+बिहाव 
+टुरा
+लेबर
+खायहस
+का
+मोर
+मोर
+अब्बड 
+मिलिस
+मोला
+देबर
+डउका
+मे 
+बर
+बहिनी
+गे
+नाम 
+फुर्सत
+के
+मे
+म
+वो
+ए
+काली
+के
+हरे 
+अहूँ
+
+
+###intraword1, Hindi  list...:
+
+
+
+###intraword2, chhattishgarhi list...:
+
+
+
+###prefixes1, Hindi  list...:
+
+
+
+###prefixes2, chhattishgarhi list...:
+
+
+
+###suffixes1, Hindi  list...:
+
+
+
+###suffixes2, chhattishgarhi list...:
+
+
+
+###regex1, Hindi  list...:
+
+
+
+###regex2, chhattishgarhi list...:
+
+
+
+###rev_regex1, chhattishgarhi list...:
+
+
+
+###rev_regex2, Hindi  list...:
+
+
+
+###ordering1, Hindi  list...:
+
+
+
+###ordering2, chhattishgarhi list...:
+
+
+
+###defaulttext, One random default text string per line...:
+
+
+
+###disable-reverse, :
+on
+
+
+###custom-script, Define your functions here...:
+
+
+
+###title-extra, e.g. '(and reverse translation)':
+
+
+
+###background-image-source, http://example.com/my_image.png:
+
+
+
+###title-font-name, Name of custom font...:
+
+
+
+###title-font-size, Size of title (default=5.5)...:
+
+
+
+###language1-font, Language1 font...:
+
+
+
+###language2-font, Language2 font...:
+
+
+
+###language1-font-size, Language1 font size (default=24)...:
+
+
+
+###language2-font-size, Language2 font size (default=24)...:
