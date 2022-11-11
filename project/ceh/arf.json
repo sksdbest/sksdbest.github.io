@@ -1,0 +1,339 @@
+{
+  "children": [
+  {
+    "children": [
+    {
+      "children": [
+      {
+        "name": "Google",
+        "type": "url",
+        "url": "https://www.google.com/?gws_rd=ssl"
+      },
+      {
+        "name": "Bing",
+        "type": "url",
+        "url": "http://www.bing.com/"
+      },
+      {
+        "name": "DuckDuckGo",
+        "type": "url",
+        "url": "https://duckduckgo.com/"
+      },
+      {
+        "name": "Yahoo Advanced Web Search",
+        "type": "url",
+        "url": "https://search.yahoo.com/web/advanced"
+      },
+      {
+        "name": "StartPage",
+        "type": "url",
+        "url": "https://www.startpage.com/"
+      },
+      {
+        "name": "Yandex",
+        "type": "url",
+        "url": "https://www.yandex.com/"
+      },
+      {
+        "name": "Baidu",
+        "type": "url",
+        "url": "http://www.baidu.com/"
+      },
+      {
+        "name": "Google Advanced Search",
+        "type": "url",
+        "url": "https://www.google.com/advanced_search"
+      },
+      {
+        "name": "iBoogie",
+        "type": "url",
+        "url": "http://www.iboogie.com/"
+      },
+      {
+        "name": "iZito",
+        "type": "url",
+        "url": "http://www.izito.com/"
+      },
+      {
+        "name": "Bing vs. Google",
+        "type": "url",
+        "url": "http://bvsg.org/"
+      },
+      {
+        "name": "Ixquick Search Engine",
+        "type": "url",
+        "url": "https://www.ixquick.com/"
+      },
+      {
+        "name": "Advangle",
+        "type": "url",
+        "url": "http://advangle.com/"
+      },
+      {
+        "name": "Instya",
+        "type": "url",
+        "url": "http://www.instya.com/#/web/"
+      },
+      {
+        "name": "Hulbee",
+        "type": "url",
+        "url": "https://hulbee.com/"
+      }],
+      "name": "Search Engines",
+      "type": "folder"
+    },
+    {
+      "children": [
+     
+      {
+        "name": "OSINT Framework",
+        "type": "url",
+        "url": "https://osintframework.com/"
+      },
+	  {
+        "name": "SHODAN ",
+        "type": "url",
+        "url": "https://www.shodan.io/"
+      }],
+      "name": "OSINT Tools ",
+      "type": "folder"
+    },
+	
+	  {
+      "children": [
+     
+      {
+        "name": "IP Void",
+        "type": "url",
+        "url": "https://www.ipvoid.com/ip-blacklist-check/"
+      },
+	  {
+        "name": "Site 24x7",
+        "type": "url",
+        "url": "https://www.site24x7.com/tools/blacklist-check.html"
+      },
+	  {
+        "name": "Hetrix Tools",
+        "type": "url",
+        "url": "https://hetrixtools.com/blacklist-check/"
+      },
+	  {
+        "name": "Bulk BlackList",
+        "type": "url",
+        "url": "https://www.bulkblacklist.com/"
+      }],
+      "name": "IP BlackList Check",
+      "type": "folder"
+    }],
+    "name": "Reconnaissance",
+    "type": "folder"
+  },
+   {
+    "children": [
+    
+    
+    {
+      "children": [
+      
+      {
+        "name": "Online Cloud OS Instant",
+        "type": "url",
+        "url": "https://www.onworks.net/"
+      },
+	  {
+        "name": "Hosted Scan",
+        "type": "url",
+        "url": "https://hostedscan.com/"
+      },
+	  {
+        "name": "Pentest Tools",
+        "type": "url",
+        "url": "https://pentest-tools.com/home"
+      },
+	   {
+        "name": "Snyk Online Scanner",
+        "type": "url",
+        "url": "https://snyk.io/website-scanner/"
+      },
+	  {
+        "name": "Hacker Target",
+        "type": "url",
+        "url": "https://hackertarget.com/ip-tools/"
+      },
+	   {
+        "name": "Site 24x7",
+        "type": "url",
+        "url": "https://www.site24x7.com/tools.html"
+      }],
+      "name": "Online scanning Tools",
+      "type": "folder"
+    },
+	{
+      "children": [
+      
+      {
+        "name": "SecLists",
+        "type": "url",
+        "url": "https://github.com/danielmiessler/SecLists"
+      },
+	 
+	   {
+        "name": "Payload Lists",
+        "type": "url",
+        "url": "https://github.com/payloadbox"
+      }],
+      "name": "WordLists",
+      "type": "folder"
+    },
+	{
+      "children": [
+      {
+        "name": "Nessus",
+        "type": "url",
+        "url": "https://www.tenable.com/downloads/nessus"
+      },
+	  {
+        "name": "Burp Suite",
+        "type": "url",
+        "url": "https://portswigger.net/burp/releases"
+      },
+	  {
+        "name": "OpenVAS",
+        "type": "url",
+        "url": "https://github.com/greenbone/openvas-scanner"
+      },
+	  {
+        "name": "Nmap",
+        "type": "url",
+        "url": "https://nmap.org/download"
+      },
+	  {
+        "name": "OWASP ZAP",
+        "type": "url",
+        "url": "https://www.zaproxy.org/download/"
+      },
+	  {
+        "name": "Nikto",
+        "type": "url",
+        "url": "https://github.com/sullo/nikto"
+      },
+	  {
+        "name": "W3af",
+        "type": "url",
+        "url": "https://pentest-tools.com/website-vulnerability-scanning/website-scanner"
+      },
+	  {
+        "name": "Acunetix",
+        "type": "url",
+        "url": "https://www.acunetix.com/vulnerability-scanner/"
+      }],
+      "name": "Offline Tools",
+      "type": "folder"
+    }],
+    "name": "Scanning & Enumeration ",
+    "type": "folder"
+  },
+  {
+    "children": [
+   
+       
+    {
+      "children": [
+      {
+        "name": "Exploit-DB",
+        "type": "url",
+        "url": "https://www.exploit-db.com/"
+      },
+	  {
+        "name": "Rapid7-DB",
+        "type": "url",
+        "url": "https://www.rapid7.com/db/"
+      },
+	  {
+        "name": "CVE-DB",
+        "type": "url",
+        "url": "https://cve.mitre.org/cve/search_cve_list.html"
+      },
+	  {
+        "name": "National Vulnerability DB",
+        "type": "url",
+        "url": "https://nvd.nist.gov/vuln/search"
+      }],
+      "name": "Databases",
+      "type": "folder"
+    },
+    {
+      "children": [
+      {
+        "name": "MetaSploit",
+        "type": "url",
+        "url": "https://github.com/rapid7/metasploit-framework"
+      },
+	  {
+        "name": "Armitage - MetaSploit GUI",
+        "type": "url",
+        "url": "https://github.com/rsmudge/armitage"
+      }],
+      "name": "Tools",
+      "type": "folder"
+    }],
+    "name": "Exploitation ",
+    "type": "folder"
+  },
+ 
+ 
+
+  {
+    "children": [
+    
+    
+    {
+      "children": [
+      
+      {
+        "name": "SqlMap",
+        "type": "url",
+        "url": "https://sqlmap.org/"
+      },
+	   {
+        "name": "RUDY - DoS Attack Tool",
+        "type": "url",
+        "url": "https://sourceforge.net/projects/r-u-dead-yet/"
+      },
+	  {
+        "name": "LOIC - For DoS Attack",
+        "type": "url",
+        "url": "https://sourceforge.net/projects/loic/"
+      }],
+      "name": " Offline Tools",
+      "type": "folder"
+    }],
+    "name": "Attack Tools",
+    "type": "folder"
+  },
+  
+   {
+    "children": [
+    {
+      "children": [
+      
+      {
+        "name": "Hashing and Encoding Tool",
+        "type": "url",
+        "url": "https://emn178.github.io/online-tools/"
+      }],
+      "name": "Tools",
+      "type": "folder"
+    },
+   
+    {
+      "name": "Crack Station",
+      "type": "url",
+      "url": "https://crackstation.net/"
+    }],
+    "name": "Cryptography",
+    "type": "folder"
+  }],
+  "name": "Hacking Tools",
+  "type": "folder"
+}
