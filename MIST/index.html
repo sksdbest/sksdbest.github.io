@@ -9,7 +9,7 @@
   header {
     position: fixed; top: 0; width: 100%;
     background: rgba(0,0,0,0.85); color: #fff;
-    padding: 20px 20px; /* increased padding for taller nav */
+    padding: 20px 20px;
     display: flex;
     justify-content: space-between; align-items: center;
     z-index: 1000;
@@ -17,20 +17,16 @@
   header nav a {
     color: #fff; text-decoration: none;
     margin: 0 12px; font-weight: bold;
-    line-height: 1.5; /* prevents text clipping */
+    line-height: 1.5;
   }
-
-  /* Slider container */
   .slider {
-    margin-top: 85px; /* increased to match taller nav */
+    margin-top: 85px;
     height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
   }
-
-  /* Slide styles */
   .slide {
     width: 75%;
     height: 95%;
@@ -42,8 +38,6 @@
     cursor: pointer;
   }
   .slide.active { opacity: 1; z-index: 1; }
-
-  /* Text overlay */
   .overlay {
     position: absolute;
     bottom: 10%;
@@ -55,8 +49,6 @@
     border-radius: 4px;
   }
   .overlay h2 { margin: 0 0 10px; }
-
-  /* Navigation dots */
   .dots {
     position: absolute;
     bottom: 10px;
@@ -71,8 +63,6 @@
     cursor: pointer;
   }
   .dot.active { background: #fff; }
-
-  /* Arrow buttons */
   .arrow {
     position: absolute;
     top: 50%;
@@ -87,8 +77,6 @@
   }
   .arrow.left { left: calc(17%); }
   .arrow.right { right: calc(17%); }
-
-  /* Sections */
   .section { padding: 60px 20px; }
   .section:nth-child(even) { background: #f5f5f5; }
 </style>
@@ -98,18 +86,17 @@
 <header>
   <div class="logo">MIST Lab, IIT Bhilai</div>
   <nav>
-    <a href="#section1">Home</a>
-    <a href="#section2">Publications</a>
+    <a href="index.html">Home</a>
+    <a href="publications.html">Publications</a>
     <a href="#section2">Patents</a>
     <a href="#section2">News</a>
     <a href="#section2">Team</a>
-<a href="#section2">Contact</a>
+    <a href="#section2">Contact</a>
     <a href="#section2"></a>
   </nav>
 </header>
 
 <div class="slider">
-  <!-- Slides with href links -->
   <div class="slide active" data-href="https://example.com/page1" style="background-image:url('https://picsum.photos/id/1015/1600/900');">
     <div class="overlay">
       <h2>Welcome to Our Site</h2>
@@ -129,17 +116,40 @@
     </div>
   </div>
 
-  <!-- Arrow buttons -->
   <button class="arrow left" id="prev">&#10094;</button>
   <button class="arrow right" id="next">&#10095;</button>
 
-  <!-- Dots -->
   <div class="dots" id="dots"></div>
 </div>
 
 <div class="section" id="section1">
-  <h2>Section 1</h2>
-  <p>This is the first section of content. You can put text, images, or any other elements here.</p>
+  <h2>Welcome to Machine Intelligence and Security of Things Lab</h2>
+  <p>
+    We are a group of researchers from IIT Bhilai, led by Dr. Sk. Subidh Ali, dedicated to secure AI as well as IoT products. 
+    Machine Learning is the heart of current advancement in the domain of Artificial Intelligence. 
+    The presence of deep neural networks makes a machine into an intelligent machine. 
+    From autonomous vehicles to robotic surgery, deep neural networks have brought great powers to modern-day applications. 
+    It reminds us of the well-known quote from Spider-Man: “With great power comes great responsibility”.
+  </p>
+  <p>
+    In recent years, it has been shown that a well-trained deep neural network can easily be fooled by adding certain noise into the input. 
+    This discovery led the research community to a new domain called Adversarial Machine Learning (AML). 
+    The focus of our group is to develop solutions to secure machine learning-enabled products against AML attacks.
+  </p>
+  <p>
+    Smart infrastructure is now an indispensable foundation of our society, whether it is road travel, logistics, buildings, or entire cities. 
+    IoT-based devices and systems form one of the major pillars of such smart infrastructure. 
+    As per recent data, globally, the number of connected devices reached 200 billion by the year 2020. 
+    Until recently, there was no standard practice in this domain. 
+    Furthermore, security was not considered a part of any IoT system, as IoT products are supposed to be cheap. 
+    Companies did not want to escalate the price by incorporating security overhead in such products.
+  </p>
+  <p>
+    The tectonic shift happened after the massive DDoS attack in 2016, known as the Mirai botnet attack, 
+    which crippled millions of IoT devices across the globe. 
+    Subsequently, IoT security standards were developed to make IoT products secure against malicious attacks. 
+    Our team works to develop secure IoT solutions.
+  </p>
 </div>
 
 <div class="section" id="section2">
@@ -153,7 +163,6 @@
   let index = 0;
   let timer;
 
-  // Create navigation dots
   slides.forEach((_, i) => {
     const dot = document.createElement('div');
     dot.classList.add('dot');
@@ -163,7 +172,6 @@
   });
   const dots = document.querySelectorAll('.dot');
 
-  // Show specific slide
   function showSlide(i) {
     slides[index].classList.remove('active');
     dots[index].classList.remove('active');
@@ -173,7 +181,6 @@
     resetTimer();
   }
 
-  // Next/Prev slide
   function nextSlide() {
     let next = index + 1;
     if (next >= slides.length) next = 0;
@@ -185,20 +192,16 @@
     showSlide(prev);
   }
 
-  // Reset auto-slide timer
   function resetTimer() {
     clearInterval(timer);
     timer = setInterval(nextSlide, 4000);
   }
 
-  // Auto slide
   timer = setInterval(nextSlide, 4000);
 
-  // Arrow click handlers
   document.getElementById('next').addEventListener('click', nextSlide);
   document.getElementById('prev').addEventListener('click', prevSlide);
 
-  // Clickable slides
   slides.forEach(slide => {
     slide.addEventListener('click', () => {
       const href = slide.getAttribute('data-href');
