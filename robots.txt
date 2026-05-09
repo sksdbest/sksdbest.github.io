@@ -1,0 +1,14 @@
+User-agent: *
+Allow: /
+Disallow: /uploads/
+Disallow: /assets/
+
+Sitemap: https://goodhacker.in/sitemap.xml
+
+# Google
+User-agent: Googlebot
+Allow: /
+
+# Bing
+User-agent: Bingbot
+Allow: /

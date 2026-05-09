@@ -1,412 +1,1860 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cybersecurity Consultant & Penetration Testing Services | Shubham Kumar</title>
+<meta name="description" content="Certified ethical hacker & cybersecurity consultant offering penetration testing, VAPT, vulnerability assessment, and application security. 140+ successful projects. Available for consulting worldwide.">
+<meta name="keywords" content="cybersecurity consultant, penetration testing, VAPT, ethical hacker, CEH, vulnerability assessment, application security, infosec, cyber security services, India">
+<meta property="og:title" content="Cybersecurity Consultant & Penetration Testing Services | Shubham Kumar">
+<meta property="og:description" content="Certified ethical hacker offering penetration testing, vulnerability assessment, and application security consulting. CEH Master certified. 140+ projects completed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://goodhacker.in">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Cybersecurity Consultant & Penetration Testing Services">
+<meta name="twitter:description" content="Certified ethical hacker & VAPT expert. Penetration testing, vulnerability assessment, application security. Available worldwide.">
+<meta name="twitter:creator" content="@SKSDBEST">
+<link rel="canonical" href="https://goodhacker.in">
+<link rel="sitemap" type="application/xml" href="https://goodhacker.in/sitemap.xml">
+<meta name="language" content="English">
+<meta name="author" content="Shubham Kumar">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1">
 
-  <title>Shubham Kumar Sahu</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Shubham Kumar",
+  "url": "https://goodhacker.in",
+  "image": "https://goodhacker.in/assets/profile.jpg",
+  "jobTitle": "Cybersecurity Consultant & Penetration Tester",
+  "description": "Certified Ethical Hacker (CEH Master) and PhD scholar specializing in penetration testing, vulnerability assessment, and application security",
+  "email": "shubham@goodhacker.in",
+  "sameAs": [
+    "https://linkedin.com/in/sksdbest",
+    "https://twitter.com/SKSDBEST",
+    "https://github.com/sksdbest",
+    "https://scholar.google.com/citations?user=DzFiXTIAAAAJ"
+  ],
+  "affiliation": {
+    "@type": "EducationalOrganization",
+    "name": "IIT Bhilai",
+    "url": "https://iitbhilai.ac.in"
+  },
+  "knowsAbout": [
+    "Penetration Testing",
+    "Vulnerability Assessment",
+    "VAPT",
+    "Ethical Hacking",
+    "Application Security",
+    "DevSecOps",
+    "Cybersecurity Consulting",
+    "Threat Modeling",
+    "OWASP",
+    "Burp Suite",
+    "Metasploit"
+  ]
+}
+</script>
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+<style>
+  :root {
+    --bg:        #0a0d0c;
+    --bg-2:      #0d1110;
+    --pane:      #11151430;
+    --pane-solid:#11181631;
+    --border:    #1f2826;
+    --border-2:  #2a3633;
+    --dim:       #6b7672;
+    --dim-2:     #8a9591;
+    --text:      #c8d1cf;
+    --bright:    #e8eeec;
+    --accent:    oklch(0.84 0.18 145);   /* phosphor green */
+    --accent-d:  oklch(0.55 0.16 145);
+    --accent-bg: oklch(0.84 0.18 145 / 0.08);
+    --warn:      oklch(0.82 0.16 78);    /* amber */
+    --danger:    oklch(0.72 0.18 25);
+    --gap:       1.25rem;
+    --maxw:      1180px;
+    --pad-y:     7rem;
+    --row-h:     1.55;
+  }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  *,
+  *::before,
+  *::after { box-sizing: border-box; }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  html { scroll-behavior: auto; }
 
-  <!-- =======================================================
-  * Template Name: iPortfolio - v3.0.0
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  /* ---- single-section routing ---- */
+  main.router > section { display: none; }
+  main.router > section.is-active {
+    display: block;
+    animation: sec-in 220ms ease-out;
+  }
+  @keyframes sec-in {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: none; }
+  }
+  main.router > section + section { border-top: 0; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 14.5px;
+    line-height: var(--row-h);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  /* ambient grid */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(to right,  rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 56px 56px;
+    pointer-events: none;
+    z-index: 0;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 90%);
+  }
+
+  /* optional scanline overlay (toggled via body[data-scanline]) */
+  body[data-scanline="on"]::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      to bottom,
+      rgba(255,255,255,0.018) 0px,
+      rgba(255,255,255,0.018) 1px,
+      transparent 1px,
+      transparent 3px
+    );
+    pointer-events: none;
+    z-index: 9998;
+    mix-blend-mode: overlay;
+  }
+
+  body[data-density="compact"] { --pad-y: 4.5rem; --row-h: 1.45; font-size: 13.5px; }
+
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+  /* ---------- top status bar ---------- */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .topbar-inner {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    font-size: 12.5px;
+  }
+  .topbar .lights { display: flex; gap: 6px; }
+  .topbar .lights span {
+    width: 11px; height: 11px; border-radius: 50%;
+    background: var(--border-2);
+    box-shadow: inset 0 0 0 1px rgba(0,0,0,0.4);
+  }
+  .topbar .lights span:nth-child(1) { background: oklch(0.65 0.18 25); }
+  .topbar .lights span:nth-child(2) { background: oklch(0.78 0.16 78); }
+  .topbar .lights span:nth-child(3) { background: var(--accent); }
+
+  .topbar .crumb {
+    text-align: center;
+    color: var(--dim-2);
+    letter-spacing: 0.02em;
+  }
+  .topbar .crumb b { color: var(--bright); font-weight: 500; }
+
+  .topbar .status {
+    text-align: right;
+    color: var(--dim);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1rem;
+  }
+  .pill {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 2px 8px;
+    border: 1px solid var(--border-2);
+    border-radius: 999px;
+    color: var(--dim-2);
+    font-size: 11.5px;
+  }
+  .pill::before {
+    content: ""; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 8px var(--accent);
+    animation: pulse 2.4s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.35; }
+  }
+
+  /* ---------- nav ---------- */
+  nav.primary {
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  nav.primary ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    list-style: none;
+    margin: 0; padding: 0;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+  nav.primary a {
+    display: block;
+    padding: 0.85rem 1.1rem;
+    color: var(--dim-2);
+    border-right: 1px solid var(--border);
+    font-size: 13px;
+    letter-spacing: 0.01em;
+    text-decoration: none;
+  }
+  nav.primary li:first-child a { border-left: 1px solid var(--border); }
+  nav.primary a:hover { color: var(--bright); background: var(--pane); }
+  nav.primary a.active { color: var(--accent); background: var(--accent-bg); }
+  nav.primary a .k { color: var(--dim); margin-right: 0.4rem; }
+
+  /* ---------- section scaffolding ---------- */
+  section {
+    padding: var(--pad-y) 0;
+    position: relative;
+  }
+  section + section { border-top: 1px dashed var(--border); }
+
+  .sec-head {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: end;
+    gap: 1.25rem;
+    margin-bottom: 3rem;
+  }
+  .sec-head .id {
+    color: var(--dim);
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+  .sec-head h2 {
+    margin: 0;
+    font-size: clamp(1.6rem, 2.6vw, 2.1rem);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--bright);
+  }
+  .sec-head h2 .prompt { color: var(--accent); }
+  .sec-head .meta { color: var(--dim); font-size: 12px; text-align: right; white-space: nowrap; }
+
+  .rule {
+    border: 0;
+    border-top: 1px dashed var(--border);
+    margin: 0 0 2.5rem;
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+    gap: 3rem;
+    align-items: stretch;
+  }
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 5.6vw, 3.6rem);
+    line-height: 1.04;
+    margin: 1rem 0 1.4rem;
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    color: var(--bright);
+    text-wrap: balance;
+  }
+  .hero h1 .acc { color: var(--accent); font-weight: 500; }
+  .hero h1 .blink::after {
+    content: "▌";
+    color: var(--accent);
+    margin-left: 0.15em;
+    animation: blink 1.05s steps(2) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  .lede {
+    color: var(--dim-2);
+    max-width: 56ch;
+    font-size: 14.5px;
+    line-height: 1.7;
+  }
+  .lede em { color: var(--bright); font-style: normal; }
+
+  .hero-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin: 1.6rem 0 2rem;
+  }
+  .tag {
+    display: inline-flex; align-items: center; gap: 0.4rem;
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--border-2);
+    color: var(--dim-2);
+    font-size: 12px;
+    border-radius: 4px;
+    background: var(--pane);
+  }
+  .tag .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent); }
+
+  .cta-row { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.75rem 1.05rem;
+    font-family: inherit;
+    font-size: 13.5px;
+    border: 1px solid var(--accent);
+    color: var(--bg);
+    background: var(--accent);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: transform 80ms ease, background 120ms;
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .btn:hover { transform: translateY(-1px); text-decoration: none; }
+  .btn .arr { transition: transform 120ms; }
+  .btn:hover .arr { transform: translateX(3px); }
+  .btn.ghost {
+    background: transparent;
+    color: var(--bright);
+    border-color: var(--border-2);
+  }
+  .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- terminal pane (hero right) ---------- */
+  .term {
+    background: var(--bg-2);
+    border: 1px solid var(--border-2);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+    font-size: 13px;
+    box-shadow: 0 0 0 1px rgba(0,0,0,0.4), 0 22px 60px -28px rgba(0,0,0,0.7);
+  }
+  .term-head {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.55rem 0.85rem;
+    border-bottom: 1px solid var(--border);
+    background: var(--bg);
+  }
+  .term-head .lights span {
+    display: inline-block; width: 11px; height: 11px; border-radius: 50%;
+    margin-right: 5px;
+  }
+  .term-head .lights span:nth-child(1) { background: oklch(0.65 0.18 25); }
+  .term-head .lights span:nth-child(2) { background: oklch(0.78 0.16 78); }
+  .term-head .lights span:nth-child(3) { background: var(--accent); }
+  .term-head .title { color: var(--dim); margin-left: 0.4rem; font-size: 12px; }
+
+  .term-body {
+    flex: 1;
+    padding: 1rem 1.1rem;
+    overflow: auto;
+    line-height: 1.55;
+  }
+  .term-body .l { white-space: pre-wrap; word-break: break-word; }
+  .prompt-line { display: flex; gap: 0.5rem; align-items: baseline; }
+  .ps1 { color: var(--accent); white-space: nowrap; }
+  .ps1 .at { color: var(--dim-2); }
+  .ps1 .path { color: var(--dim-2); }
+  .cmd { color: var(--bright); }
+  .out { color: var(--dim-2); }
+  .out .k { color: var(--accent); }
+  .out .v { color: var(--bright); }
+  .ok { color: var(--accent); }
+  .warn { color: var(--warn); }
+  .err { color: var(--danger); }
+  .muted { color: var(--dim); }
+
+  .term-input-row {
+    border-top: 1px solid var(--border);
+    padding: 0.6rem 1.1rem;
+    display: flex; align-items: center; gap: 0.5rem;
+    background: var(--bg);
+  }
+  .term-input-row input {
+    flex: 1;
+    background: transparent;
+    border: 0;
+    color: var(--bright);
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    caret-color: var(--accent);
+  }
+  .hint-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.6rem; }
+  .chip {
+    border: 1px solid var(--border-2);
+    background: var(--pane);
+    color: var(--dim-2);
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    font-size: 11.5px;
+    cursor: pointer;
+    transition: border-color 120ms, color 120ms;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ---------- stats strip ---------- */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--border);
+    background: var(--pane);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  @media (max-width: 720px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  .stat {
+    padding: 1.4rem 1.2rem;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .stat:last-child { border-right: 0; }
+  @media (max-width: 720px) {
+    .stat:nth-child(2) { border-right: 0; }
+    .stat:nth-child(3), .stat:nth-child(4) { border-bottom: 0; }
+  }
+  .stat .k { font-size: 11.5px; color: var(--dim); letter-spacing: 0.05em; text-transform: uppercase; }
+  .stat .v { font-size: 1.9rem; color: var(--bright); font-weight: 500; line-height: 1.1; margin: 0.4rem 0 0.2rem; }
+  .stat .v .unit { color: var(--accent); font-size: 0.7em; margin-left: 0.15em; }
+  .stat .sub { font-size: 11.5px; color: var(--dim-2); }
+
+  /* ---------- about ---------- */
+  .about-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: 3rem;
+  }
+  @media (max-width: 880px) { .about-grid { grid-template-columns: 1fr; gap: 2rem; } }
+
+  .id-card {
+    border: 1px solid var(--border-2);
+    border-radius: 6px;
+    background: var(--pane);
+    padding: 1.5rem;
+  }
+  .id-card .avatar {
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    border-radius: 4px;
+    overflow: hidden;
+    background: #000;
+    position: relative;
+    border: 1px solid var(--border-2);
+    filter: grayscale(0.4) contrast(1.05);
+  }
+  .id-card .avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center 20%; display: block; opacity: 0.92; }
+  .id-card .avatar::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      to bottom, transparent 0 2px, rgba(0,0,0,0.35) 2px 3px
+    );
+    mix-blend-mode: multiply;
+    pointer-events: none;
+  }
+  .id-card .meta-list {
+    list-style: none;
+    margin: 1.2rem 0 0;
+    padding: 0;
+    font-size: 12.5px;
+  }
+  .id-card .meta-list li {
+    display: grid;
+    grid-template-columns: 92px 1fr;
+    gap: 0.8rem;
+    padding: 0.45rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .id-card .meta-list li:last-child { border-bottom: 0; }
+  .id-card .meta-list .k { color: var(--dim); }
+  .id-card .meta-list .v { color: var(--bright); }
+  .id-card .meta-list .v.dim { color: var(--dim-2); }
+
+  .about-body p {
+    color: var(--dim-2);
+    line-height: 1.75;
+    max-width: 62ch;
+    margin: 0 0 1.1rem;
+  }
+  .about-body p strong { color: var(--bright); font-weight: 500; }
+  .about-body h3 {
+    font-size: 1.1rem;
+    color: var(--bright);
+    font-weight: 500;
+    margin: 0 0 1.1rem;
+    letter-spacing: -0.005em;
+  }
+  .about-body h3::before {
+    content: "▣ ";
+    color: var(--accent);
+  }
+
+  .focus-list {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.4rem 1.5rem;
+    font-size: 13px;
+  }
+  @media (max-width: 600px) { .focus-list { grid-template-columns: 1fr; } }
+  .focus-list li {
+    color: var(--text);
+    padding: 0.45rem 0;
+    border-bottom: 1px dashed var(--border);
+    display: flex; gap: 0.6rem; align-items: baseline;
+  }
+  .focus-list li::before {
+    content: "▸";
+    color: var(--accent);
+  }
+
+  /* ---------- services ---------- */
+  .svc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  @media (max-width: 760px) { .svc-grid { grid-template-columns: 1fr; } }
+
+  .svc {
+    background: var(--bg);
+    padding: 1.8rem 1.7rem;
+    position: relative;
+    transition: background 160ms;
+  }
+  .svc:hover { background: var(--bg-2); }
+  .svc-head {
+    display: flex; align-items: baseline; gap: 0.8rem;
+    margin-bottom: 1rem;
+  }
+  .svc-num {
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 0.05em;
+  }
+  .svc-status {
+    margin-left: auto;
+    font-size: 11.5px;
+    color: var(--dim);
+    display: inline-flex; align-items: center; gap: 0.4rem;
+  }
+  .svc-status::before {
+    content: ""; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--accent); box-shadow: 0 0 6px var(--accent);
+  }
+  .svc h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--bright);
+    font-weight: 500;
+    letter-spacing: -0.005em;
+  }
+  .svc p {
+    color: var(--dim-2);
+    margin: 0 0 1rem;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+  .svc ul {
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+    font-size: 12.5px;
+  }
+  .svc ul li {
+    padding: 0.32rem 0;
+    color: var(--text);
+    display: flex; gap: 0.6rem; align-items: baseline;
+    border-bottom: 1px dashed var(--border);
+  }
+  .svc ul li:last-child { border-bottom: 0; }
+  .svc ul li::before {
+    content: "[+]";
+    color: var(--accent);
+    font-size: 11px;
+  }
+  .svc-foot {
+    display: flex; justify-content: space-between; gap: 1rem;
+    padding-top: 0.9rem;
+    margin-top: 0.5rem;
+    border-top: 1px dashed var(--border);
+    font-size: 11.5px;
+    color: var(--dim);
+  }
+  .svc-foot .k { color: var(--dim); }
+  .svc-foot .v { color: var(--bright); }
+
+  /* ---------- skills ---------- */
+  .sk-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  @media (max-width: 880px) { .sk-grid { grid-template-columns: 1fr; gap: 1.8rem; } }
+  .sk-col h5 {
+    margin: 0 0 1.2rem;
+    font-size: 12.5px;
+    color: var(--dim);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+  }
+  .sk-col h5::before { content: "// "; color: var(--accent); }
+  .sk-row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.8rem;
+    align-items: center;
+    padding: 0.55rem 0;
+    border-bottom: 1px dashed var(--border);
+    font-size: 13px;
+  }
+  .sk-row:last-child { border-bottom: 0; }
+  .sk-row .name { color: var(--bright); }
+  .sk-row .meter {
+    display: inline-grid;
+    grid-template-columns: repeat(10, 7px);
+    gap: 2px;
+  }
+  .sk-row .meter span {
+    height: 10px;
+    background: var(--border-2);
+  }
+  .sk-row .meter span.on {
+    background: var(--accent);
+    box-shadow: 0 0 4px var(--accent-d);
+  }
+
+  /* ---------- timeline (compact, log-style) ---------- */
+  .log {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--pane);
+    overflow: hidden;
+  }
+  .log-row {
+    display: grid;
+    grid-template-columns: 110px 12px 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.85rem 1.2rem;
+    border-bottom: 1px dashed var(--border);
+    transition: background 100ms;
+  }
+  .log-row:last-child { border-bottom: 0; }
+  .log-row:hover { background: var(--bg-2); }
+  .log-row .when { color: var(--dim); font-size: 12px; white-space: nowrap; }
+  .log-row .glyph { color: var(--accent); }
+  .log-row .what { color: var(--bright); font-size: 13.5px; }
+  .log-row .what .tag-inline {
+    color: var(--dim-2); margin-left: 0.5rem; font-size: 12px;
+  }
+  .log-row .hash { color: var(--dim); font-size: 11.5px; font-variant-numeric: tabular-nums; }
+
+  /* ---------- publications ---------- */
+  .pubs { display: flex; flex-direction: column; gap: 0.8rem; }
+  .pub {
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    background: var(--pane);
+    padding: 1.1rem 1.3rem;
+    display: grid;
+    grid-template-columns: 70px 1fr auto;
+    gap: 1.2rem;
+    align-items: start;
+    transition: border-color 140ms;
+  }
+  .pub:hover { border-color: var(--border-2); }
+  .pub .yr {
+    color: var(--accent);
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .pub .yr::before { content: "[ "; color: var(--dim); }
+  .pub .yr::after  { content: " ]"; color: var(--dim); }
+  .pub h5 {
+    margin: 0 0 0.3rem;
+    color: var(--bright);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.005em;
+    line-height: 1.4;
+  }
+  .pub .auth {
+    color: var(--dim-2);
+    font-size: 12.5px;
+  }
+  .pub .venue {
+    color: var(--dim);
+    font-size: 12px;
+    margin-top: 0.2rem;
+    font-style: italic;
+  }
+  .pub .cit {
+    color: var(--accent);
+    font-size: 11.5px;
+    white-space: nowrap;
+  }
+  @media (max-width: 720px) {
+    .pub { grid-template-columns: 1fr; }
+    .pub .cit { justify-self: start; }
+  }
+
+  /* ---------- contact ---------- */
+  .ct-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.3fr);
+    gap: 2.5rem;
+  }
+  @media (max-width: 880px) { .ct-grid { grid-template-columns: 1fr; } }
+
+  .ct-card {
+    border: 1px solid var(--border-2);
+    border-radius: 6px;
+    background: var(--pane);
+    padding: 1.6rem;
+  }
+  .ct-card h4 {
+    margin: 0 0 1.2rem;
+    color: var(--bright);
+    font-weight: 500;
+    font-size: 14px;
+  }
+  .ct-card h4::before { content: "$ "; color: var(--accent); }
+  .ct-list { list-style: none; margin: 0; padding: 0; font-size: 13px; }
+  .ct-list li {
+    display: grid;
+    grid-template-columns: 76px 1fr auto;
+    gap: 0.8rem;
+    align-items: center;
+    padding: 0.7rem 0;
+    border-bottom: 1px dashed var(--border);
+  }
+  .ct-list li:last-child { border-bottom: 0; }
+  .ct-list .k { color: var(--dim); }
+  .ct-list .v { color: var(--bright); word-break: break-all; }
+  .ct-list .v a { color: var(--bright); }
+  .ct-list .v a:hover { color: var(--accent); }
+  .copy-btn {
+    background: transparent;
+    border: 1px solid var(--border-2);
+    color: var(--dim);
+    border-radius: 4px;
+    padding: 2px 7px;
+    font-family: inherit;
+    font-size: 11px;
+    cursor: pointer;
+  }
+  .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
+  .copy-btn.ok { border-color: var(--accent); color: var(--accent); }
+
+  form.ct-form { display: grid; gap: 1rem; }
+  form.ct-form .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  @media (max-width: 600px) { form.ct-form .row { grid-template-columns: 1fr; } }
+  form.ct-form label {
+    display: block;
+    color: var(--dim);
+    font-size: 11.5px;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+  form.ct-form label::before { content: "› "; color: var(--accent); }
+  form.ct-form input,
+  form.ct-form textarea,
+  form.ct-form select {
+    width: 100%;
+    background: var(--bg-2);
+    border: 1px solid var(--border-2);
+    color: var(--bright);
+    font-family: inherit;
+    font-size: 13.5px;
+    padding: 0.7rem 0.85rem;
+    border-radius: 4px;
+    outline: none;
+    transition: border-color 120ms, box-shadow 120ms;
+  }
+  form.ct-form input:focus,
+  form.ct-form textarea:focus,
+  form.ct-form select:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 2px var(--accent-bg);
+  }
+  form.ct-form textarea { resize: vertical; min-height: 130px; line-height: 1.6; }
+
+  .form-status { font-size: 12px; color: var(--dim); min-height: 1.2em; }
+  .form-status.ok  { color: var(--accent); }
+  .form-status.err { color: var(--danger); }
+
+  /* ---------- footer ---------- */
+  footer.foot {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 0 3rem;
+    color: var(--dim);
+    font-size: 12px;
+  }
+  footer.foot .row {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    align-items: center;
+  }
+  @media (max-width: 600px) {
+    footer.foot .row { grid-template-columns: 1fr; }
+  }
+  footer.foot .links { display: flex; flex-wrap: wrap; gap: 1.2rem; }
+  footer.foot a { color: var(--dim-2); }
+  footer.foot a:hover { color: var(--accent); }
+
+  /* ASCII separator */
+  .ascii-sep {
+    color: var(--border-2);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-align: center;
+    margin: 0;
+    padding: 1.6rem 0;
+    user-select: none;
+  }
+
+  /* tweaks panel: react component renders into this container */
+  #tweaks-root { position: fixed; inset: 0; pointer-events: none; z-index: 9999; }
+  #tweaks-root > * { pointer-events: auto; }
+</style>
 </head>
 
-<body>
+<body data-scanline="off" data-density="comfortable" data-screen-label="goodhacker.in">
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+<!-- ============ TOP BAR ============ -->
+<header class="topbar" role="banner">
+  <div class="topbar-inner">
+    <div class="lights" aria-hidden="true">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="crumb">
+      <b>shubham@goodhacker</b><span style="color:var(--dim)">:~/</span><span>portfolio</span>
+    </div>
+    <div class="status">
+      <span class="muted" id="clock">--:--:-- IST</span>
+      <span class="pill">available for hire</span>
+    </div>
+  </div>
+</header>
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
+<!-- ============ NAV ============ -->
+<nav class="primary" aria-label="primary">
+  <ul>
+    <li><a href="#hero"        class="active"><span class="k">01</span>whoami</a></li>
+    <li><a href="#about">       <span class="k">02</span>about</a></li>
+    <li><a href="#services">    <span class="k">03</span>services</a></li>
+    <li><a href="#research">    <span class="k">04</span>research</a></li>
+    <li><a href="#skills">      <span class="k">05</span>stack</a></li>
+    <li><a href="#log">         <span class="k">06</span>log</a></li>
+    <li><a href="#contact">     <span class="k">07</span>contact</a></li>
+  </ul>
+</nav>
 
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Shubham Kumar</a></h1>
-        <div class="social-links mt-3 text-center">
-          <a href="https://www.youtube.com/channel/UC9DJUQ28rgrAC5jYQi5JRCA" class="youtube"><i class="bx bxl-youtube"></i></a>
-          <a href="https://www.linkedin.com/in/sksdbest/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-		  <a href="https://twitter.com/SKSDBEST" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="https://www.facebook.com/SKSDBEST/" class="facebook"><i class="bx bxl-facebook"></i></a>
-		   </div>
+<main class="router">
+
+<!-- ============ HERO ============ -->
+<section id="hero" class="hero" data-screen-label="01 hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="muted" style="font-size:12px; letter-spacing:0.06em;">
+          $ whoami --verbose
+        </div>
+        <h1>
+          <span class="acc">Cybersecurity</span> consultant
+          &amp; PhD scholar.<span class="blink"></span>
+        </h1>
+        <p class="lede">
+          I help enterprises find the holes before someone else does.
+          <em>5+ years</em> running penetration tests, vulnerability assessments,
+          and DevSecOps engagements — currently researching threat mitigation at
+          <em>IIT Bhilai</em>.
+        </p>
+
+        <div class="hero-tags" aria-label="credentials">
+          <span class="tag"><span class="dot"></span>CEH Master</span>
+          <span class="tag"><span class="dot"></span>OSCP</span>
+          <span class="tag"><span class="dot"></span>Security+</span>
+          <span class="tag"><span class="dot"></span>BlackDuck SCA</span>
+          <span class="tag"><span class="dot"></span>API Security Associate</span>
+        </div>
+
+        <div class="cta-row">
+          <a href="#contact" class="btn">
+            Request engagement <span class="arr">→</span>
+          </a>
+          <a href="#services" class="btn ghost">View services</a>
+        </div>
+
+        <div style="margin-top:2.6rem;">
+          <div class="muted" style="font-size:12px; margin-bottom:0.7rem;">
+            ── current roles ──
+          </div>
+          <div class="stats" style="grid-template-columns: 1fr 1fr;">
+            <div class="stat">
+              <div class="k">role · 01</div>
+              <div class="v" style="font-size:1.05rem;">Cyber Security Consultant</div>
+              <div class="sub">Central Business Solutions Inc.</div>
+            </div>
+            <div class="stat">
+              <div class="k">role · 02</div>
+              <div class="v" style="font-size:1.05rem;">PhD Student</div>
+              <div class="sub">IIT Bhilai · CSE</div>
+            </div>
+          </div>
+        </div>
       </div>
 
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="index.html#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-		  <li><a href="index.html#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-		  <li><a href="resume.html" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="contact.html" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-		  <li><a href="blogs.html" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Blogs</span></a></li>
-		  <li><a href="project/index.html" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Project</span></a></li>
+      <!-- interactive terminal -->
+      <div class="term" id="term" aria-label="interactive terminal">
+        <div class="term-head">
+          <span class="lights"><span></span><span></span><span></span></span>
+          <span class="title">— bash — 80×24 — type 'help'</span>
+        </div>
+        <div class="term-body" id="term-body">
+          <div class="l prompt-line">
+            <span class="ps1">shubham<span class="at">@</span>goodhacker<span class="muted">:</span><span class="path">~</span>$</span>
+            <span class="cmd">whoami</span>
+          </div>
+          <div class="l out">shubham kumar — security consultant, phd @ iit bhilai</div>
+
+          <div class="l prompt-line" style="margin-top:.5rem;">
+            <span class="ps1">shubham<span class="at">@</span>goodhacker<span class="muted">:</span><span class="path">~</span>$</span>
+            <span class="cmd">cat creds.txt</span>
+          </div>
+          <div class="l out"><span class="k">role</span>      <span class="v">Independent Cybersecurity Consultant</span></div>
+          <div class="l out"><span class="k">org</span>       <span class="v">IIT Bhilai (PhD, CSE)</span></div>
+          <div class="l out"><span class="k">based</span>     <span class="v">Durg, Chhattisgarh, India</span></div>
+          <div class="l out"><span class="k">languages</span> <span class="v">en · hi · cg</span></div>
+
+          <div class="l prompt-line" style="margin-top:.5rem;">
+            <span class="ps1">shubham<span class="at">@</span>goodhacker<span class="muted">:</span><span class="path">~</span>$</span>
+            <span class="cmd">scan --target ./portfolio</span>
+          </div>
+          <div class="l out">scanning sections… <span class="ok">[ok]</span></div>
+          <div class="l out">indexed 7 sections — type a command or use the menu above.</div>
+
+          <div class="hint-chips">
+            <button class="chip" data-cmd="services">services</button>
+            <button class="chip" data-cmd="research">research</button>
+            <button class="chip" data-cmd="contact">contact</button>
+            <button class="chip" data-cmd="resume">resume</button>
+            <button class="chip" data-cmd="help">help</button>
+          </div>
+        </div>
+        <form class="term-input-row" id="term-form" autocomplete="off">
+          <span class="ps1">$</span>
+          <input id="term-input" type="text" spellcheck="false" placeholder="type a command…">
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" data-screen-label="02 about">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="id">02</span>
+      <h2><span class="prompt">$</span> cat about.md</h2>
+      <span class="meta">~/portfolio/about</span>
+    </header>
+
+    <div class="about-grid">
+      <aside class="id-card" aria-label="identity card">
+        <div class="avatar">
+          <img src="assets/profile.jpg" alt="Shubham Kumar portrait">
+        </div>
+        <ul class="meta-list">
+          <li><span class="k">name</span>     <span class="v">Shubham Kumar</span></li>
+          <li><span class="k">role</span>     <span class="v">Sec. Consultant</span></li>
+          <li><span class="k">phd</span>      <span class="v">IIT Bhilai · CSE</span></li>
+          <li><span class="k">location</span> <span class="v">Durg, IN</span></li>
+          <li><span class="k">tz</span>       <span class="v dim">UTC+5:30 (IST)</span></li>
+          <li><span class="k">status</span>   <span class="v">accepting work</span></li>
         </ul>
-      </nav><!-- .nav-menu -->
+      </aside>
+
+      <div class="about-body">
+        <h3>Your dedicated cybersecurity partner</h3>
+        <p>
+          I'm an independent security consultant with <strong>5+ years</strong> hands-on
+          experience securing enterprises — <strong>132+ clients</strong> and
+          <strong>140+ projects</strong> across penetration testing, application
+          security, DevSecOps and GRC. I run engagements end-to-end, from scoping
+          through executive readout.
+        </p>
+        <p>
+          On the academic side I'm a <strong>PhD scholar at IIT Bhilai</strong>,
+          researching threat mitigation in cloud-native environments. The
+          research informs the consulting and vice-versa — clients get the rigour
+          of academic methodology with the velocity of an indie operator.
+        </p>
+        <p>
+          Independent means flexibility, direct senior attention, and pricing that
+          actually makes sense for your budget — no agency overhead.
+        </p>
+
+        <ul class="focus-list">
+          <li>Penetration testing &amp; red team</li>
+          <li>Vulnerability assessment (VAPT)</li>
+          <li>Application security · SAST/DAST</li>
+          <li>DevSecOps pipeline integration</li>
+          <li>Cloud security &amp; threat modeling</li>
+          <li>ISO 27001 / SOC 2 / HIPAA</li>
+          <li>Source code &amp; SCA review</li>
+          <li>Audit prep &amp; remediation support</li>
+        </ul>
+      </div>
     </div>
-  </header><!-- End Header -->
 
-  <!-- ======= Hero Section ======= -->
-  <section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <div class="hero-container" data-aos="fade-in">
-      <h1>Shubham Kumar</h1>
-      <p>I'm <span class="typed" data-typed-items="Ethical Hacker, Cyber Forensic Expert, Web Developer, Financial Investment Expert"></span></p>
-    </div>
-  </section><!-- End Hero -->
+    <!-- ===== Resume sub-section ===== -->
+    <div style="margin-top: 4.5rem;">
+      <header class="sec-head" style="margin-bottom: 2rem;">
+        <span class="id">02 · a</span>
+        <h2 style="font-size: 1.4rem;"><span class="prompt">$</span> cat resume.md</h2>
+        <span class="meta">Shubham Kumar Sahu</span>
+      </header>
 
-  <main id="main">
+      <div class="about-body" style="margin-bottom: 2.5rem;">
+        <p style="max-width: 80ch;">
+          Cyber Security Consultant and Ph.D. researcher with <strong>5+ years</strong> spanning
+          technical implementation, compliance, and international client engagement. Hands-on with
+          Kali Linux, Nessus, Burp Suite, Checkmarx, OWASP ZAP, HCL AppScan, BlackDuck, Acunetix,
+          and Sumo Logic. Experienced in GRC across <strong>SOC 1 / SOC 2 / ISO 27001 / HIPAA</strong>,
+          and in supporting business development through international RFPs and client acquisition.
+        </p>
+      </div>
 
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-      <div class="container">
+      <!-- Experience -->
+      <h3 class="about-body" style="font-size: 1.05rem; color: var(--bright); font-weight: 500; margin: 0 0 1.2rem;"><span style="color:var(--accent);">▣</span> Professional Experience</h3>
+      <div class="log" style="margin-bottom: 2.5rem;">
+        <div class="log-row" style="grid-template-columns: 160px 12px 1fr;">
+          <span class="when">Nov 2022 – Present</span>
+          <span class="glyph">●</span>
+          <span class="what">
+            <b style="color:var(--bright);">Cyber Security Consultant</b>
+            <span class="tag-inline">Central Business Solutions Inc. (Aviru IT Systems)</span>
+          </span>
+        </div>
+        <div style="padding: 0 1.2rem 1.1rem 1.2rem; border-bottom: 1px dashed var(--border);">
+          <ul class="focus-list" style="margin: 0; grid-template-columns: 1fr 1fr;">
+            <li>Reduced VA false positives by 30% via tool integration</li>
+            <li>Led pentests for 15+ clients · 200+ critical findings</li>
+            <li>Improved compliance audit scores by 20%</li>
+            <li>Zero Trust &amp; DevSecOps workflow consulting</li>
+            <li>Supported international RFPs &amp; client acquisition</li>
+            <li>SOC 1 / SOC 2 / ISO 27001 / HIPAA alignment</li>
+            <li>Audit liaison: documentation, gap remediation</li>
+            <li>HCL AppScan · BlackDuck · Acunetix in CI/CD</li>
+          </ul>
+        </div>
 
-        <div class="section-title">
-          <h2>About</h2>
-          <p>Cyber Security Consultant with 5+ years of experience in Penetration Testing, Vulnerability Assessment, and Application Security. CEH Master and Ph.D. researcher in Cyber Security at IIT Bhilai, skilled in SAST/DAST, DevSecOps integration, and security tools such as Burp Suite, Nessus, OWASP ZAP, and Checkmarx. Experienced in implementing secure development practices and supporting compliance with ISO 27001, SOC 2, and HIPAA frameworks. Seeking remote opportunities in Cyber Security or Application Security roles.
+        <div class="log-row" style="grid-template-columns: 160px 12px 1fr;">
+          <span class="when">Nov 2020 – Oct 2022</span>
+          <span class="glyph">●</span>
+          <span class="what">
+            <b style="color:var(--bright);">Cyber Security Analyst</b>
+            <span class="tag-inline">Central Business Solutions Inc. (Aviru IT Systems)</span>
+          </span>
+        </div>
+        <div style="padding: 0 1.2rem 1.1rem 1.2rem; border-bottom: 1px dashed var(--border);">
+          <ul class="focus-list" style="margin: 0; grid-template-columns: 1fr 1fr;">
+            <li>SAST / DAST &amp; pentesting across enterprise systems</li>
+            <li>Tooling integration into client workflows</li>
+            <li>Kali · Nessus · Burp · Checkmarx · ZAP · Sumo Logic</li>
+            <li>−40% log analysis time via automation</li>
+            <li>VAPT delivery for ISO 27001 audit readiness</li>
+          </ul>
+        </div>
+
+        <div class="log-row" style="grid-template-columns: 160px 12px 1fr;">
+          <span class="when">2015 – 2017</span>
+          <span class="glyph">●</span>
+          <span class="what">
+            <b style="color:var(--bright);">Founder &amp; Manager</b>
+            <span class="tag-inline">Inspire Academy · Govt. registered startup</span>
+          </span>
+        </div>
+        <div style="padding: 0 1.2rem 1.1rem 1.2rem;">
+          <ul class="focus-list" style="margin: 0; grid-template-columns: 1fr 1fr;">
+            <li>Built &amp; managed tuition company · 200+ students</li>
+            <li>Operations · marketing · financial management</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Education + Certifications side-by-side -->
+      <div class="about-grid" style="grid-template-columns: 1fr 1fr; gap: 2.5rem; margin-bottom: 2.5rem;">
+        <div>
+          <h3 style="font-size: 1.05rem; color: var(--bright); font-weight: 500; margin: 0 0 1.2rem;"><span style="color:var(--accent);">▣</span> Education</h3>
+          <div class="log">
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2023–28</span><span class="glyph">●</span>
+              <span class="what">Ph.D. CSE (Cyber Security)<br><span class="tag-inline" style="margin:0;">IIT Bhilai · pursuing</span></span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2018–21</span><span class="glyph">●</span>
+              <span class="what">M.Tech Cyber Forensics &amp; InfoSec (Honors)<br><span class="tag-inline" style="margin:0;">CSVTU, Bhilai</span></span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2018</span><span class="glyph">●</span>
+              <span class="what">Diploma in Cyber Law<br><span class="tag-inline" style="margin:0;">Govt. Law College, Mumbai</span></span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2014–18</span><span class="glyph">●</span>
+              <span class="what">B.E. Information Technology<br><span class="tag-inline" style="margin:0;">CSVTU, Bhilai</span></span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2014</span><span class="glyph">●</span>
+              <span class="what">12th · PCM<br><span class="tag-inline" style="margin:0;">CBSE · Krishna Public School, Raipur</span></span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <h3 style="font-size: 1.05rem; color: var(--bright); font-weight: 500; margin: 0 0 1.2rem;"><span style="color:var(--accent);">▣</span> Certifications</h3>
+          <div class="log">
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">Apr 2026</span><span class="glyph">●</span>
+              <span class="what">EC-Council Certified Security Analyst (ECSA)</span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">Feb 2026</span><span class="glyph">●</span>
+              <span class="what">API Security Certified Associate · Wallarm</span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">Dec 2025</span><span class="glyph">●</span>
+              <span class="what">BlackDuck Certified SCA Analyst</span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2020, 2022</span><span class="glyph">●</span>
+              <span class="what">CEH v10 Master (Practical) · EC-Council</span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2017</span><span class="glyph">●</span>
+              <span class="what">Industrial Training · BSP, Bhilai</span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2017</span><span class="glyph">●</span>
+              <span class="what">Software Testing · Smartpath, Bhilai</span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2016</span><span class="glyph">●</span>
+              <span class="what">Adv. Telecom &amp; Cyber Sec. · ALTTC, BSNL Ghaziabad</span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2015</span><span class="glyph">●</span>
+              <span class="what">Ethical Hacking &amp; InfoSec L1 · Blue Banyan</span>
+            </div>
+            <div class="log-row" style="grid-template-columns: 110px 12px 1fr;">
+              <span class="when">2015</span><span class="glyph">●</span>
+              <span class="what">CEHE Level 1.0 · Techdefence</span>
+            </div>
+          </div>
+          <div style="margin-top: 0.9rem; font-size: 12px;">
+            <a href="https://www.linkedin.com/in/sksdbest/details/certifications/" target="_blank" rel="noopener">
+              full certifications list →
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Achievements + download -->
+      <div class="about-grid" style="grid-template-columns: 1.4fr 1fr; gap: 2.5rem;">
+        <div>
+          <h3 style="font-size: 1.05rem; color: var(--bright); font-weight: 500; margin: 0 0 1.2rem;"><span style="color:var(--accent);">▣</span> Leadership &amp; Achievements</h3>
+          <ul class="focus-list" style="grid-template-columns: 1fr 1fr;">
+            <li>Winner · Model Competition · INSPIRE DST Camp (2013)</li>
+            <li>Internship Camp · INSPIRE DST (2014)</li>
+            <li>Semi-finalist · IT Olympiad (2015)</li>
+            <li>NSS B &amp; C Certificate Holder (2015–18)</li>
+          </ul>
+        </div>
+
+        <aside class="ct-card" style="display: flex; flex-direction: column; gap: 0.7rem;">
+          <h4 style="margin: 0;">resume.pdf</h4>
+          <p style="color: var(--dim-2); margin: 0; font-size: 13px;">
+            Download the full resume — same data as above, formatted for HR systems.
           </p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4" data-aos="fade-right">
-            <img src="assets/img/profile-img.jpg" class="img-fluid" alt="">
+          <div style="display: flex; gap: 0.6rem; margin-top: 0.4rem;">
+            <a href="uploads/New Resume.pdf" target="_blank" rel="noopener" class="btn">
+              download <span class="arr">↓</span>
+            </a>
+            <a href="https://www.linkedin.com/in/sksdbest/" target="_blank" rel="noopener" class="btn ghost">
+              linkedin
+            </a>
           </div>
-          <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
-            <h3>Cyber Security Consultant &amp; Researcher</h3>
-            <p class="font-italic">
-              My Job role requires work like Performing Security Assessments, Vulnerability Analysis, source code analysis, firewall logs analysis, web app pentesting etc.
-            </p>
-            <div class="row">
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Website:</strong> <span>www.goodhacker.in</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Location:</strong> <span>Chhattisgarh, India</span></li>
-				  <li><i class="bi bi-chevron-right"></i> <strong>Age:</strong> <span>30</span></li>
-                </ul>
-              </div>
-              <div class="col-lg-6">
-                <ul>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Degree:</strong> <span>PHD pursuing from IIT Bhilai</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Email:</strong> <span>Shubham@goodhacker.in</span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong>Freelance:</strong> <span>Available</span></li>
-                </ul>
-              </div>
-            </div>
-            <p>
-              You Can contact me for freelancing services or any other professional services.   </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End About Section -->
-
-    <!-- ======= Facts Section ======= -->
-    <section id="facts" class="facts">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Facts</h2>
-          <p>Have many happy clients for website development, Insurance & Inverstment clients, security assessment clients, photography & event mangment clients (for this tie-ups with other business)</p>
-        </div>
-
-        <div class="row no-gutters">
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up">
-            <div class="count-box">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="132" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Happy Clients</strong> and still counting</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="100">
-            <div class="count-box">
-              <i class="bi bi-journal-richtext"></i>
-              <span data-purecounter-start="0" data-purecounter-end="140" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Projects</strong> including self & open source contribution</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="200">
-            <div class="count-box">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="500" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hours Of Support</strong> including full time job</p>
-            </div>
-          </div>
-
-          <div class="col-lg-3 col-md-6 d-md-flex align-items-md-stretch" data-aos="fade-up" data-aos-delay="300">
-            <div class="count-box">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="50" data-purecounter-duration="1" class="purecounter"></span>
-              <p><strong>Hard Workers</strong> worked with many talented people</p>
-            </div>
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Facts Section -->
-
-    <!-- ======= Skills Section ======= -->
-    <section id="skills" class="skills section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Skills</h2>
-          <p>Listing out some skills in standard tools there are hundreds and thousands of tools that i know how to operate & run as per the industry requirements like Jira , burpsuite, nikto, qualys, acunetix etc and many more , listed out all here will make the site look bad check my resume and certifications for more details.</p>
-        </div>
-
-        <div class="row skills-content">
-
-          <div class="col-lg-6" data-aos="fade-up">
-
-            <div class="progress">
-              <span class="skill">Nmap<i class="val">100%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Hcl Appscan <i class="val">90%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Nessus <i class="val">92%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-
-            <div class="progress">
-              <span class="skill">Checkmarx <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">Kali-Linux <i class="val">75%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-            <div class="progress">
-              <span class="skill">OpenVas <i class="val">80%</i></span>
-              <div class="progress-bar-wrap">
-                <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Skills Section -->
-
-   
-  
-    <!-- ======= Services Section ======= -->
-    <section id="services" class="services">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Services</h2>
-          <p> I have team and also tie-ups with certain business and provide various services such as. </p>
-        </div>
-
-        <div class="row">
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up">
-            <div class="icon"><i class="bi bi-briefcase"></i></div>
-            <h4 class="title"><a href="">Website Development</a></h4>
-            <p class="description"> Website development for anykind of business or personal site </p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="100">
-            <div class="icon"><i class="bi bi-card-checklist"></i></div>
-            <h4 class="title"><a href="">Ethical Hacking services</a></h4>
-            <p class="description"> Only legal hacking which we perform on sites & services owned by the business or person by themselves </p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="200">
-            <div class="icon"><i class="bi bi-bar-chart"></i></div>
-            <h4 class="title"><a href="">Security Assessments </a></h4>
-            <p class="description">Performing security assessment on web services , web api , IT infrastructure. </p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="300">
-            <div class="icon"><i class="bi bi-binoculars"></i></div>
-            <h4 class="title"><a href="https://advisor.turtlemint.com/profile/609378/shubham_kumar_sahu">Financial Investment  </a></h4>
-            <p class="description"> Investment services such as insurance, mutual funds, ppf, pf related advices & products available</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="400">
-            <div class="icon"><i class="bi bi-brightness-high"></i></div>
-            <h4 class="title"><a href="https://advisor.turtlemint.com/mahi-ad/609378/2849053">Insurance Services </a></h4>
-            <p class="description"> we also sell Health, Life, Vehicle Insurance you can contact me for more details & quotation</p>
-          </div>
-          <div class="col-lg-4 col-md-6 icon-box" data-aos="fade-up" data-aos-delay="500">
-            <div class="icon"><i class="bi bi-calendar4-week"></i></div>
-            <h4 class="title"><a href="">Digital Marketing services </a></h4>
-            <p class="description">we also provide digital marketing services  for showing your ads online to targeted audience to boost your business </p>
-          </div>
-        </div>
-
-      </div>
-    </section><!-- End Services Section -->
-
-    <!-- ======= Testimonials Section ======= -->
-    <section id="testimonials" class="testimonials section-bg">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>Testimonials</h2>
-          <p> Check Out My clients words about my services </p>
-        </div>
-
-        <div class="testimonials-slider swiper-container" data-aos="fade-up" data-aos-delay="100">
-          <div class="swiper-wrapper">
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  I contacted shubham for website creation of our business, great work was done by him, website was great but unfortunately we shut down our business due to certain reason 
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-0.jpg" class="testimonial-img" alt="">
-                <h3>Tikendra Sahu</h3>
-                <h4>Agrihub Owner</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="100">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Contacted him when he was our student to create sms service for college he did a fantastic work
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-0.jpg" class="testimonial-img" alt="">
-                <h3>Santosh Sar</h3>
-                <h4>HOD, chemistry, BIT Durg</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="200">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  I run coaching service online, shubham made a great website for me, truly amazed by his work
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-0.jpg" class="testimonial-img" alt="">
-                <h3>Rajnish Sahu</h3>
-                <h4>Coaching Center Owner </h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="300">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Shubham made a nice website at cheapest cost for me, which attracted a lot of customer for me 
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-0.jpg" class="testimonial-img" alt="">
-                <h3>Gajendra Mongre</h3>
-                <h4>Wedding Planner </h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item" data-aos="fade-up" data-aos-delay="400">
-                <p>
-                  <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Shubham provided me Financial services as well as Insurance services, I am satisfied from his services
-                  <i class="bx bxs-quote-alt-right quote-icon-right"></i>
-                </p>
-                <img src="assets/img/testimonials/testimonials-0.jpg" class="testimonial-img" alt="">
-                <h3> Manish Sinha</h3>
-                <h4>Software Developer</h4>
-              </div>
-            </div><!-- End testimonial item -->
-
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-    </section><!-- End Testimonials Section -->
-
-    
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Sahuji</span></strong>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        </aside>
       </div>
     </div>
-  </footer><!-- End  Footer -->
+  </div>
+</section>
 
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+<!-- ============ SERVICES ============ -->
+<section id="services" data-screen-label="03 services">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="id">03</span>
+      <h2><span class="prompt">$</span> Cybersecurity Services</h2>
+      <span class="meta">Penetration Testing · VAPT · Application Security · DevSecOps</span>
+    </header>
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <div class="svc-grid">
+      <article class="svc">
+        <header class="svc-head">
+          <span class="svc-num">SVC.01</span>
+          <h3>Penetration Testing &amp; Red Team Exercises</h3>
+          <span class="svc-status">online</span>
+        </header>
+        <p>End-to-end penetration testing against web applications, APIs, networks and cloud infrastructure. 15+ successful engagements with 200+ vulnerabilities identified and remediated.</p>
+        <ul>
+          <li>Web application pentesting (Burp Suite, manual)</li>
+          <li>Network &amp; infrastructure assessment</li>
+          <li>API security &amp; auth flow testing</li>
+          <li>Executive summary + technical findings</li>
+          <li>Remediation roadmap &amp; retest</li>
+        </ul>
+        <footer class="svc-foot">
+          <span><span class="k">duration:</span> <span class="v">2–4 weeks</span></span>
+          <span><span class="k">model:</span> <span class="v">project-based</span></span>
+        </footer>
+      </article>
 
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
-	
-<!-- Start of HubSpot Embed Code -->
-  <script type="text/javascript" id="hs-script-loader" async defer src="//js-na1.hs-scripts.com/23186981.js"></script>
-<!-- End of HubSpot Embed Code -->
+      <article class="svc">
+        <header class="svc-head">
+          <span class="svc-num">SVC.02</span>
+          <h3>Vulnerability Assessment &amp; VAPT Services</h3>
+          <span class="svc-status">online</span>
+        </header>
+        <p>Automated + manual VAPT using enterprise tooling, with strategic integration that cut false positives by 30% on past engagements.</p>
+        <ul>
+          <li>Automated scanning · Nessus, OpenVAS, Acunetix</li>
+          <li>Manual verification · false-positive triage</li>
+          <li>CVSS scoring &amp; risk prioritisation</li>
+          <li>Remediation roadmap with timelines</li>
+          <li>Ongoing remediation support</li>
+        </ul>
+        <footer class="svc-foot">
+          <span><span class="k">duration:</span> <span class="v">1–3 weeks</span></span>
+          <span><span class="k">result:</span> <span class="v">−30% false positives</span></span>
+        </footer>
+      </article>
+
+      <article class="svc">
+        <header class="svc-head">
+          <span class="svc-num">SVC.03</span>
+          <h3>Application Security &amp; DevSecOps Pipeline Integration</h3>
+          <span class="svc-status">online</span>
+        </header>
+        <p>Build security into your delivery pipeline. SAST, DAST, SCA, and CI/CD security wired into how your team already ships.</p>
+        <ul>
+          <li>SAST · Checkmarx, source code review</li>
+          <li>DAST · Burp, HCL AppScan</li>
+          <li>SCA · BlackDuck, dependency hygiene</li>
+          <li>GitHub / CI-CD pipeline hardening</li>
+          <li>Developer training &amp; secure SDLC</li>
+        </ul>
+        <footer class="svc-foot">
+          <span><span class="k">duration:</span> <span class="v">3–6 wk + ongoing</span></span>
+          <span><span class="k">model:</span> <span class="v">retainer</span></span>
+        </footer>
+      </article>
+
+      <article class="svc">
+        <header class="svc-head">
+          <span class="svc-num">SVC.04</span>
+          <h3>GRC &amp; Compliance (ISO 27001, SOC 2, HIPAA, GDPR)</h3>
+          <span class="svc-status">online</span>
+        </header>
+        <p>Audit-ready in months, not years. Past clients saw ~20% improvement in audit scores through targeted control implementation and documentation.</p>
+        <ul>
+          <li>ISO 27001 gap analysis &amp; certification</li>
+          <li>SOC 1 / SOC 2 / SOC 3 audit support</li>
+          <li>HIPAA · PCI-DSS · GDPR readiness</li>
+          <li>Control implementation &amp; evidence</li>
+          <li>Auditor liaison &amp; follow-through</li>
+        </ul>
+        <footer class="svc-foot">
+          <span><span class="k">duration:</span> <span class="v">project / ongoing</span></span>
+          <span><span class="k">result:</span> <span class="v">+20% audit score</span></span>
+        </footer>
+      </article>
+    </div>
+
+    <pre class="ascii-sep" aria-hidden="true">────────  engagement models  ────────</pre>
+
+    <div class="svc-grid" style="grid-template-columns: repeat(3, 1fr);">
+      <article class="svc">
+        <header class="svc-head"><span class="svc-num">M.01</span><h4>Project-based</h4></header>
+        <p>Fixed scope, fixed timeline, fixed deliverables. Best for one-shot assessments and audit prep.</p>
+      </article>
+      <article class="svc">
+        <header class="svc-head"><span class="svc-num">M.02</span><h4>Time &amp; materials</h4></header>
+        <p>Hourly consulting for advisory, code review, threat modeling sessions, or developer training.</p>
+      </article>
+      <article class="svc">
+        <header class="svc-head"><span class="svc-num">M.03</span><h4>Retainer</h4></header>
+        <p>Continuous support: monthly assessments, on-call advisory, security ownership for teams without a CISO.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ RESEARCH ============ -->
+<section id="research" data-screen-label="04 research">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="id">04</span>
+      <h2><span class="prompt">$</span> grep -r "publications" ./research/</h2>
+      <span class="meta">IIT Bhilai · CSE</span>
+    </header>
+
+    <div class="stats" style="margin-bottom:2.5rem;">
+      <div class="stat">
+        <div class="k">affiliation</div>
+        <div class="v" style="font-size:1.05rem;">IIT Bhilai</div>
+        <div class="sub">CSE · PhD scholar</div>
+      </div>
+      <div class="stat">
+        <div class="k">citations</div>
+        <div class="v">10</div>
+        <div class="sub">8 since 2021</div>
+      </div>
+      <div class="stat">
+        <div class="k">h-index</div>
+        <div class="v">1</div>
+        <div class="sub">Google Scholar</div>
+      </div>
+      <div class="stat">
+        <div class="k">focus areas</div>
+        <div class="v">5</div>
+        <div class="sub">cyber · cloud · appsec · crypto · nlp</div>
+      </div>
+    </div>
+
+    <div class="pubs">
+      <article class="pub">
+        <span class="yr">2020</span>
+        <div>
+          <h5>DDoS Attacks &amp; Mitigation Techniques in Cloud Computing Environments</h5>
+          <div class="auth">SK Sahu, RK Khare</div>
+          <div class="venue">GEDRAG &amp; ORGANISATIE REVIEW · 33 (02), 2426–2435</div>
+        </div>
+        <span class="cit">8 cit.</span>
+      </article>
+
+      <article class="pub">
+        <span class="yr">2018</span>
+        <div>
+          <h5>Survey on Cryptocurrency Technology</h5>
+          <div class="auth">SK Sahu, K Spurjeon, A Dutta</div>
+          <div class="venue">Int. Journal of Advanced Mgmt., Tech. and Engineering</div>
+        </div>
+        <span class="cit">1 cit.</span>
+      </article>
+
+      <article class="pub">
+        <span class="yr">2019</span>
+        <div>
+          <h5>Survey on Web-based Operating Systems</h5>
+          <div class="auth">DR K Shubham Kumar Sahu</div>
+          <div class="venue">Journal of Emerging Tech. and Innovative Research · 6 (6), 414–419</div>
+        </div>
+        <span class="cit">·</span>
+      </article>
+
+      <article class="pub">
+        <span class="yr">2018</span>
+        <div>
+          <h5>Designing &amp; Implementing Hindi-to-Chhattisgarhi Machine Translation</h5>
+          <div class="auth">SK Sahu</div>
+          <div class="venue">Chhattisgarh Swami Vivekanand Technical University</div>
+        </div>
+        <span class="cit">·</span>
+      </article>
+
+      <article class="pub">
+        <span class="yr">2018</span>
+        <div>
+          <h5>Parts-of-Speech Tagging for Chhattisgarhi Language</h5>
+          <div class="auth">S Ther, SK Sahu, MK Sinha</div>
+          <div class="venue">IJCRT · 6 (1)</div>
+        </div>
+        <span class="cit">·</span>
+      </article>
+
+      <article class="pub">
+        <span class="yr">2018</span>
+        <div>
+          <h5>Hindi-to-Chhattisgarhi Translator</h5>
+          <div class="auth">A Dutta, SK Sahu, MK Sinha, S Ther</div>
+          <div class="venue">IJCRT · 6 (1)</div>
+        </div>
+        <span class="cit">·</span>
+      </article>
+    </div>
+
+    <div style="margin-top:2rem; display:flex; justify-content:space-between; flex-wrap:wrap; gap:1rem;">
+      <span class="muted" style="font-size:12px;">— end of publication list —</span>
+      <a href="https://scholar.google.com/citations?user=DzFiXTIAAAAJ" target="_blank" rel="noopener">
+        view full list on google scholar →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SKILLS ============ -->
+<section id="skills" data-screen-label="05 stack">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="id">05</span>
+      <h2><span class="prompt">$</span> uname -s --stack</h2>
+      <span class="meta">tooling proficiency</span>
+    </header>
+
+    <div class="sk-grid">
+      <div class="sk-col">
+        <h5>security testing</h5>
+        <div class="sk-row"><span class="name">Burp Suite</span>            <span class="meter" data-on="10"></span></div>
+        <div class="sk-row"><span class="name">Nessus / OpenVAS / Acunetix</span><span class="meter" data-on="9"></span></div>
+        <div class="sk-row"><span class="name">HCL AppScan</span>           <span class="meter" data-on="9"></span></div>
+        <div class="sk-row"><span class="name">Kali · Metasploit</span>     <span class="meter" data-on="9"></span></div>
+        <div class="sk-row"><span class="name">Nikto · OWASP ZAP</span>     <span class="meter" data-on="8"></span></div>
+      </div>
+
+      <div class="sk-col">
+        <h5>devsecops &amp; platforms</h5>
+        <div class="sk-row"><span class="name">Python · Shell</span>        <span class="meter" data-on="9"></span></div>
+        <div class="sk-row"><span class="name">GitHub CI/CD security</span> <span class="meter" data-on="9"></span></div>
+        <div class="sk-row"><span class="name">Checkmarx (SAST)</span>      <span class="meter" data-on="9"></span></div>
+        <div class="sk-row"><span class="name">BlackDuck (SCA)</span>       <span class="meter" data-on="9"></span></div>
+        <div class="sk-row"><span class="name">Docker · K8s · cloud</span>  <span class="meter" data-on="8"></span></div>
+      </div>
+
+      <div class="sk-col">
+        <h5>grc &amp; compliance</h5>
+        <div class="sk-row"><span class="name">ISO 27001 · SOC 1/2/3</span> <span class="meter" data-on="9"></span></div>
+        <div class="sk-row"><span class="name">OWASP · threat modeling</span><span class="meter" data-on="10"></span></div>
+        <div class="sk-row"><span class="name">HIPAA · PCI-DSS · GDPR</span><span class="meter" data-on="9"></span></div>
+        <div class="sk-row"><span class="name">Splunk · QRadar (SIEM)</span><span class="meter" data-on="8"></span></div>
+        <div class="sk-row"><span class="name">Incident response · IR</span><span class="meter" data-on="9"></span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LOG / TIMELINE ============ -->
+<section id="log" data-screen-label="06 log">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="id">06</span>
+      <h2><span class="prompt">$</span> git log --oneline ./career</h2>
+      <span class="meta">most recent first</span>
+    </header>
+
+    <div class="log">
+      <div class="log-row"><span class="when">Apr 2026</span><span class="glyph">●</span><span class="what">Earned ECSA — EC-Council Certified Security Analyst</span><span class="hash">3f9a1c</span></div>
+      <div class="log-row"><span class="when">Feb 2026</span><span class="glyph">●</span><span class="what">Earned API Security Associate (Wallarm)</span><span class="hash">7b2d4e</span></div>
+      <div class="log-row"><span class="when">Dec 2025</span><span class="glyph">●</span><span class="what">Certified BlackDuck SCA Analyst</span><span class="hash">a01ee2</span></div>
+      <div class="log-row"><span class="when">Dec 2023</span><span class="glyph">●</span><span class="what">Began PhD at IIT Bhilai <span class="tag-inline">CSE · cybersecurity research</span></span><span class="hash">c4d018</span></div>
+      <div class="log-row"><span class="when">Nov 2022</span><span class="glyph">●</span><span class="what">Promoted to Cyber Security Consultant <span class="tag-inline">Central Business Solutions</span></span><span class="hash">9911af</span></div>
+      <div class="log-row"><span class="when">Aug 2022</span><span class="glyph">●</span><span class="what">Passed CEH Master practical exam</span><span class="hash">b6e7c0</span></div>
+      <div class="log-row"><span class="when">Apr 2021</span><span class="glyph">●</span><span class="what">Completed M.Tech in Cybersecurity (with Honours)</span><span class="hash">5520d4</span></div>
+      <div class="log-row"><span class="when">Nov 2020</span><span class="glyph">●</span><span class="what">Started career as Cybersecurity Analyst</span><span class="hash">11a7b2</span></div>
+      <div class="log-row"><span class="when">Aug 2020</span><span class="glyph">●</span><span class="what">Certified Ethical Hacker · CEH v10</span><span class="hash">29ff3a</span></div>
+      <div class="log-row"><span class="when">Jul 2019</span><span class="glyph">●</span><span class="what">Diploma in Cyber Law</span><span class="hash">6d0e8c</span></div>
+      <div class="log-row"><span class="when">Aug 2018</span><span class="glyph">●</span><span class="what">B.E. in Information Technology</span><span class="hash">d3f199</span></div>
+      <div class="log-row"><span class="when">Jun 2015</span><span class="glyph">●</span><span class="what">Founded "Inspire Academy" <span class="tag-inline">community ed.</span></span><span class="hash">07cc5a</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" data-screen-label="07 contact">
+  <div class="wrap">
+    <header class="sec-head">
+      <span class="id">07</span>
+      <h2><span class="prompt">$</span> open ./contact</h2>
+      <span class="meta">response within 24h</span>
+    </header>
+
+    <div class="ct-grid">
+      <aside class="ct-card" aria-label="contact details">
+        <h4>contact_info</h4>
+        <ul class="ct-list">
+          <li>
+            <span class="k">email</span>
+            <span class="v"><a href="mailto:shubham@goodhacker.in">shubham@goodhacker.in</a></span>
+            <button class="copy-btn" data-copy="shubham@goodhacker.in">copy</button>
+          </li>
+          <li>
+            <span class="k">phone</span>
+            <span class="v"><a href="tel:+917828888879">+91 78288 88879</a></span>
+            <button class="copy-btn" data-copy="+917828888879">copy</button>
+          </li>
+          <li>
+            <span class="k">location</span>
+            <span class="v">Durg, Chhattisgarh · IN</span>
+            <span></span>
+          </li>
+          <li>
+            <span class="k">linkedin</span>
+            <span class="v"><a href="https://www.linkedin.com/in/sksdbest/" target="_blank" rel="noopener">linkedin.com/in/sksdbest</a></span>
+            <span></span>
+          </li>
+          <li>
+            <span class="k">scholar</span>
+            <span class="v"><a href="https://scholar.google.com/citations?user=DzFiXTIAAAAJ" target="_blank" rel="noopener">Google Scholar</a></span>
+            <span></span>
+          </li>
+          <li>
+            <span class="k">twitter</span>
+            <span class="v"><a href="https://twitter.com/SKSDBEST" target="_blank" rel="noopener">@SKSDBEST</a></span>
+            <span></span>
+          </li>
+        </ul>
+        <p class="muted" style="font-size:12px; margin: 1.2rem 0 0;">
+          For urgent matters, lead the subject line with <span style="color:var(--warn)">URGENT</span>.
+          Available for global engagements; multi-timezone friendly.
+        </p>
+      </aside>
+
+      <form class="ct-form" id="contactForm" novalidate>
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_subject" value="New inquiry from goodhacker.in">
+        <div class="row">
+          <div>
+            <label for="f-name">name</label>
+            <input id="f-name" name="name" type="text" required>
+          </div>
+          <div>
+            <label for="f-email">email</label>
+            <input id="f-email" name="email" type="email" required>
+          </div>
+        </div>
+
+        <div>
+          <label for="f-service">service</label>
+          <select id="f-service" name="service">
+            <option value="">— select —</option>
+            <option>Penetration Testing</option>
+            <option>Vulnerability Assessment</option>
+            <option>AppSec / DevSecOps</option>
+            <option>GRC &amp; Compliance</option>
+            <option>Advisory / training</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="f-subject">subject</label>
+          <input id="f-subject" name="subject" type="text" placeholder="e.g. webapp pentest scoping">
+        </div>
+
+        <div>
+          <label for="f-msg">message</label>
+          <textarea id="f-msg" name="message" required placeholder="tell me about the system, scope, and timeline…"></textarea>
+        </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;">
+          <span class="form-status" id="form-status">▮ ready · all fields encrypted in transit</span>
+          <button class="btn" type="submit">
+            send message <span class="arr">→</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot" data-screen-label="footer">
+  <div class="wrap row">
+    <div>
+      <span class="muted">© 2026 Shubham Kumar · </span>
+      <a href="copyright.html">copyright</a>
+      <span class="muted"> · </span>
+      <a href="privacy.html">privacy policy</a>
+    </div>
+    <div class="links">
+      <span class="muted">connect with me @</span>
+      <a href="https://www.linkedin.com/in/sksdbest/" target="_blank" rel="noopener">linkedin</a>
+      <a href="https://twitter.com/SKSDBEST" target="_blank" rel="noopener">twitter</a>
+      <a href="https://scholar.google.com/citations?user=DzFiXTIAAAAJ" target="_blank" rel="noopener">scholar</a>
+      <a href="mailto:shubham@goodhacker.in">email</a>
+    </div>
+  </div>
+</footer>
+
+<div id="tweaks-root"></div>
+
+<!-- ============ SCRIPTS ============ -->
+<script>
+  // ---- skill meters ----
+  document.querySelectorAll('.meter').forEach(el => {
+    const on = parseInt(el.dataset.on || '0', 10);
+    for (let i = 0; i < 10; i++) {
+      const s = document.createElement('span');
+      if (i < on) s.className = 'on';
+      el.appendChild(s);
+    }
+  });
+
+  // ---- live clock ----
+  const clk = document.getElementById('clock');
+  function tick() {
+    const d = new Date();
+    const ist = new Date(d.getTime() + (5.5 * 60 - d.getTimezoneOffset()) * 60000);
+    const pad = n => String(n).padStart(2, '0');
+    clk.textContent = `${pad(ist.getUTCHours())}:${pad(ist.getUTCMinutes())}:${pad(ist.getUTCSeconds())} IST`;
+  }
+  tick(); setInterval(tick, 1000);
+
+  // ---- single-section router ----
+  const navLinks = document.querySelectorAll('nav.primary a');
+  const sections = [...document.querySelectorAll('main.router > section[id]')];
+  const sectionIds = sections.map(s => s.id);
+  function showSection(id, opts = {}) {
+    if (!sectionIds.includes(id)) id = sectionIds[0];
+    sections.forEach(s => s.classList.toggle('is-active', s.id === id));
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    if (opts.updateHash !== false) {
+      try { history.replaceState(null, '', '#' + id); } catch (e) {}
+    }
+    window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+  navLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      const href = a.getAttribute('href');
+      if (!href || !href.startsWith('#')) return;
+      e.preventDefault();
+      showSection(href.slice(1));
+    });
+  });
+  // intercept any in-page anchor links (cta buttons etc.)
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    if (a.closest('nav.primary')) return;
+    a.addEventListener('click', e => {
+      const id = a.getAttribute('href').slice(1);
+      if (!sectionIds.includes(id)) return;
+      e.preventDefault();
+      showSection(id);
+    });
+  });
+  window.addEventListener('hashchange', () => {
+    showSection(location.hash.slice(1) || sectionIds[0], { updateHash: false });
+  });
+  // initial
+  showSection(location.hash.slice(1) || sectionIds[0], { updateHash: false });
+
+  // ---- copy buttons ----
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy || '');
+        const orig = btn.textContent;
+        btn.textContent = 'copied';
+        btn.classList.add('ok');
+        setTimeout(() => { btn.textContent = orig; btn.classList.remove('ok'); }, 1500);
+      } catch (e) { /* ignore */ }
+    });
+  });
+
+  // ---- contact form (FormSubmit integration) ----
+  const cf = document.getElementById('contactForm');
+  const cs = document.getElementById('form-status');
+  cf.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = cf.elements['name'].value.trim();
+    const email = cf.elements['email'].value.trim();
+    const msg = cf.elements['message'].value.trim();
+    if (!name || !email || !msg) {
+      cs.textContent = '✗ name, email and message are required';
+      cs.className = 'form-status err';
+      return;
+    }
+    if (!/.+@.+\..+/.test(email)) {
+      cs.textContent = '✗ email looks invalid';
+      cs.className = 'form-status err';
+      return;
+    }
+    cs.textContent = '… sending message';
+    cs.className = 'form-status';
+    
+    // Send via FormSubmit
+    const formData = new FormData(cf);
+    fetch('https://formsubmit.co/shubham@goodhacker.in', {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => {
+      if (response.ok) {
+        cs.textContent = '✓ message sent · I\'ll respond within 24h to ' + email;
+        cs.className = 'form-status ok';
+        cf.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    })
+    .catch(err => {
+      cs.textContent = '✗ failed to send · please try again or email directly';
+      cs.className = 'form-status err';
+      console.error('Form submission error:', err);
+    });
+  });
+
+  // ---- interactive terminal ----
+  const tBody = document.getElementById('term-body');
+  const tForm = document.getElementById('term-form');
+  const tIn   = document.getElementById('term-input');
+  const HELP = [
+    'available commands:',
+    '  help                show this list',
+    '  whoami              who is shubham',
+    '  services            list service offerings',
+    '  research            phd & publications',
+    '  stack | skills      tooling & proficiency',
+    '  log                 career timeline',
+    '  achievements        open achievements timeline (new tab)',
+    '  contact             jump to contact section',
+    '  resume              open resume in about section',
+    '  linkedin            open linkedin profile',
+    '  clear               clear the screen',
+  ];
+  const SECTIONS = {
+    services: '#services', research: '#research', skills: '#skills',
+    stack: '#skills', log: '#log', contact: '#contact', about: '#about',
+    whoami: '#hero', resume: '#about',
+  };
+  function termWrite(html) {
+    const node = document.createElement('div');
+    node.className = 'l';
+    node.innerHTML = html;
+    tBody.appendChild(node);
+    tBody.scrollTop = tBody.scrollHeight;
+  }
+  function termPrompt(cmd) {
+    termWrite(
+      `<span class="prompt-line"><span class="ps1">shubham<span class="at">@</span>goodhacker<span class="muted">:</span><span class="path">~</span>$</span> <span class="cmd">${escapeHtml(cmd)}</span></span>`
+    );
+  }
+  function escapeHtml(s) {
+    return s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  }
+  function runCmd(raw) {
+    const cmd = raw.trim().toLowerCase();
+    if (!cmd) return;
+    termPrompt(raw);
+    if (cmd === 'clear') { tBody.innerHTML = ''; return; }
+    if (cmd === 'help') { HELP.forEach(l => termWrite(`<span class="out">${escapeHtml(l)}</span>`)); return; }
+    if (cmd === 'whoami') {
+      termWrite('<span class="out">shubham kumar — sec consultant · phd @ iit bhilai · 132+ clients</span>');
+      return;
+    }
+    if (cmd === 'resume') {
+      termWrite('<span class="out">navigating to <span class="ok">about</span> section (resume)…</span>');
+      if (typeof showSection === 'function') showSection('about');
+      return;
+    }
+    if (cmd === 'ach') {
+      termWrite('<span class="out">opening achievements… <span class="ok">[ok]</span></span>');
+      window.location.href = 'achievements.html';
+      return;
+    }
+    if (cmd === 'linkedin') {
+      termWrite('<span class="out">opening <span class="ok">linkedin</span>… <span class="ok">[ok]</span></span>');
+      window.open('https://www.linkedin.com/in/sksdbest/', '_blank', 'noopener');
+      return;
+    }
+    if (SECTIONS[cmd]) {
+      const id = SECTIONS[cmd].slice(1);
+      termWrite(`<span class="out">navigating to <span class="ok">${cmd}</span> section…</span>`);
+      if (typeof showSection === 'function') showSection(id);
+      return;
+    }
+    termWrite(`<span class="err">command not found: ${escapeHtml(raw)}</span>`);
+    termWrite('<span class="muted">try `help`</span>');
+  }
+  tForm.addEventListener('submit', e => {
+    e.preventDefault();
+    const v = tIn.value;
+    runCmd(v);
+    tIn.value = '';
+  });
+  document.querySelectorAll('.chip').forEach(c => {
+    c.addEventListener('click', () => runCmd(c.dataset.cmd));
+  });
+</script>
+
+<!-- React + tweaks -->
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks.jsx"></script>
 
 </body>
-
 </html>

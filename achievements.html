@@ -1,135 +1,296 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>achievements — shubham@goodhacker</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<style>
+  :root {
+    --bg:#0a0d0c; --bg-2:#0d1110; --pane:#11151430; --border:#1f2826;
+    --border-2:#2a3633; --dim:#6b7672; --dim-2:#8a9591;
+    --text:#c8d1cf; --bright:#e8eeec;
+    --accent: oklch(0.84 0.18 145);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 14.5px; line-height: 1.7;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 90%);
+  }
+  ::selection { background: var(--accent); color: var(--bg); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-  <title>Achievements Page</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    font-size: 12.5px;
+    color: var(--dim-2);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .topbar b { color: var(--bright); font-weight: 500; }
+  .topbar a { color: var(--dim-2); }
+  .topbar a:hover { color: var(--accent); text-decoration: none; }
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  .wrap {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3.5rem 1.5rem 6rem;
+    position: relative; z-index: 1;
+  }
 
-  <!-- Google Fonts -->
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  .id { color: var(--dim); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  h1 {
+    margin: 0.6rem 0 0.4rem;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 500;
+    color: var(--bright);
+    letter-spacing: -0.01em;
+  }
+  h1 .prompt { color: var(--accent); margin-right: 0.3rem; }
+  .updated { color: var(--dim); font-size: 12px; margin-bottom: 2.5rem; }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  hr {
+    border: 0;
+    border-top: 1px dashed var(--border);
+    margin: 2.2rem 0;
+  }
 
-  <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
+  /* Timeline */
+  .timeline {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
 
-  <!-- =======================================================
-  * Template Name: iPortfolio - v3.0.0
-  * Template URL: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  .timeline-item {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    gap: 2rem;
+    padding: 1.8rem 0;
+    border-bottom: 1px dashed var(--border);
+    align-items: start;
+  }
+  .timeline-item:last-child { border-bottom: 0; }
+  .timeline-item.hidden { display: none; }
+
+  .timeline-item .when {
+    color: var(--dim);
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .timeline-item .content h3 {
+    margin: 0 0 0.6rem;
+    color: var(--bright);
+    font-weight: 500;
+    font-size: 1.05rem;
+  }
+
+  .timeline-item .content p {
+    color: var(--dim-2);
+    margin: 0 0 0.8rem;
+    font-size: 13.5px;
+    line-height: 1.65;
+  }
+
+  .timeline-item .badge {
+    display: inline-block;
+    background: var(--pane);
+    border: 1px solid var(--border-2);
+    color: var(--dim-2);
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    font-size: 11.5px;
+  }
+
+  .timeline-item .img-box {
+    margin-top: 0.8rem;
+    border: 1px solid var(--border-2);
+    border-radius: 6px;
+    overflow: hidden;
+    background: var(--bg-2);
+    aspect-ratio: 3/4;
+  }
+  .timeline-item .img-box img {
+    width: 100%; height: 100%; object-fit: contain; background: var(--bg-2); display: block;
+  }
+
+  .footer {
+    margin-top: 4rem;
+    padding-top: 2rem;
+    border-top: 1px dashed var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: var(--dim);
+  }
+  .footer .links { display: flex; gap: 1.5rem; }
+  .footer a { color: var(--dim); }
+  .footer a:hover { color: var(--accent); text-decoration: none; }
+
+  @media (max-width: 760px) {
+    .timeline-item { grid-template-columns: 1fr; gap: 1rem; }
+    .timeline-item .when { font-size: 11.5px; }
+    .footer { flex-direction: column; gap: 1rem; text-align: center; }
+    .footer .links { justify-content: center; }
+  }
+</style>
 </head>
-
 <body>
 
-  <!-- ======= Mobile nav toggle button ======= -->
-  <i class="bi bi-list mobile-nav-toggle d-xl-none"></i>
+<header class="topbar">
+  <span><b>shubham@goodhacker</b><span style="color:var(--dim)">:~/</span>achievements.md</span>
+  <div style="display: flex; gap: 1.5rem; align-items: center;">
+    <a href="https://github.com/sksdbest" target="_blank">github</a>
+    <a href="index.html">← back to /portfolio</a>
+  </div>
+</header>
 
-  <!-- ======= Header ======= -->
-  <header id="header">
-    <div class="d-flex flex-column">
+<main class="wrap">
+  <div class="id">achievements</div>
+  <h1><span class="prompt">$</span> cat timeline.md</h1>
+  <div class="updated">professional journey · milestones &amp; recognition</div>
+  <hr>
+  <div id="app"></div>
 
-      <div class="profile">
-        <img src="assets/img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
-        <h1 class="text-light"><a href="index.html">Shubham Kumar</a></h1>
-        <div class="social-links mt-3 text-center">
-         <a href="https://www.youtube.com/channel/UC9DJUQ28rgrAC5jYQi5JRCA" class="youtube"><i class="bx bxl-youtube"></i></a>
-          <a href="https://www.linkedin.com/in/sksdbest/" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-		  <a href="https://twitter.com/SKSDBEST" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="https://www.facebook.com/SKSDBEST/" class="facebook"><i class="bx bxl-facebook"></i></a>
-        </div>
-      </div>
-
-      <nav id="navbar" class="nav-menu navbar">
-        <ul>
-          <li><a href="index.html#hero" class="nav-link scrollto active"><i class="bx bx-home"></i> <span>Home</span></a></li>
-          <li><a href="index.html#about" class="nav-link scrollto"><i class="bx bx-user"></i> <span>About</span></a></li>
-		  <li><a href="index.html#services" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Services</span></a></li>
-		  <li><a href="resume.html" class="nav-link scrollto"><i class="bx bx-file-blank"></i> <span>Resume</span></a></li>
-          <li><a href="contact.html" class="nav-link scrollto"><i class="bx bx-envelope"></i> <span>Contact</span></a></li>
-		  <li><a href="blogs.html" class="nav-link scrollto"><i class="bx bx-book-content"></i> <span>Blogs</span></a></li>
-		  <li><a href="project/index.html" class="nav-link scrollto"><i class="bx bx-server"></i> <span>Project</span></a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
+  <div class="footer">
+    <div>© 2026 Shubham Kumar · all rights reserved</div>
+    <div class="links">
+      <a href="index.html">home</a>
+      <a href="copyright.html">copyright</a>
+      <a href="privacy.html">privacy</a>
     </div>
-  </header><!-- End Header -->
+  </div>
+</main>
 
-  <main id="main">
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel">
+  const { useState, useEffect } = React;
 
+  const ACHIEVEMENTS = [
+    { date: 'Apr 2026', title: 'EC-Council Certified Security Analyst (ECSA)', desc: 'Obtained ECSA certification from EC-Council, demonstrating advanced expertise in security analysis, threat assessment, and comprehensive security auditing methodologies.', badge: 'certification', img: 'ecsa.jpg', id: 'ecsa-2026', special: false },
+    { date: 'Dec 2023', title: 'Started PhD at IIT Bhilai', desc: 'Began PhD research in Computer Science & Engineering with focus on cybersecurity research and threat mitigation in cloud environments.', badge: 'education', img: '25.jpg', id: 'phd' },
+    { date: 'Nov 2022', title: 'Promoted to Cyber Security Consultant', desc: 'Advanced to consultant role at Central Business Solutions Inc., leading security engagements and consulting for international clients.', badge: 'career', img: '24.jpg', id: 'consultant' },
+    { date: 'Aug 2022', title: 'CEH Master Certification', desc: 'Obtained Certified Ethical Hacker (CEH) Master — the highest level of CEH certification, demonstrating elite penetration testing expertise.', badge: 'certification', img: '23.jpg', id: 'ceh-master', special: true },
+    { date: 'Aug 2022', title: 'CEH Practical Certified', desc: 'Achieved CEH Practical certification, demonstrating hands-on ethical hacking skills through comprehensive practical examinations and real-world vulnerability assessment.', badge: 'certification', img: 'ceh-practical.jpg', id: 'ceh-practical', special: true },
+    { date: 'Apr 2021', title: 'M.Tech Cybersecurity with Honours', desc: 'Completed Master\'s degree in Cyber Forensics & Information Security with distinction from CSVTU, Bhilai.', badge: 'education', img: '01.jpg', id: 'mtech' },
+    { date: 'Nov 2020', title: 'Started Career as Cybersecurity Analyst', desc: 'Launched professional career in cybersecurity, beginning hands-on work in penetration testing and vulnerability assessment.', badge: 'career start', img: '17.jpg', id: 'career-start' },
+    { date: 'Aug 2020', title: 'Certified Ethical Hacker (CEH v10)', desc: 'Obtained CEH v10 certification from EC-Council, validating expertise in ethical hacking and penetration testing methodologies.', badge: 'certification', img: '02.jpg', id: 'ceh-v10' },
+    { date: 'Jul 2019', title: 'Diploma in Cyber Law', desc: 'Completed Diploma in Cyber Law from Government Law College, Mumbai, understanding legal frameworks in cybersecurity.', badge: 'education', img: '03.jpg', id: 'cyber-law' },
+    { date: 'Aug 2018', title: 'B.E. Information Technology', desc: 'Completed Bachelor\'s degree in Information Technology from CSVTU, Bhilai, with foundation in systems and networks.', badge: 'education', img: '04.jpg', id: 'be' },
+    { date: 'Jun 2018', title: 'NSS-C Certificate', desc: 'Earned National Service Scheme Certificate for community service and social commitment during university.', badge: 'award', img: '07.jpg', id: 'nss-c' },
+    { date: 'Jul 2017', title: 'Industrial Training — ALTTC Ghaziabad', desc: 'Completed advanced training in telecommunications and cybersecurity at Advanced Level Telecom Training Centre, BSNL.', badge: 'training', img: '18.jpg', id: 'alttc' },
+    { date: 'Jul 2017', title: 'Google Digital Unlocked Certification', desc: 'Obtained Google Digital Unlocked certification, demonstrating digital marketing and online fundamentals knowledge.', badge: 'certification', img: '05.jpg', id: 'google-digital' },
+    { date: 'Jul 2017', title: 'NSS-B Certificate & 240 Hours Service', desc: 'Completed NSS-B Certificate with 240 hours of dedicated social work and community service.', badge: 'award', img: '21.jpg', id: 'nss-b' },
+    { date: 'Jul 2016', title: 'Basic Telecom Training', desc: 'Completed basic telecommunications training, establishing foundation in telecom infrastructure and networks.', badge: 'training', img: '22.jpg', id: 'telecom' },
+    { date: 'Mar 2016', title: 'IT Olympiad Semi-Finals', desc: 'Reached semi-finals of IT Olympiad competition, demonstrating technical aptitude and problem-solving skills.', badge: 'competition', img: '06.jpg', id: 'it-olympiad' },
+    { date: 'Jun 2015', title: 'Founded Inspire Academy', desc: 'Established Inspire Academy as a government-registered startup focused on tutoring and tech education, managing 200+ students.', badge: 'entrepreneurship', img: '14.jpg', id: 'inspire' },
+    { date: 'Feb 2015', title: 'Certified Ethical Hacking Expert (CEHE Level 1)', desc: 'Obtained CEHE Level 1 certification from Techdefence, demonstrating foundational ethical hacking expertise.', badge: 'certification', img: '16.jpg', id: 'cehe' },
+    { date: 'Oct 2014', title: 'Science Model Exhibition Runner-Up', desc: 'Achieved runner-up position in state-level science model exhibition, showcasing innovation and technical design.', badge: 'award', img: '11.jpg', id: 'exhibition-1' },
+    { date: 'Sep 2014', title: 'Advanced Robotics & Embedded C Training', desc: 'Completed advanced training in robotics and embedded C programming, building skills in hardware integration and low-level coding.', badge: 'training', img: '12.jpg', id: 'robotics' },
+    { date: 'May 2014', title: 'Class 12th Completion — PCM + CS', desc: 'Completed secondary education in Physics, Chemistry, Mathematics and Computer Science streams from CBSE.', badge: 'education', img: '15.jpg', id: 'class12' },
+    { date: 'Sep 2013', title: 'Model Exhibition — State Runner-Up', desc: 'Achieved state runner-up position at science and technology model exhibition.', badge: 'award', img: '13.jpg', id: 'exhibition-2' },
+    { date: 'Apr 2013', title: 'INSPIRE Internship Programme', desc: 'Participated in Department of Science & Technology\'s INSPIRE internship programme for young achievers.', badge: 'internship', img: '10.jpg', id: 'inspire-intern' },
+    { date: 'Oct 2012', title: 'State Level Science Competition Winner', desc: 'Won first place at state-level science model competition, demonstrating technical innovation and scientific knowledge.', badge: 'award', img: '09.jpg', id: 'science-winner' },
+    { date: 'Nov 2011', title: 'Annual Extempore Winner', desc: 'Won annual extempore speaking competition, demonstrating communication skills and quick thinking.', badge: 'award', img: '08.jpg', id: 'extempore' }
+  ];
 
-    <!-- ======= Breadcrumbs ======= -->
-    <section class="breadcrumbs">
-      <div class="container">
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "showCEHMaster": true,
+    "sortOrder": "descending"
+  }/*EDITMODE-END*/;
 
-        <div class="d-flex justify-content-between align-items-center">
-          <h2>Achievements</h2>
-          <ol>
-            <li><a href="index.html">Home</a></li>
-            <li>Achievements </li>
-          </ol>
+  function AchievementsApp() {
+    const [tweaks, setTweaks] = useState(TWEAK_DEFAULTS);
+
+    useEffect(() => {
+      const listener = (e) => {
+        if (e.data.type === '__activate_edit_mode') {
+          document.querySelector('[data-tweaks-panel]').style.display = 'block';
+        } else if (e.data.type === '__deactivate_edit_mode') {
+          document.querySelector('[data-tweaks-panel]').style.display = 'none';
+        }
+      };
+      window.addEventListener('message', listener);
+      window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+      return () => window.removeEventListener('message', listener);
+    }, []);
+
+    const handleTweakChange = (updates) => {
+      setTweaks(prev => ({ ...prev, ...updates }));
+      window.parent.postMessage({ type: '__edit_mode_set_keys', edits: updates }, '*');
+    };
+
+    const filtered = ACHIEVEMENTS.filter(a => {
+      if (!tweaks.showCEHMaster && a.special) return false;
+      return true;
+    });
+
+    const sorted = [...filtered].sort((a, b) => {
+      const aDate = new Date(a.date);
+      const bDate = new Date(b.date);
+      return tweaks.sortOrder === 'descending' ? bDate - aDate : aDate - bDate;
+    });
+
+    return (
+      <>
+        <TweaksPanel onDismiss={() => window.parent.postMessage({ type: '__edit_mode_dismissed' }, '*')}>
+          <TweakSection title="Timeline Display">
+            <TweakToggle 
+              label="Show CEH Certifications (Aug 2022)" 
+              value={tweaks.showCEHMaster}
+              onChange={(v) => handleTweakChange({ showCEHMaster: v })}
+            />
+            <TweakRadio 
+              label="Sort Order"
+              value={tweaks.sortOrder === 'descending' ? 'Descending' : 'Ascending'}
+              options={['Descending', 'Ascending']}
+              onChange={(v) => handleTweakChange({ sortOrder: v.toLowerCase() })}
+            />
+          </TweakSection>
+        </TweaksPanel>
+
+        <div className="timeline">
+          {sorted.map(a => (
+            <div key={a.id} className="timeline-item">
+              <div className="when">{a.date}</div>
+              <div className="content">
+                <h3>{a.title}</h3>
+                <p>{a.desc}</p>
+                <span className="badge">{a.badge}</span>
+                <div className="img-box"><img src={`images/${a.img}`} alt={a.title} /></div>
+              </div>
+            </div>
+          ))}
         </div>
+      </>
+    );
+  }
 
-      </div>
-    </section><!-- End Breadcrumbs -->
-
-
-  <iframe src="ach.html" height=600px width="100%" >
-    <section class="inner-page">
-      <div class="container">
-	  
-        
-      </div>
-    </section>
-
-  </main><!-- End #main -->
-
-  <!-- ======= Footer ======= -->
-  <footer id="footer">
-    <div class="container">
-      <div class="copyright">
-        &copy; Copyright <strong><span>Sahuji</span></strong>
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/iportfolio-bootstrap-portfolio-websites-template/ -->
-        Designed by <a href="https://bootstrapmade.com/"> BootstrapMade</a>
-      </div>
-    </div>
-  </footer><!-- End  Footer -->
-
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/purecounter/purecounter.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/typed.js/typed.min.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="assets/js/main.js"></script>
+  const root = ReactDOM.createRoot(document.getElementById('app'));
+  root.render(<AchievementsApp />);
+</script>
 
 </body>
-
 </html>

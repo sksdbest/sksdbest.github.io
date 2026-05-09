@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>privacy policy — shubham@goodhacker</title>
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#0a0d0c; --bg-2:#0d1110; --pane:#11151430; --border:#1f2826;
+    --border-2:#2a3633; --dim:#6b7672; --dim-2:#8a9591;
+    --text:#c8d1cf; --bright:#e8eeec;
+    --accent: oklch(0.84 0.18 145);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font-family: "JetBrains Mono", ui-monospace, monospace;
+    font-size: 14.5px; line-height: 1.7;
+  }
+  body::before {
+    content: ""; position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,0.018) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 56px 56px;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 90%);
+  }
+  ::selection { background: var(--accent); color: var(--bg); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  .topbar {
+    position: sticky; top: 0; z-index: 10;
+    background: color-mix(in oklab, var(--bg) 88%, transparent);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+    padding: 0.75rem 1.5rem;
+    font-size: 12.5px;
+    color: var(--dim-2);
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .topbar b { color: var(--bright); font-weight: 500; }
+  .topbar a { color: var(--dim-2); }
+  .topbar a:hover { color: var(--accent); text-decoration: none; }
+
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem 6rem;
+    position: relative; z-index: 1;
+  }
+
+  .id { color: var(--dim); font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  h1 {
+    margin: 0.6rem 0 0.4rem;
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    font-weight: 500;
+    color: var(--bright);
+    letter-spacing: -0.01em;
+  }
+  h1 .prompt { color: var(--accent); margin-right: 0.3rem; }
+  .updated { color: var(--dim); font-size: 12px; margin-bottom: 2.5rem; }
+
+  hr {
+    border: 0;
+    border-top: 1px dashed var(--border);
+    margin: 2.2rem 0;
+  }
+
+  h2 {
+    font-size: 1.05rem;
+    color: var(--bright);
+    font-weight: 500;
+    margin: 2.2rem 0 0.9rem;
+  }
+  h2::before { content: "▣ "; color: var(--accent); }
+
+  p { color: var(--dim-2); margin: 0 0 1rem; max-width: 64ch; }
+  p strong { color: var(--bright); font-weight: 500; }
+
+  ul {
+    margin: 0 0 1.2rem; padding: 0; list-style: none;
+  }
+  ul li {
+    padding: 0.35rem 0;
+    color: var(--text);
+    display: flex; gap: 0.6rem; align-items: baseline;
+    border-bottom: 1px dashed var(--border);
+    font-size: 13.5px;
+  }
+  ul li:last-child { border-bottom: 0; }
+  ul li::before { content: "▸"; color: var(--accent); }
+
+  .footer {
+    border-top: 1px solid var(--border);
+    margin-top: 3rem;
+    padding-top: 1.4rem;
+    font-size: 12px;
+    color: var(--dim);
+    display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
+  }
+  .footer .links { display: flex; gap: 1.2rem; }
+  .footer a { color: var(--dim-2); }
+  .footer a:hover { color: var(--accent); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <span><b>shubham@goodhacker</b><span style="color:var(--dim)">:~/</span>privacy.md</span>
+  <a href="index.html">← back to /portfolio</a>
+</header>
+
+<main class="wrap">
+  <div class="id">policy / 01</div>
+  <h1><span class="prompt">$</span>cat privacy.md</h1>
+  <div class="updated">last updated · May 10, 2026</div>
+
+  <p>
+    This privacy policy explains how <strong>goodhacker.in</strong> ("the site")
+    handles information from visitors and prospective clients. The site is
+    operated by Shubham Kumar, an independent cybersecurity consultant based in
+    Durg, Chhattisgarh, India.
+  </p>
+
+  <hr>
+
+  <h2>What I collect</h2>
+  <ul>
+    <li><strong>Contact form data.</strong> Name, email, subject, service interest, and the message you submit.</li>
+    <li><strong>Server logs.</strong> Standard request data — IP address, user-agent, timestamps — retained for security and abuse-prevention purposes.</li>
+    <li><strong>Cookies.</strong> The site uses a single first-party cookie to remember your Tweaks panel preferences (accent, density, scanlines). No third-party tracking cookies are set.</li>
+  </ul>
+
+  <h2>What I do with it</h2>
+  <ul>
+    <li>Reply to your inquiry and discuss the engagement you asked about.</li>
+    <li>Send a written proposal, statement of work, or quote when relevant.</li>
+    <li>Diagnose abuse, scraping, or attempted intrusion against the site.</li>
+  </ul>
+  <p>
+    I do not sell, rent, or share your information with third parties for
+    marketing. I do not subscribe you to any mailing list without explicit
+    consent.
+  </p>
+
+  <h2>How long I keep it</h2>
+  <p>
+    Inquiry emails and any subsequent correspondence are retained for the
+    duration of the engagement plus three years for tax and audit purposes.
+    Server logs roll off within 30 days unless flagged for security review.
+  </p>
+
+  <h2>Your rights</h2>
+  <ul>
+    <li>Request a copy of any personal data I hold about you.</li>
+    <li>Request correction or deletion of that data.</li>
+    <li>Withdraw consent for further communication at any time.</li>
+  </ul>
+  <p>
+    To exercise any of these rights, email
+    <a href="mailto:shubham@goodhacker.in">shubham@goodhacker.in</a>
+    with the subject line <em>"PRIVACY REQUEST"</em>. I respond within 30 days.
+  </p>
+
+  <h2>Security</h2>
+  <p>
+    The site is served over HTTPS. Inquiry submissions are transmitted over
+    encrypted channels. As a security professional, I take reasonable
+    administrative and technical precautions appropriate to the volume and
+    sensitivity of the data — but no system is invulnerable, and you should
+    avoid sending unencrypted secrets, credentials, or production keys via the
+    contact form.
+  </p>
+
+  <h2>Third-party services</h2>
+  <ul>
+    <li><strong>Form submission.</strong> The contact form on the site posts to a serverless email forwarder.</li>
+    <li><strong>Outbound links</strong> (LinkedIn, Twitter, Google Scholar) are operated by their respective providers under their own policies.</li>
+    <li><strong>Fonts.</strong> Typeface files are served by Google Fonts.</li>
+  </ul>
+
+  <h2>Changes</h2>
+  <p>
+    I may update this policy as the practice evolves. Substantive changes will
+    be reflected in the "last updated" timestamp above and, where appropriate,
+    flagged on the site.
+  </p>
+
+  <h2>Contact</h2>
+  <p>
+    Questions about this policy? Email
+    <a href="mailto:shubham@goodhacker.in">shubham@goodhacker.in</a>.
+  </p>
+
+  <div class="footer">
+    <div>© 2026 Shubham Kumar · all rights reserved</div>
+    <div class="links">
+      <a href="index.html">home</a>
+      <a href="copyright.html">copyright</a>
+      <a href="privacy.html">privacy</a>
+    </div>
+  </div>
+</main>
+
+</body>
+</html>
