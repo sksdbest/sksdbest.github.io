@@ -1545,7 +1545,7 @@
         <ul class="ct-list">
           <li>
             <span class="k">email</span>
-            <span class="v"><a href="mailto:shubham@goodhacker.in">shubham@goodhacker.in</a></span>
+            <span class="v"><a href="/cdn-cgi/l/email-protection#ed9e85988f858c80ad8a828289858c8e86889fc38483"><span class="__cf_email__" data-cfemail="4f3c273a2d272e220f2820202b272e2c242a3d612621">[email&#160;protected]</span></a></span>
             <button class="copy-btn" data-copy="shubham@goodhacker.in">copy</button>
           </li>
           <li>
@@ -1580,9 +1580,10 @@
         </p>
       </aside>
 
-      <form class="ct-form" id="contactForm" novalidate>
+      <form class="ct-form" id="contactForm" action="https://formsubmit.co/shubham@goodhacker.in" method="POST" novalidate>
         <input type="hidden" name="_captcha" value="false">
         <input type="hidden" name="_subject" value="New inquiry from goodhacker.in">
+        <input type="hidden" name="_next" value="https://goodhacker.in">
         <div class="row">
           <div>
             <label for="f-name">name</label>
@@ -1644,7 +1645,7 @@
       <a href="https://www.linkedin.com/in/sksdbest/" target="_blank" rel="noopener">linkedin</a>
       <a href="https://twitter.com/SKSDBEST" target="_blank" rel="noopener">twitter</a>
       <a href="https://scholar.google.com/citations?user=DzFiXTIAAAAJ" target="_blank" rel="noopener">scholar</a>
-      <a href="mailto:shubham@goodhacker.in">email</a>
+      <a href="/cdn-cgi/l/email-protection#52213a27303a333f12353d3d363a33313937207c3b3c">email</a>
     </div>
   </div>
 </footer>
@@ -1652,7 +1653,7 @@
 <div id="tweaks-root"></div>
 
 <!-- ============ SCRIPTS ============ -->
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   // ---- skill meters ----
   document.querySelectorAll('.meter').forEach(el => {
     const on = parseInt(el.dataset.on || '0', 10);
@@ -1727,43 +1728,23 @@
   const cf = document.getElementById('contactForm');
   const cs = document.getElementById('form-status');
   cf.addEventListener('submit', e => {
-    e.preventDefault();
     const name = cf.elements['name'].value.trim();
     const email = cf.elements['email'].value.trim();
     const msg = cf.elements['message'].value.trim();
     if (!name || !email || !msg) {
+      e.preventDefault();
       cs.textContent = '✗ name, email and message are required';
       cs.className = 'form-status err';
       return;
     }
     if (!/.+@.+\..+/.test(email)) {
+      e.preventDefault();
       cs.textContent = '✗ email looks invalid';
       cs.className = 'form-status err';
       return;
     }
     cs.textContent = '… sending message';
     cs.className = 'form-status';
-    
-    // Send via FormSubmit
-    const formData = new FormData(cf);
-    fetch('https://formsubmit.co/shubham@goodhacker.in', {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => {
-      if (response.ok) {
-        cs.textContent = '✓ message sent · I\'ll respond within 24h to ' + email;
-        cs.className = 'form-status ok';
-        cf.reset();
-      } else {
-        throw new Error('Submission failed');
-      }
-    })
-    .catch(err => {
-      cs.textContent = '✗ failed to send · please try again or email directly';
-      cs.className = 'form-status err';
-      console.error('Form submission error:', err);
-    });
   });
 
   // ---- interactive terminal ----
