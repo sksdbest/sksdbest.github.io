@@ -1,214 +1,1691 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>MIST Lab, IIT Bhilai</title>
-<style>
-  body { margin: 0; font-family: Arial, sans-serif; }
-  header {
-    position: fixed; top: 0; width: 100%;
-    background: rgba(0,0,0,0.85); color: #fff;
-    padding: 20px 20px;
-    display: flex;
-    justify-content: space-between; align-items: center;
-    z-index: 1000;
-  }
-  header nav a {
-    color: #fff; text-decoration: none;
-    margin: 0 12px; font-weight: bold;
-    line-height: 1.5;
-  }
-  .slider {
-    margin-top: 85px;
-    height: 80vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-  }
-  .slide {
-    width: 75%;
-    height: 95%;
-    background-size: cover;
-    background-position: center;
-    opacity: 0;
-    position: absolute;
-    transition: opacity 1s ease-in-out;
-    cursor: pointer;
-  }
-  .slide.active { opacity: 1; z-index: 1; }
-  .overlay {
-    position: absolute;
-    bottom: 10%;
-    left: 10%;
-    color: #fff;
-    max-width: 500px;
-    background: rgba(0,0,0,0.5);
-    padding: 20px;
-    border-radius: 4px;
-  }
-  .overlay h2 { margin: 0 0 10px; }
-  .dots {
-    position: absolute;
-    bottom: 10px;
-    display: flex;
-    gap: 8px;
-    z-index: 2;
-  }
-  .dot {
-    width: 12px; height: 12px;
-    background: rgba(255,255,255,0.7);
-    border-radius: 50%;
-    cursor: pointer;
-  }
-  .dot.active { background: #fff; }
-  .arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0,0,0,0.5);
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
-    font-size: 18px;
-    z-index: 2;
-  }
-  .arrow.left { left: calc(17%); }
-  .arrow.right { right: calc(17%); }
-  .section { padding: 60px 20px; }
-  .section:nth-child(even) { background: #f5f5f5; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIST Lab - IIT Bhilai</title>
+    <link rel="icon" type="image/png" href="iit-bhilai-logo.png">
+    <link rel="shortcut icon" href="iit-bhilai-logo.png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-color: #1a3a52;
+            --accent-color: #2d5a7b;
+            --light-bg: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #555;
+            --border-color: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Arial', 'Helvetica', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: #fff;
+        }
+
+        header {
+            background-color: #fff;
+            border-bottom: 1px solid var(--border-color);
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .header-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-image {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo span {
+            font-size: 14px;
+            color: var(--text-light);
+            font-weight: normal;
+        }
+
+        nav {
+            display: flex;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        nav a.active {
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        .hero {
+            background-color: var(--light-bg);
+            padding: 60px 20px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        section {
+            display: none;
+        }
+
+        section.active {
+            display: block;
+        }
+
+        h2 {
+            font-size: 28px;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        h3 {
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-top: 25px;
+            margin-bottom: 15px;
+        }
+
+        .research-item {
+            margin-bottom: 40px;
+        }
+
+        .research-item h3 {
+            margin-top: 0;
+        }
+
+        .research-item p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 10px;
+        }
+
+        .research-image {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+
+        .funding-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .funding-card {
+            background-color: var(--light-bg);
+            padding: 20px;
+            border-radius: 5px;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .funding-card h3 {
+            margin-top: 0;
+            font-size: 16px;
+        }
+
+        .funding-card p {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 8px;
+        }
+
+        .status {
+            display: inline-block;
+            font-size: 12px;
+            padding: 5px 10px;
+            background-color: #e8f4f8;
+            color: var(--primary-color);
+            border-radius: 3px;
+            font-weight: bold;
+        }
+
+        .contact-info {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 5px;
+            max-width: 500px;
+        }
+
+        .contact-info h3 {
+            margin-top: 0;
+        }
+
+        .contact-item {
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        .contact-item strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .contact-item p {
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 14px;
+        }
+
+        .lab-info {
+            background-color: var(--light-bg);
+            padding: 30px;
+            border-radius: 5px;
+            margin-bottom: 40px;
+        }
+
+        .lab-info p {
+            color: var(--text-light);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .team-card {
+            background-color: var(--light-bg);
+            padding: 15px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .team-card h4 {
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .team-card p {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        li {
+            margin-bottom: 8px;
+            color: var(--text-light);
+        }
+
+        a {
+            color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .home-content {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .home-image-section {
+            position: sticky;
+            top: 100px;
+        }
+
+        .home-image {
+            width: 100%;
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .publication-list {
+            display: grid;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .publication-item {
+            background-color: var(--light-bg);
+            padding: 18px;
+            border-radius: 5px;
+            border-left: 4px solid var(--accent-color);
+            transition: box-shadow 0.3s;
+        }
+
+        .publication-item:hover {
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .publication-item p {
+            margin: 0 0 8px 0;
+            line-height: 1.5;
+        }
+
+        .publication-item p:last-child {
+            margin: 0;
+        }
+
+        .publication-item strong {
+            color: var(--primary-color);
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        .team-section-category {
+            margin-bottom: 50px;
+        }
+
+        .team-section-category h3 {
+            color: var(--primary-color);
+            font-size: 22px;
+            margin-bottom: 25px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .team-members {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .member-card {
+            background-color: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            text-align: center;
+            transition: box-shadow 0.3s, transform 0.3s;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        }
+
+        .member-card:hover {
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            transform: translateY(-5px);
+        }
+
+        .member-image {
+            width: 100%;
+            height: 250px;
+            background-color: #e0e0e0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-light);
+            font-size: 14px;
+            overflow: hidden;
+        }
+
+        .member-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .member-info {
+            padding: 20px;
+        }
+
+        .member-info h4 {
+            color: var(--primary-color);
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .member-role {
+            font-size: 13px;
+            color: var(--accent-color);
+            font-weight: bold;
+            margin-bottom: 12px;
+        }
+
+        .member-contact {
+            font-size: 12px;
+            color: var(--text-light);
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+
+        .member-email {
+            display: inline-block;
+            color: var(--accent-color);
+            text-decoration: none;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .member-email:hover {
+            text-decoration: underline;
+        }
+
+        .member-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            padding-top: 10px;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .member-link {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background-color: var(--primary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+
+        .member-link:hover {
+            background-color: var(--accent-color);
+            text-decoration: none;
+        }
+
+        .placeholder-avatar {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #2d5a7b 0%, #1a3a52 100%);
+            font-size: 60px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .home-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .home-image-section {
+                position: relative;
+                top: 0;
+            }
+
+            .home-image {
+                max-width: 100%;
+            }
+            nav {
+                gap: 15px;
+                flex-wrap: wrap;
+            }
+
+            nav a {
+                font-size: 12px;
+            }
+
+            .hero h1 {
+                font-size: 26px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .funding-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .team-members {
+                grid-template-columns: 1fr;
+            }
+
+            .member-image {
+                height: 200px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <div class="header-container">
+            <a href="#" class="logo">
+                <img src="iit-bhilai-logo.png" alt="IIT Bhilai Logo" class="logo-image">
+                <div class="logo-text">
+                    <span style="font-size: 20px; color: var(--primary-color); font-weight: bold; margin: 0;">MIST Lab</span>
+                    <span style="font-size: 12px; color: var(--text-light); font-weight: normal; margin: 0;">IIT Bhilai</span>
+                </div>
+            </a>
+            <nav>
+                <a href="#" class="nav-link active" data-section="home">Home</a>
+                <a href="#" class="nav-link" data-section="research">Research</a>
+                <a href="#" class="nav-link" data-section="publications">Pub & Patents</a>
+                <a href="#" class="nav-link" data-section="team">Team</a>
+                <a href="#" class="nav-link" data-section="news">News</a>
+                <a href="#" class="nav-link" data-section="funding">Funding</a>
+                <a href="#" class="nav-link" data-section="contact">Contact</a>
+            </nav>
+        </div>
+    </header>
 
-<header>
-  <div class="logo">MIST Lab, IIT Bhilai</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="publications.html">Publications</a>
-    <a href="patents.html">Patents</a>
-    <a href="#section2">News</a>
-    <a href="#section2">Team</a>
-    <a href="#section2">Contact</a>
-    <a href="#section2"></a>
-  </nav>
-</header>
+    <!-- HOME SECTION -->
+    <section id="home" class="active">
+        <div class="hero">
+            <div class="hero-content">
+                <h1>Machine Intelligence & Security of Things Lab (MIST)</h1>
+                <p>Dedicated to secure AI and IoT products through cutting-edge research at IIT Bhilai</p>
+            </div>
+        </div>
 
-<div class="slider">
-  <div class="slide active" data-href="https://example.com/page1" style="background-image:url('https://picsum.photos/id/1015/1600/900');">
-    <div class="overlay">
-      <h2>Welcome to Our Site</h2>
-      <p>Experience immersive visuals and smooth transitions.</p>
-    </div>
-  </div>
-  <div class="slide" data-href="https://example.com/page2" style="background-image:url('https://picsum.photos/id/1018/1600/900');">
-    <div class="overlay">
-      <h2>Engaging Content</h2>
-      <p>Our slider brings your message to life.</p>
-    </div>
-  </div>
-  <div class="slide" data-href="https://example.com/page3" style="background-image:url('https://picsum.photos/id/1025/1600/900');">
-    <div class="overlay">
-      <h2>Responsive Design</h2>
-      <p>Works seamlessly across devices.</p>
-    </div>
-  </div>
+        <div class="container">
+            <div class="home-content">
+                <div class="home-image-section">
+                    <img src="lab-banner.jpg" alt="MIST Lab - Dr. Sk. Subidh Ali" class="home-image">
+                    <p style="font-size: 12px; color: var(--text-light); text-align: center; margin-top: 10px;">Dr. Sk. Subidh Ali, Principal Investigator</p>
+                </div>
 
-  <button class="arrow left" id="prev">&#10094;</button>
-  <button class="arrow right" id="next">&#10095;</button>
+                <div class="lab-info" style="border: none; background-color: transparent; padding: 0;">
+                    <h2 style="border: none; padding-bottom: 0; margin-bottom: 20px; margin-top: 0;">Welcome to MIST Lab</h2>
 
-  <div class="dots" id="dots"></div>
-</div>
+                    <p style="font-size: 16px; color: var(--primary-color); margin-bottom: 20px; font-weight: bold;">
+                        Securing the Intelligent and Connected World
+                    </p>
 
-<div class="section" id="section1">
-  <h2>Welcome to Machine Intelligence and Security of Things Lab</h2>
-  <p>
-    We are a group of researchers from IIT Bhilai, led by Dr. Sk. Subidh Ali, dedicated to secure AI as well as IoT products. 
-    Machine Learning is the heart of current advancement in the domain of Artificial Intelligence. 
-    The presence of deep neural networks makes a machine into an intelligent machine. 
-    From autonomous vehicles to robotic surgery, deep neural networks have brought great powers to modern-day applications. 
-    It reminds us of the well-known quote from Spider-Man: “With great power comes great responsibility”.
-  </p>
-  <p>
-    In recent years, it has been shown that a well-trained deep neural network can easily be fooled by adding certain noise into the input. 
-    This discovery led the research community to a new domain called Adversarial Machine Learning (AML). 
-    The focus of our group is to develop solutions to secure machine learning-enabled products against AML attacks.
-  </p>
-  <p>
-    Smart infrastructure is now an indispensable foundation of our society, whether it is road travel, logistics, buildings, or entire cities. 
-    IoT-based devices and systems form one of the major pillars of such smart infrastructure. 
-    As per recent data, globally, the number of connected devices reached 200 billion by the year 2020. 
-    Until recently, there was no standard practice in this domain. 
-    Furthermore, security was not considered a part of any IoT system, as IoT products are supposed to be cheap. 
-    Companies did not want to escalate the price by incorporating security overhead in such products.
-  </p>
-  <p>
-    The tectonic shift happened after the massive DDoS attack in 2016, known as the Mirai botnet attack, 
-    which crippled millions of IoT devices across the globe. 
-    Subsequently, IoT security standards were developed to make IoT products secure against malicious attacks. 
-    Our team works to develop secure IoT solutions.
-  </p>
-</div>
+                    <p style="line-height: 1.8; margin-bottom: 15px;">
+                        The Machine Intelligence & Security of Things (MIST) Lab at IIT Bhilai is dedicated to addressing the security challenges of the modern era. As artificial intelligence systems become more sophisticated and ubiquitous, and as billions of devices connect to form the Internet of Things, ensuring their security is paramount.
+                    </p>
 
-<div class="section" id="section2">
-  <h2>Section 2</h2>
-  <p>This is the second section of content. Customize it to your needs.</p>
-</div>
+                    <p style="line-height: 1.8; margin-bottom: 15px;">
+                        Under the leadership of <strong>Dr. Sk. Subidh Ali</strong>, our team of researchers focuses on developing innovative security solutions across three interconnected domains: securing artificial intelligence systems, protecting cryptographic implementations, and ensuring the safety of IoT ecosystems.
+                    </p>
 
-<script>
-  const slides = document.querySelectorAll('.slide');
-  const dotsContainer = document.getElementById('dots');
-  let index = 0;
-  let timer;
+                    <h3 style="margin-top: 30px;">Our Research Mission</h3>
+                    <p style="line-height: 1.8; margin-bottom: 10px;">
+                        We believe that with great power comes great responsibility. Modern technologies—deep neural networks, cryptographic systems, and IoT devices—possess tremendous potential to improve lives and solve critical problems. Our mission is to ensure these powerful technologies remain secure and trustworthy as they become more prevalent in society.
+                    </p>
 
-  slides.forEach((_, i) => {
-    const dot = document.createElement('div');
-    dot.classList.add('dot');
-    if (i === 0) dot.classList.add('active');
-    dot.addEventListener('click', () => showSlide(i));
-    dotsContainer.appendChild(dot);
-  });
-  const dots = document.querySelectorAll('.dot');
+                    <h3 style="margin-top: 25px;">Artificial Intelligence Security</h3>
+                    <p style="line-height: 1.8; margin-bottom: 10px;">
+                        Deep neural networks have revolutionized artificial intelligence, enabling remarkable applications in computer vision, natural language processing, and autonomous systems. However, recent research has shown that these sophisticated models can be deceived by imperceptible adversarial perturbations—carefully crafted inputs designed to fool AI systems.
+                    </p>
+                    <p style="line-height: 1.8; margin-bottom: 10px;">
+                        MIST Lab investigates the mechanisms of adversarial attacks on machine learning systems and develops robust defenses. We also address the emerging threat of deepfakes—synthetic media created using generative models that can convincingly impersonate real people. Our research ensures that AI systems remain reliable in real-world deployments where security is critical.
+                    </p>
 
-  function showSlide(i) {
-    slides[index].classList.remove('active');
-    dots[index].classList.remove('active');
-    index = i;
-    slides[index].classList.add('active');
-    dots[index].classList.add('active');
-    resetTimer();
-  }
+                    <h3 style="margin-top: 25px;">Cryptographic Implementation Security</h3>
+                    <p style="line-height: 1.8; margin-bottom: 10px;">
+                        While cryptographic algorithms are mathematically proven to be secure, their physical implementations in hardware can be vulnerable to sophisticated attacks. Power analysis, electromagnetic side-channels, and fault injection attacks can compromise encryption keys and protected data.
+                    </p>
+                    <p style="line-height: 1.8; margin-bottom: 10px;">
+                        Our team pioneered research on scan-based attacks that exploit test infrastructure in modern chips. We develop provably secure defenses and analyze emerging vulnerabilities in cryptographic hardware, ensuring that encryption remains practical and trustworthy across all application domains.
+                    </p>
 
-  function nextSlide() {
-    let next = index + 1;
-    if (next >= slides.length) next = 0;
-    showSlide(next);
-  }
-  function prevSlide() {
-    let prev = index - 1;
-    if (prev < 0) prev = slides.length - 1;
-    showSlide(prev);
-  }
+                    <h3 style="margin-top: 25px;">IoT and Smart Infrastructure Security</h3>
+                    <p style="line-height: 1.8; margin-bottom: 10px;">
+                        The Internet of Things has transformed modern society. Billions of connected devices—from wearables and smart homes to industrial systems and critical infrastructure—create unprecedented opportunities. However, they also create new vulnerabilities.
+                    </p>
+                    <p style="line-height: 1.8; margin-bottom: 10px;">
+                        Historically, IoT devices were designed prioritizing cost and performance over security. The 2016 Mirai botnet attack, which compromised millions of unsecured IoT devices and disrupted major services worldwide, highlighted the critical need for secure IoT design. MIST Lab develops security solutions that balance efficiency, cost-effectiveness, and robust protection—ensuring IoT devices can safely support smart cities, intelligent healthcare systems, and critical infrastructure.
+                    </p>
 
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(nextSlide, 4000);
-  }
+                    <h3 style="margin-top: 30px;">Laboratory Information</h3>
+                    <div style="background-color: var(--light-bg); padding: 20px; border-radius: 5px; margin-top: 15px;">
+                        <p style="margin: 10px 0; line-height: 1.8;">
+                            <strong>Location:</strong> Room 412, ED1, IIT Bhilai<br>
+                            Kutelabhala, Durg - 491002, India
+                        </p>
+                        <p style="margin: 10px 0; line-height: 1.8;">
+                            <strong>Principal Investigator:</strong> Dr. Sk. Subidh Ali<br>
+                            <span style="font-size: 14px; color: var(--text-light);">Associate Professor, Department of Computer Science & Engineering</span>
+                        </p>
+                        <p style="margin: 10px 0; line-height: 1.8;">
+                            <strong>Email:</strong> <a href="mailto:subidh@iitbhilai.ac.in">subidh@iitbhilai.ac.in</a>
+                        </p>
+                        <p style="margin: 10px 0; line-height: 1.8;">
+                            <strong>Phone:</strong> +91-771-255-1300 Extn. 6122
+                        </p>
+                        <p style="margin: 10px 0; line-height: 1.8;">
+                            <strong>Research Citations:</strong> 1,545+ citations (Google Scholar)<br>
+                            <strong>Publications:</strong> 305+ publications
+                        </p>
+                        <p style="margin: 10px 0; line-height: 1.8;">
+                            <strong>Institute Profile:</strong> <a href="https://www.iitbhilai.ac.in/index.php?pid=subidh" target="_blank">View Faculty Profile</a>
+                        </p>
+                    </div>
 
-  timer = setInterval(nextSlide, 4000);
+                    <h3 style="margin-top: 30px;">Why MIST Lab?</h3>
+                    <p style="line-height: 1.8; margin-bottom: 10px;">
+                        The convergence of AI, cryptography, and IoT creates complex security challenges that require interdisciplinary expertise. MIST Lab uniquely addresses these challenges through:
+                    </p>
+                    <ul style="line-height: 1.8; color: var(--text-light); margin: 15px 0;">
+                        <li><strong>Comprehensive Approach:</strong> Integrating research across AI security, hardware security, and IoT to understand interactions between domains</li>
+                        <li><strong>Practical Focus:</strong> Developing solutions that work in real-world scenarios with genuine constraints</li>
+                        <li><strong>Academic Excellence:</strong> Publishing in premier venues and collaborating with leading institutions worldwide</li>
+                        <li><strong>Impact-Driven:</strong> Creating security technologies that protect critical infrastructure and improve lives</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  document.getElementById('next').addEventListener('click', nextSlide);
-  document.getElementById('prev').addEventListener('click', prevSlide);
+    <!-- RESEARCH SECTION -->
+    <section id="research">
+        <div class="container">
+            <h2>Research Areas</h2>
 
-  slides.forEach(slide => {
-    slide.addEventListener('click', () => {
-      const href = slide.getAttribute('data-href');
-      if (href) window.location.href = href;
-    });
-  });
-</script>
+            <div style="background-color: var(--light-bg); padding: 25px; border-radius: 8px; margin-bottom: 40px;">
+                <p style="margin: 0; color: var(--text-dark); font-size: 16px;">
+                    MIST Lab conducts cutting-edge research across three interconnected domains: <strong>AI Security</strong> (adversarial robustness and deepfake detection), <strong>Cyber Security</strong> (cryptanalysis and hardware security), and <strong>IoT Security</strong> (secure device design and wireless communication protection). Our holistic approach addresses the security challenges of modern intelligent and connected systems.
+                </p>
+            </div>
 
+            <!-- AI SECURITY -->
+            <h3 style="color: var(--primary-color); margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #e8f4f8;">🤖 AI Security Research</h3>
+
+            <div class="research-item">
+                <h3>Adversarial Machine Learning</h3>
+                <p>Machine learning systems have become integral to critical applications, from autonomous vehicles to medical diagnosis. However, these systems are vulnerable to adversarial attacks—carefully crafted inputs designed to fool AI models.</p>
+                <p><strong>Our Research:</strong> We investigate the mechanisms behind adversarial perturbations and develop robust defenses to protect deep neural networks. Our work includes:</p>
+                <ul style="color: var(--text-light); margin: 15px 0;">
+                    <li><strong>Attack Development:</strong> Creating gradient-guided adversarial patches that can fool vision-based ML systems</li>
+                    <li><strong>Defense Mechanisms:</strong> Developing adversarial training and detection techniques to enhance model robustness</li>
+                    <li><strong>Feature Space Analysis:</strong> Understanding the underlying vulnerabilities in neural network feature representations</li>
+                    <li><strong>Real-world Impact Assessment:</strong> Evaluating implications for autonomous systems and security-critical applications</li>
+                </ul>
+            </div>
+
+            <div class="research-item">
+                <h3>Deepfake Detection & Media Authentication</h3>
+                <p>Deepfake technology—using GANs and deep learning to synthesize realistic fake videos—poses significant risks to information integrity, personal reputation, and democratic processes. Detecting these sophisticated forgeries is a critical challenge.</p>
+                <p><strong>Our Research:</strong> We develop machine learning models and techniques to detect synthetic media while defending against adversarial attacks on detection systems. Our contributions include:</p>
+                <ul style="color: var(--text-light); margin: 15px 0;">
+                    <li><strong>Style-Based Detection:</strong> De-Fake approach using style analysis and anomaly detection patterns</li>
+                    <li><strong>Attribution Methods:</strong> Generalized deepfake attribution to identify synthesis techniques used</li>
+                    <li><strong>Robustness Against Attacks:</strong> SHIELD framework for defending detectors against adversarial perturbations</li>
+                    <li><strong>Image Authentication:</strong> Watermarking and copyright protection for digital media</li>
+                </ul>
+            </div>
+
+            <!-- CYBER SECURITY -->
+            <h3 style="color: var(--primary-color); margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #e8f4f8;">🔐 Cyber Security & Hardware Trust</h3>
+
+            <div class="research-item">
+                <h3>Cryptographic Implementation Security</h3>
+                <p>While cryptographic algorithms are mathematically sound, their physical implementations in hardware can be vulnerable to various attacks. Our research protects cryptographic systems from both theoretical and practical threats.</p>
+                <p><strong>Our Research Focuses On:</strong></p>
+                <ul style="color: var(--text-light); margin: 15px 0;">
+                    <li><strong>Differential Fault Analysis (DFA):</strong> Understanding how fault injection can break encryption algorithms like AES, Twofish, and CLEFIA</li>
+                    <li><strong>Side-Channel Attacks:</strong> Power analysis, electromagnetic analysis, and timing attacks on cryptographic chips</li>
+                    <li><strong>Countermeasures:</strong> Developing cost-effective defense mechanisms for secure implementations</li>
+                    <li><strong>Certification Support:</strong> Helping design chips that resist modern cryptanalytic attacks</li>
+                </ul>
+            </div>
+
+            <div class="research-item">
+                <h3>Scan-Based Attacks & Design-for-Test Security</h3>
+                <p>Modern integrated circuits use scan-based Design-for-Testability (DfT) to improve manufacturing test coverage. However, this test infrastructure can become a backdoor, allowing attackers to extract secret information from supposedly secure chips.</p>
+                <p><strong>Our Research:</strong> We have been pioneers in identifying and defending against scan-based attacks. Key contributions include:</p>
+                <ul style="color: var(--text-light); margin: 15px 0;">
+                    <li><strong>Vulnerability Analysis:</strong> New scan attack techniques against state-of-the-art defense mechanisms</li>
+                    <li><strong>DefScan Framework:</strong> Provably secure defense mechanisms against scan attacks on AES-like ciphers</li>
+                    <li><strong>Scan Obfuscation:</strong> Security analysis of existing obfuscation techniques with improved countermeasures</li>
+                    <li><strong>Hamming Weight Distribution:</strong> Novel perspective on securing cryptographic ICs</li>
+                </ul>
+            </div>
+
+            <div class="research-item">
+                <h3>Side-Channel Analysis</h3>
+                <p>Electronic devices leak information through physical side channels—power consumption, electromagnetic radiation, and timing variations. These leakages can compromise even mathematically secure encryption.</p>
+                <p><strong>Our Research:</strong> We study and develop defenses against various side-channel attacks:</p>
+                <ul style="color: var(--text-light); margin: 15px 0;">
+                    <li><strong>Power Analysis:</strong> Differential and Correlation Power Analysis (DPA/CPA) on cryptographic implementations</li>
+                    <li><strong>EM Analysis:</strong> Electromagnetic side-channel attacks on wireless devices, smart cards, and IoT systems</li>
+                    <li><strong>Timing Attacks:</strong> Extracting secrets through execution time variations in NEMS relay and traditional circuits</li>
+                    <li><strong>Countermeasures:</strong> Masking, hiding, and detection techniques for implementation-level protection</li>
+                </ul>
+            </div>
+
+            <div class="research-item">
+                <h3>Logic Locking & Hardware IP Protection</h3>
+                <p>With globalized chip manufacturing, protecting intellectual property against reverse engineering and unauthorized modifications is critical. Logic locking provides a promising solution.</p>
+                <p><strong>Our Work:</strong> We analyze security improvements and countermeasures against state-of-the-art attacks on locked circuits, ensuring IP remains protected throughout the supply chain.</p>
+            </div>
+
+            <!-- IOT SECURITY -->
+            <h3 style="color: var(--primary-color); margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #e8f4f8;">📱 IoT & Wireless Security</h3>
+
+            <div class="research-item">
+                <h3>IoT Device Security</h3>
+                <p>The Internet of Things has transformed our world—from smart homes and wearables to industrial systems and critical infrastructure. However, IoT devices often sacrifice security for cost and performance, creating massive attack surfaces.</p>
+                <p><strong>MIST Lab's Vision:</strong> Develop secure IoT solutions that balance functionality, cost-effectiveness, and robust security without compromising device capabilities.</p>
+                <p><strong>Research Directions:</strong></p>
+                <ul style="color: var(--text-light); margin: 15px 0;">
+                    <li><strong>Low-Power Secure Design:</strong> Cryptographic implementations optimized for resource-constrained IoT devices</li>
+                    <li><strong>Threat Modeling:</strong> Understanding vulnerabilities in deployed IoT ecosystems</li>
+                    <li><strong>Device Authentication:</strong> Secure device identification and mutual authentication in IoT networks</li>
+                    <li><strong>Side-Channel Resilience:</strong> Protecting battery-powered devices from power and EM analysis attacks</li>
+                    <li><strong>Hardware Trojans Detection:</strong> Identifying malicious modifications in IoT hardware</li>
+                </ul>
+            </div>
+
+            <div class="research-item">
+                <h3>Smart Infrastructure & Connected Systems</h3>
+                <p>Smart infrastructure—from intelligent transportation systems to smart cities and industrial IoT—depends on billions of connected devices. Security failures can have cascading real-world consequences.</p>
+                <p><strong>Historical Context:</strong> The 2016 Mirai botnet attack demonstrated the vulnerability of unprotected IoT devices. This watershed moment led to the development of IoT security standards and best practices. However, vulnerabilities persist.</p>
+                <p><strong>Our Research Addresses:</strong></p>
+                <ul style="color: var(--text-light); margin: 15px 0;">
+                    <li><strong>Device Fingerprinting:</strong> Unique identification of devices in 5G and beyond networks</li>
+                    <li><strong>Distributed Attestation:</strong> Verifying integrity of devices in large-scale deployments</li>
+                    <li><strong>5G Security:</strong> Next-generation wireless security for critical infrastructure</li>
+                    <li><strong>Robotic Systems:</strong> Security in teleoperation and edge computing for robotic applications</li>
+                </ul>
+            </div>
+
+            <div class="research-item">
+                <h3>Secure Hardware Design for IoT</h3>
+                <p>Security must be designed in from the ground up, not added as an afterthought. We work on hardware architectures and designs that provide security guarantees while meeting IoT constraints.</p>
+                <ul style="color: var(--text-light); margin: 15px 0;">
+                    <li><strong>Security-by-Design:</strong> Incorporating security at the hardware architecture level</li>
+                    <li><strong>Medical IoT Security:</strong> Special focus on security-critical medical IoT devices and wearables</li>
+                    <li><strong>Edge Device Protection:</strong> Securing intelligence at the edge of networks</li>
+                    <li><strong>Supply Chain Security:</strong> Protecting IoT devices from manufacturing through deployment</li>
+                </ul>
+            </div>
+
+            <!-- CROSS-DOMAIN RESEARCH -->
+            <h3 style="color: var(--primary-color); margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #e8f4f8;">🔗 Cross-Domain Security Tools & Techniques</h3>
+
+            <div class="research-item">
+                <h3>Security Evaluation Frameworks</h3>
+                <p>Beyond developing individual defenses, we create comprehensive evaluation tools and frameworks to assess security across domains.</p>
+                <ul style="color: var(--text-light); margin: 15px 0;">
+                    <li><strong>DLOVE:</strong> Security evaluation tool for deep learning-based watermarking techniques</li>
+                    <li><strong>AGAN (Attack GAN):</strong> Framework for evaluating perceptual encryption security using adversarial approaches</li>
+                    <li><strong>Threat Assessment Tools:</strong> Methodologies for evaluating system vulnerabilities across IoT, crypto, and AI domains</li>
+                </ul>
+            </div>
+
+            <div class="research-item">
+                <h3>Integration of Security Domains</h3>
+                <p>The future of security lies at the intersection of these domains. As AI systems are deployed on IoT devices protected by cryptographic hardware, we must ensure that security advances in one area complement others.</p>
+                <p><strong>Our Integrated Approach:</strong> Understanding how adversarial robustness of ML models interacts with hardware security constraints, how IoT deployment affects cryptographic key management, and how physical side-channels can compromise AI systems.</p>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid var(--border-color);">
+                <h3>Research Impact & Goals</h3>
+                <p><strong>Our Mission:</strong> MIST Lab aims to develop secure systems that protect against current and emerging threats while accommodating the real-world constraints of modern applications. We believe that security research must be both theoretically sound and practically implementable.</p>
+                <p><strong>Guiding Principle:</strong> "With great power comes great responsibility"—as AI, cryptography, and IoT technologies become more powerful, our responsibility to secure them grows proportionally.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- PUBLICATIONS SECTION -->
+    <section id="publications" style="min-height: auto;">
+        <div class="container">
+            <h2>Publications</h2>
+
+            <div style="background-color: var(--light-bg); padding: 20px; border-radius: 5px; margin-bottom: 40px;">
+                <p><strong>h-index:</strong> 17 | <strong>Total Citations:</strong> 969+ | <strong>Published Works:</strong> 305+</p>
+                <p style="font-size: 14px; color: var(--text-light); margin-top: 10px;">
+                    <strong>View complete profile:</strong>
+                    <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a> |
+                    <a href="https://dblp.org/pid/80/9687.html" target="_blank">DBLP</a> |
+                    <a href="https://ieeexplore.ieee.org/author/38060850700" target="_blank">IEEE Xplore</a> |
+                    <a href="https://www.researchgate.net/profile/Sk-Subidh-Ali" target="_blank">ResearchGate</a>
+                </p>
+            </div>
+
+            <p style="background-color: #fff3cd; padding: 15px; border-radius: 5px; margin-bottom: 30px; font-size: 14px;">
+                <strong>Complete Publications Database:</strong> This section includes 50+ peer-reviewed publications. For the most up-to-date and complete list with all co-authors and citations, visit the <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar profile</a>.
+            </p>
+
+            <h3>2025 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>De-Fake: Style based Anomaly Deepfake Detection</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">ArXiv 2507.03334 (2025)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://arxiv.org/abs/2507.03334" target="_blank">arXiv</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Deep Learning-based Dual Watermarking for Image Copyright Protection and Authentication</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">ArXiv 2502.18501 (2025)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://arxiv.org/abs/2502.18501" target="_blank">arXiv</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Gradient-Guided Adversarial Patch Attack for Deep Neural Networks</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">(2025)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>2024 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>DefScan: Provably Defeating Scan Attack on AES-Like Ciphers</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD), Vol. 43 (2024)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://dl.acm.org/doi/10.1109/TCAD.2024.3368289" target="_blank">IEEE</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Generalized Deepfake Attribution</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">ArXiv 2406.18278 (2024)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://arxiv.org/abs/2406.18278" target="_blank">arXiv</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>DLOVE: A new Security Evaluation Tool for Deep Learning Based Watermarking Techniques</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">ArXiv 2407.06552 (2024)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://arxiv.org/abs/2407.06552" target="_blank">arXiv</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Attack GAN (AGAN): A new Security Evaluation Tool for Perceptual Encryption</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">ArXiv 2407.06570 (2024)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://arxiv.org/abs/2407.06570" target="_blank">arXiv</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>2023 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>On Securing Cryptographic ICs against Scan-based Attacks: A Hamming Weight Distribution Perspective</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">ACM Journal on Emerging Technologies in Computing Systems (JETCAS), March 2023</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://dl.acm.org/doi/10.1145/3577215" target="_blank">ACM</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Security Analysis of Scan Obfuscation Techniques</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE Transactions on Information Forensics and Security (TIFS), 2023</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://dl.acm.org/doi/abs/10.1109/TIFS.2023.3265815" target="_blank">IEEE</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>RoboSense At Edge: Detecting Slip, Crumple and Shape of the Object in Robotic Hand for Teleoprations</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">ArXiv 2311.07888 (2023)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://arxiv.org/abs/2311.07888" target="_blank">arXiv</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>2022 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>Evaluating Security of New Locking SIB-based Architectures</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE European Test Symposium (ETS), Barcelona, 2022</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Authors: Yogendra Sao, Anjum Riaz, Satyadev Ahlawat, Sk Subidh Ali | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>2021 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>Opacity preserving Countermeasure using Finite State Machines against Differential Scan Attacks</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE European Test Symposium (ETS), 2021</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Authors: Sk Subidh Ali, Yogendra Sao, Santosh Biswas | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Security Analysis of State-of-the-art Scan Obfuscation Technique</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE International Conference on Computer Design (ICCD), 2021</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Authors: Yogendra Sao, Sk Subidh Ali | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>2020 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>Revisiting the security of static masking and compaction: Discovering new vulnerability and Improved Scan Attack on AES</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE Asian Hardware Oriented Security and Trust Symposium (AsianHOST), 2020</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Authors: Yogendra Sao, K. K. Soundra Pandian, Sk Subidh Ali | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>2019 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>Co-relation Scan Attack Analysis (COSAA) on AES: A Comprehensive Approach</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE International Symposium on Defect and Fault Tolerance in VLSI and Nanotechnology Systems (DFT), Noordwijk, Netherlands</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Authors: D. Ray, S. Singh, Sk Subidh Ali, S. Biswas | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Guest Editorial - SPACE 2017 Special Issue</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">Journal of Hardware and Systems Security (HaSS)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Authors: Sk Subidh Ali, Debdeep Mukhopadhyay | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>2017 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>Timing Attack and Countermeasure on NEMS Relay Based Design of Block Ciphers</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE Transactions on Emerging Topics in Computing</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Authors: Bodhisatwa Mazumdar, Samah Mohamed Saeed, Sk Subidh Ali, Ozgur Sinanoglu | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>2016 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>Thwarting Timing Attacks on NEMS Relay Based Designs</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE 34th VLSI Test Symposium (VTS)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>2015 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>Timing Attack on NEMS Relay Based Design of AES</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE International Symposium on Circuits and Systems (ISCAS)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>TMO: A New Class of Attack on Cipher Misusing Test Infrastructure</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IFIP/IEEE International Conference on Very Large Scale Integration (VLSI-SoC)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Test-mode-only Scan Attack Using the Boundary Scan Chain</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE VLSI Test Symposium (VTS)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://www.researchgate.net/publication/269298329_Test-mode-only_scan_attack_using_the_boundary_scan_chain" target="_blank">ResearchGate</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Scan Attack on Elliptic Curve Cryptosystem</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE Fault Diagnosis and Tolerance in Cryptography Workshop (FDTC)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://www.semanticscholar.org/paper/Scan-attack-on-Elliptic-Curve-Cryptosystem-Ali-Sinanoglu/4d82148039100ff4f182c0d0252ef9ccf10be580" target="_blank">Semantic Scholar</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Security Analysis of Logic Encryption Against the Most Effective Side-Channel Attack: DPA</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE Fault Diagnosis and Tolerance in Cryptography Workshop (FDTC)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Power Analysis Attacks on ARX: An Application to Salsa20</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE International On-Line Testing Symposium (IOLTS)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Security Implications of Cyberphysical Digital Micro Biochips</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE International Conference on Computer Design (ICCD)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>2014 Publications</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>Test-mode-only Scan Attack and Countermeasure for Contemporary Scan Architectures</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE International Test Conference (ITC)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Authors: Samah Mohamed Saeed, Sk Subidh Ali, Ozgur Sinanoglu, Ramesh Karri | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>New Scan Attacks Against State-of-the-art Countermeasures and DFT</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE International Symposium on Hardware-Oriented Security and Trust (HOST)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Authors: Samah Mohamed Saeed, Sk Subidh Ali, Ozgur Sinanoglu, Ramesh Karri | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>Pre-2014 Publications & Differential Fault Analysis Papers</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>New Scan-based Attack Using Only The Test Mode and an Input Corruption Countermeasure</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">Springer International Workshop on Information Security Theory and Practice (WISTP)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://link.springer.com/chapter/10.1007/978-3-319-23799-2_3" target="_blank">Springer</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Differential Fault Analysis of AES: Towards Reaching Its Limits</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">Journal of Cryptographic Engineering</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://link.springer.com/article/10.1007/s13389-012-0046-y" target="_blank">Springer</a> | <a href="https://www.researchgate.net/publication/257803312_Differential_fault_analysis_of_AES_Towards_reaching_its_limits" target="_blank">ResearchGate</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Differential Fault Analysis of the Advanced Encryption Standard Using a Single Fault</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">WISTP Workshop</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Authors: Michael Tunstall, Debdeep Mukhopadhyay, Sk Subidh Ali | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Differential Fault Analysis of AES Using a Single Multiple-Byte Fault</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://www.semanticscholar.org/paper/Differential-Fault-Analysis-of-AES-using-a-Single-Ali-Mukhopadhyay/40e6a2982019c7ac68d69b512834ff93540a81ee" target="_blank">Semantic Scholar</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Differential Fault Analysis of AES-128 Key Schedule Using a Single Multi-byte Fault</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://www.researchgate.net/publication/220962878_Differential_Fault_Analysis_of_AES-128_Key_Schedule_Using_a_Single_Multi-byte_Fault" target="_blank">ResearchGate</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Differential Fault Analysis of Twofish</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://www.researchgate.net/publication/268992684_Differential_Fault_Analysis_of_Twofish" target="_blank">ResearchGate</a> | <a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Improved Differential Fault Analysis of CLEFIA</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Novel Test-Mode-Only Scan Attack and Countermeasure for Compression-Based Scan Architectures</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems (TCAD)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://dl.acm.org/doi/10.1109/TCAD.2015.2398423" target="_blank">IEEE</a> | <a href="https://www.researchgate.net/publication/276153338_Novel_Test-Mode-Only_Scan_Attack_and_Countermeasure_for_Compression-Based_Scan_Architectures" target="_blank">ResearchGate</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Scan Based Side Channel Attack on Dedicated Hardware Implementations of Data Encryption Standard</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://www.researchgate.net/publication/4120314_Scan_Based_Side_Channel_Attack_on_Dedicated_Hardware_Implementations_of_Data_Encryption_Standard" target="_blank">ResearchGate</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>A Comprehensive Design-for-Test Infrastructure In the Context of Security-Critical Applications</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://www.researchgate.net/publication/294137868_A_Comprehensive_Design-for-Test_Infrastructure_In_the_Context_of_Security-Critical_Applications" target="_blank">ResearchGate</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>An Extension of Differential Fault Analysis on AES</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://www.researchgate.net/publication/221204933_An_Extension_of_Differential_Fault_Analysis_on_AES" target="_blank">ResearchGate</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Compact Implementation of Salsa20 and Its Power Analysis Vulnerabilities</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://cyber.nyu.edu/2016/11/01/compact-implementation-salsa20-power-analysis-vulnerabilities/" target="_blank">NYU Cyber Security Center</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>On Improving the Security of Logic Locking</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://www.researchgate.net/publication/287964910_On_Improving_the_Security_of_Logic_Locking" target="_blank">ResearchGate</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>A Secure Design-for-Test Infrastructure for Lifetime Security of SoCs</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://hal.science/hal-01205397" target="_blank">HAL Archive</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Acceleration of Differential Fault Analysis of the Advanced Encryption Standard Using Single Fault</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;"></p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://scholar.google.com/citations?user=BdDCoeEAAAAJ&hl=en" target="_blank">Google Scholar</a></p>
+                </div>
+            </div>
+
+            <h3>Book Chapters & Editorials</h3>
+            <div class="publication-list">
+                <div class="publication-item">
+                    <p><strong>Adversarial Malware Detection</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">Springer Nature Book Chapter (2024)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;"><a href="https://link.springer.com/chapter/10.1007/978-3-031-80408-3_17" target="_blank">Springer</a></p>
+                </div>
+                <div class="publication-item">
+                    <p><strong>Security, Privacy, and Applied Cryptography Engineering - 7th International Conference, SPACE 2017</strong></p>
+                    <p style="color: var(--text-light); font-size: 14px;">Springer (Edited by Sk Subidh Ali, Jean-Luc Danger, Thomas Eisenbarth)</p>
+                    <p style="color: var(--text-light); font-size: 13px; margin-top: 8px;">Goa, India, December 13-17, 2017</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 60px; padding-top: 40px; border-top: 2px solid var(--accent-color);">
+                <h2>Patents</h2>
+
+                <h3 style="margin-top: 30px; color: var(--primary-color);">Granted Patents</h3>
+                <div class="publication-list">
+                    <div class="publication-item">
+                        <p><strong>A System and Method for Defeating Scan Attacks on Cipher</strong></p>
+                        <p style="color: var(--text-light); font-size: 14px;">Yogendra Sao and Sk Subidh Ali</p>
+                        <p style="color: var(--text-light); font-size: 13px; margin-top: 5px;">Indian Patent No. 538348, Granted on 16-May-2024</p>
+                    </div>
+                    <div class="publication-item">
+                        <p><strong>Systems and Methods for Verifying Navigation Signals</strong></p>
+                        <p style="color: var(--text-light); font-size: 14px;">Brejesh Lall, Sk Subidh Ali, Debanka Giri, and Sudev Kumar Padhi</p>
+                        <p style="color: var(--text-light); font-size: 13px; margin-top: 5px;">Indian Patent No. 554204, Granted on 12-Nov-2024</p>
+                    </div>
+                    <div class="publication-item">
+                        <p><strong>A System and Method for Enhanced Grasp Stability by Detecting Slip, Crumple, and Shape of the Object in Robotic Hand</strong></p>
+                        <p style="color: var(--text-light); font-size: 14px;">Sudev Padhi, Mohit Kumar, Debanka Giri, and Sk Subidh Ali</p>
+                        <p style="color: var(--text-light); font-size: 13px; margin-top: 5px;">Indian Patent No. 557306, Granted on 31-Dec-2024</p>
+                    </div>
+                    <div class="publication-item">
+                        <p><strong>A System and Method for Detecting Fake Images with Source Attribution</strong></p>
+                        <p style="color: var(--text-light); font-size: 14px;">Sudev Kumar Padhi, Indrakumar Mhaski, and Sk Subidh Ali</p>
+                        <p style="color: var(--text-light); font-size: 13px; margin-top: 5px;">Indian Patent No. 575629, Granted on 11-December-2025</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 35px; color: var(--primary-color);">Patents Under Review</h3>
+                <div class="publication-list">
+                    <div class="publication-item">
+                        <p><strong>A Deep Learning Based System and Method for Dual Watermarking of Images</strong></p>
+                        <p style="color: var(--text-light); font-size: 14px;">Sudev Kumar Padhi, Archana Tiwari, and Sk Subidh Ali</p>
+                        <p style="color: var(--text-light); font-size: 13px; margin-top: 5px;">Indian Patent Application No. 202421009753, Filed on 19-July-2024</p>
+                    </div>
+                    <div class="publication-item">
+                        <p><strong>A System and Method for Detecting and Localizing Digital Document Forgery for Reconstruction of Tamper-Region</strong></p>
+                        <p style="color: var(--text-light); font-size: 14px;">Sudev Kumar Padhi, Archana Tiwari, and Sk Subidh Ali</p>
+                        <p style="color: var(--text-light); font-size: 13px; margin-top: 5px;">Indian Patent Application No. 202421094908, Filed on 3-Dec-2024</p>
+                    </div>
+                    <div class="publication-item">
+                        <p><strong>Systems and Methods for Verifying Navigation Signals</strong></p>
+                        <p style="color: var(--text-light); font-size: 14px;">Brejesh Lall, Sk Subidh Ali, Debanka Giri, and Sudev Kumar Padhi</p>
+                        <p style="color: var(--text-light); font-size: 13px; margin-top: 5px;">US Application No. 18/520,583, Filed on 12-Nov-2023</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 30px; border-top: 1px solid var(--border-color);">
+                <h3>Research Impact</h3>
+                <p><strong>Citation Impact:</strong> With 969+ citations across 305+ publications, Dr. Ali's work has significant influence in the security and AI communities.</p>
+                <p><strong>Research Domains:</strong> Deepfake Detection, Adversarial Machine Learning, Hardware Security, Scan-based Attacks, Cryptographic Implementation Security, Side-channel Analysis, IoT Security, and Image Authentication.</p>
+                <p><strong>Contribution:</strong> Pioneering work in scan attacks on cryptographic hardware, defense mechanisms for secure IC design, and emerging research in adversarial robustness of deep learning systems.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- TEAM SECTION -->
+    <section id="team">
+        <div class="container">
+            <h2>Research Team</h2>
+
+            <!-- PhD Students Section -->
+            <div class="team-section-category">
+                <h3>Ph.D. Students</h3>
+                <div class="team-members">
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Umesh Kashyap</h4>
+                            <div class="member-role">Ph.D. Student</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:umesh.kashyap@iitbhilai.ac.in">umesh.kashyap@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://umesh-21.github.io/umeshkashyap/" target="_blank" class="member-link" title="Website">🔗</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Deepesh Kumar Dwivedi</h4>
+                            <div class="member-role">Ph.D. Student</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:deepesh.dwivedi@iitbhilai.ac.in">deepesh.dwivedi@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com/in/deepesh-kumar-dwivedi-20460536a/" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Shivani Singh</h4>
+                            <div class="member-role">Ph.D. Student</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:shivani@iitbhilai.ac.in">shivani@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com/in/shivani-singh-b85985229/" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Pankaj Kashyap</h4>
+                            <div class="member-role">Ph.D. Student</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:pankaj@iitbhilai.ac.in">pankaj@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com/in/pankaj-kashyap-098141261/" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Shubham Kumar Sahu</h4>
+                            <div class="member-role">Ph.D. Student</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:skumars@iitbhilai.ac.in">skumars@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Post-Doc Students Section -->
+            <div class="team-section-category">
+                <h3>Post-Doctoral Researchers</h3>
+                <div class="team-members">
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Archana Tiwari</h4>
+                            <div class="member-role">Post-Doctoral Researcher</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:archana.tiwari@iitbhilai.ac.in">archana.tiwari@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- M.Tech / UG Students Section -->
+            <div class="team-section-category">
+                <h3>M.Tech / UG Students</h3>
+                <div class="team-members">
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Jayesh Kumar</h4>
+                            <div class="member-role">M.Tech Student</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:jayesh@iitbhilai.ac.in">jayesh@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com/in/jayesh-kirtane/" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Rishav Kumar</h4>
+                            <div class="member-role">M.Tech Student</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:rishav@iitbhilai.ac.in">rishav@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com/in/rishav-kumar-64763a223" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Yadav Akhilesh Kumar Sanjay</h4>
+                            <div class="member-role">M.Tech Student</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:akhilesh@iitbhilai.ac.in">akhilesh@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com/in/akhilesh-yadav-8b45a31bb/" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Om Raj Singh</h4>
+                            <div class="member-role">M.Tech Student</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:omraj@iitbhilai.ac.in">omraj@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com/in/om-raj-singh-91aa0322a/" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Sarvesh Badoni</h4>
+                            <div class="member-role">M.Tech Student</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:sarvesh@iitbhilai.ac.in">sarvesh@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com/in/" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alumni Section -->
+            <div class="team-section-category">
+                <h3>Alumni</h3>
+                <div class="team-members">
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Ashish Vishwakarma</h4>
+                            <div class="member-role">Ph.D. / M.Tech</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:ashish@example.com">ashish@example.com</a></div>
+                                <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Indra Kumar Mhaski</h4>
+                            <div class="member-role">Ph.D. / M.Tech</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:indra@example.com">indra@example.com</a></div>
+                                <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Sidhartha Chhatterjee</h4>
+                            <div class="member-role">Ph.D. / M.Tech</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:sidhartha@example.com">sidhartha@example.com</a></div>
+                                <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>S Mahommad Shahid</h4>
+                            <div class="member-role">Ph.D. / M.Tech</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:shahid@example.com">shahid@example.com</a></div>
+                                <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Nitin Kr Choudhary</h4>
+                            <div class="member-role">Ph.D. / M.Tech</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:nitin@example.com">nitin@example.com</a></div>
+                                <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Mohit Kumar</h4>
+                            <div class="member-role">Ph.D. / M.Tech</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:mohit@example.com">mohit@example.com</a></div>
+                                <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Yogendra Sao</h4>
+                            <div class="member-role">Ph.D. / M.Tech</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:yogendra@example.com">yogendra@example.com</a></div>
+                                <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Sudev Kr Padhi</h4>
+                            <div class="member-role">Ph.D. / M.Tech</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:sudev@example.com">sudev@example.com</a></div>
+                                <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Harshit Kumar</h4>
+                            <div class="member-role">Ph.D. / M.Tech</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:harshit@example.com">harshit@example.com</a></div>
+                                <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com/in/harshitkumar26/" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Rahul Kumar</h4>
+                            <div class="member-role">Ph.D. / M.Tech</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:rahul@example.com">rahul@example.com</a></div>
+                                <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com/in/rahul-iitbh/" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Interns Section -->
+            <div class="team-section-category">
+                <h3>Interns</h3>
+                <div class="team-members">
+                    <div class="member-card">
+                        <div class="member-image">
+                            <div class="placeholder-avatar">👤</div>
+                        </div>
+                        <div class="member-info">
+                            <h4>Chirag Ubnare</h4>
+                            <div class="member-role">Intern</div>
+                            <div class="member-contact">
+                                <div class="member-email"><a href="mailto:chirag@iitbhilai.ac.in">chirag@iitbhilai.ac.in</a></div>
+                            </div>
+                            <div class="member-links">
+                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="margin-top: 50px; padding-top: 30px; border-top: 1px solid var(--border-color);">
+                <h3>Interested in Joining?</h3>
+                <p style="color: var(--text-light); margin-bottom: 15px;">MIST Lab is actively recruiting motivated students and researchers interested in security challenges across AI, cryptography, and IoT domains. If you are passionate about security research, we encourage you to reach out to discuss potential opportunities.</p>
+                <p style="color: var(--text-light);"><strong>Contact:</strong> <a href="mailto:subidh@iitbhilai.ac.in">subidh@iitbhilai.ac.in</a></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEWS SECTION -->
+    <section id="news">
+        <div class="container">
+            <h2>Latest News & Updates</h2>
+
+            <div class="research-item">
+                <h3>Current Focus Areas</h3>
+                <p>The lab continues to expand research in emerging areas of machine learning security and hardware trust. We are actively investigating new attack vectors and developing novel defense mechanisms.</p>
+                <p>Recent work has focused on the intersection of AI security and hardware security, exploring how physical attacks can compromise machine learning systems and vice versa.</p>
+            </div>
+
+            <div class="research-item">
+                <h3>Research Collaborations</h3>
+                <p>MIST Lab collaborates with leading researchers and institutions worldwide. We welcome research visits, collaborations, and discussions with other groups working on related security challenges.</p>
+            </div>
+
+            <div class="research-item">
+                <h3>Publications</h3>
+                <p>Our research is published in leading conferences and journals. Recent work has been presented at top-tier venues and has received significant citations from the research community.</p>
+                <p>For a complete list of publications and research outputs, please visit our research group pages and Google Scholar profiles.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FUNDING SECTION -->
+    <section id="funding">
+        <div class="container">
+            <h2>Research Funding</h2>
+
+            <h3>Ongoing Projects</h3>
+            <div class="funding-grid">
+                <div class="funding-card">
+                    <h3>Detection of Financial Frauds</h3>
+                    <p><strong>Agency:</strong> IIT BHILAI Innovation and Technology Foundation</p>
+                    <p><strong>Project:</strong> Detection of financial frauds in taxation, banking, and stock market</p>
+                    <span class="status">Ongoing</span>
+                </div>
+
+                <div class="funding-card">
+                    <h3>5G & Beyond Research</h3>
+                    <p><strong>Agency:</strong> MeitY</p>
+                    <p><strong>Project:</strong> Next Generation Wireless Research and Standardization on 5G & Beyond</p>
+                    <span class="status">Ongoing</span>
+                </div>
+
+                <div class="funding-card">
+                    <h3>Smart Card OS Testing</h3>
+                    <p><strong>Agency:</strong> BEL</p>
+                    <p><strong>Project:</strong> Testing and certifying MISCOS Operating System for Smart Card</p>
+                    <span class="status">Ongoing</span>
+                </div>
+            </div>
+
+            <h3>Completed Projects</h3>
+            <div class="funding-grid">
+                <div class="funding-card">
+                    <h3>5G Testbed Development</h3>
+                    <p><strong>Agency:</strong> MeitY</p>
+                    <p><strong>Project:</strong> Building End to End 5G Testbed (Distributed attestation of Devices & Device Fingerprinting)</p>
+                    <span class="status">Completed</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Information</h2>
+
+            <div class="contact-info">
+                <h3>Principal Investigator</h3>
+                <div class="contact-item">
+                    <strong>Dr. Sk Subidh Ali</strong>
+                    <p>Room 412, ED1, IIT Bhilai</p>
+                    <p>Kutelabhala</p>
+                    <p>Durg - 491002</p>
+                </div>
+
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <p><a href="mailto:subidh@iitbhilai.ac.in">subidh@iitbhilai.ac.in</a></p>
+                </div>
+
+                <div class="contact-item">
+                    <strong>Phone</strong>
+                    <p>+91-771-255-1300 Extn. 6122</p>
+                </div>
+
+                <div class="contact-item">
+                    <strong>Institute Profile</strong>
+                    <p><a href="https://www.iitbhilai.ac.in/index.php?pid=subidh" target="_blank">View Faculty Profile</a></p>
+                </div>
+            </div>
+
+            <div style="margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                <h3>Get in Touch</h3>
+                <p style="color: var(--text-light); margin-bottom: 15px;">We welcome inquiries about collaboration, student recruitment, research partnerships, and general discussions about our work. Please feel free to reach out to us using the contact information above.</p>
+            </div>
+
+            <div style="margin-top: 50px; padding-top: 40px; border-top: 1px solid var(--border-color);">
+                <h3>Location</h3>
+                <p style="color: var(--text-light); margin-bottom: 20px;">Find us at IIT Bhilai, Kutelabhala, Durg. Below is our exact location on the map:</p>
+                <div style="width: 100%; max-width: 800px; margin: 0 auto;">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3718.616043885587!2d81.31631207599818!3d21.24706888045741!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a28db65364103d5%3A0x9ca0815dc09dac5f!2sIndian%20Institute%20of%20Technology%20Bhilai!5e0!3m2!1sen!2sin!4v1778354725590!5m2!1sen!2sin" width="100%" height="450" style="border:0; border-radius: 5px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 MIST Lab, IIT Bhilai. All Rights Reserved.</p>
+        <p style="margin-top: 10px; font-size: 12px;">Machine Intelligence & Security of Things Lab</p>
+        <p style="margin-top: 15px; font-size: 12px;">
+            <a href="copyright-policy.html" style="color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 10px;">Copyright Policy</a> |
+            <a href="privacy-policy.html" style="color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+        </p>
+    </footer>
+
+    <script>
+        // Navigation functionality
+        const navLinks = document.querySelectorAll('.nav-link');
+        const sections = document.querySelectorAll('section');
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Remove active class from all links and sections
+                navLinks.forEach(l => l.classList.remove('active'));
+                sections.forEach(s => s.classList.remove('active'));
+
+                // Add active class to clicked link
+                link.classList.add('active');
+
+                // Show corresponding section
+                const sectionId = link.getAttribute('data-section');
+                document.getElementById(sectionId).classList.add('active');
+            });
+        });
+    </script>
 </body>
 </html>
