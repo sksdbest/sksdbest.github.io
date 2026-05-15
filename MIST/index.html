@@ -97,33 +97,19 @@
         }
 
         .hero {
-            background-color: var(--light-bg);
-            padding: 60px 20px;
+            background-color: transparent;
+            padding: 0;
             text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 36px;
-            color: var(--primary-color);
-            margin-bottom: 15px;
-        }
-
-        .hero p {
-            font-size: 16px;
-            color: var(--text-light);
-            line-height: 1.8;
-            margin-bottom: 20px;
         }
 
         .container {
             max-width: 1000px;
             margin: 0 auto;
             padding: 60px 20px;
+        }
+
+        #home .container {
+            padding-top: 60px;
         }
 
         section {
@@ -155,6 +141,23 @@
 
         .research-item h3 {
             margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        .research-item-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .research-item.reverse .research-item-wrapper {
+            grid-template-columns: 1fr 1fr;
+            direction: rtl;
+        }
+
+        .research-item.reverse .research-item-wrapper > * {
+            direction: ltr;
         }
 
         .research-item p {
@@ -166,8 +169,12 @@
         .research-image {
             max-width: 100%;
             height: auto;
-            margin: 20px 0;
-            border-radius: 5px;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .research-text {
+            /* content naturally flows */
         }
 
         .funding-grid {
@@ -475,6 +482,161 @@
             color: white;
         }
 
+        .hero-slider {
+            position: relative;
+            width: 85%;
+            max-width: 950px;
+            height: 500px;
+            margin: 40px auto;
+            overflow: hidden;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .slider-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider-item {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .slider-item.active {
+            opacity: 1;
+        }
+
+        .slider-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slider-controls {
+            position: absolute;
+            bottom: 15px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+
+        .slider-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+            border: 2px solid white;
+        }
+
+        .slider-dot.active {
+            background-color: white;
+        }
+
+        .slider-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            z-index: 10;
+        }
+
+        .slider-nav:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+        }
+
+        .slider-prev {
+            left: 10px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .slider-next {
+            right: 10px;
+            border-radius: 4px 0 0 4px;
+        }
+
+        .home-section {
+            margin-bottom: 25px;
+        }
+
+        .home-section-header {
+            background-color: var(--light-bg);
+            padding: 15px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s, box-shadow 0.3s;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .home-section-header:hover {
+            background-color: #e8f4f8;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        }
+
+        .home-section-header h3 {
+            color: var(--primary-color);
+            font-size: 18px;
+            flex-grow: 1;
+            margin: 0;
+        }
+
+        .home-toggle {
+            font-size: 18px;
+            color: var(--accent-color);
+            transition: transform 0.3s;
+            margin-left: 15px;
+        }
+
+        .home-section-header.active .home-toggle {
+            transform: rotate(180deg);
+        }
+
+        .home-section-content {
+            display: none;
+            padding: 15px 18px;
+            background-color: #fafbfc;
+            border-radius: 0 0 6px 6px;
+            animation: slideDown 0.3s ease-out;
+            border-left: 4px solid var(--accent-color);
+        }
+
+        .home-section-content.active {
+            display: block;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         @media (max-width: 768px) {
             .home-content {
                 grid-template-columns: 1fr;
@@ -544,10 +706,26 @@
 
     <!-- HOME SECTION -->
     <section id="home" class="active">
-        <div class="hero">
-            <div class="hero-content">
-                <h1>Machine Intelligence & Security of Things Lab (MIST)</h1>
-                <p>Dedicated to secure AI and IoT products through cutting-edge research at IIT Bhilai</p>
+        <div class="hero-slider" style="margin: 0; border-radius: 0; box-shadow: none;">
+            <div class="slider-container" style="height: 500px;">
+                <div class="slider-item active">
+                    <img src="121.jpg" alt="MIST Lab Research">
+                </div>
+                <div class="slider-item">
+                    <img src="122.jpg" alt="AI Security Research">
+                </div>
+                <div class="slider-item">
+                    <img src="123.jpg" alt="IoT Security Solutions">
+                </div>
+            </div>
+
+            <button class="slider-nav slider-prev" onclick="prevSlide()">❮</button>
+            <button class="slider-nav slider-next" onclick="nextSlide()">❯</button>
+
+            <div class="slider-controls">
+                <span class="slider-dot active" onclick="goToSlide(0)"></span>
+                <span class="slider-dot" onclick="goToSlide(1)"></span>
+                <span class="slider-dot" onclick="goToSlide(2)"></span>
             </div>
         </div>
 
@@ -559,9 +737,12 @@
                 </div>
 
                 <div class="lab-info" style="border: none; background-color: transparent; padding: 0;">
-                    <h2 style="border: none; padding-bottom: 0; margin-bottom: 20px; margin-top: 0;">Welcome to MIST Lab</h2>
+                    <h2 style="border: none; padding-bottom: 0; margin-bottom: 20px; margin-top: 0;">Our Research Mission</h2>
+                    <p style="line-height: 1.8; margin-bottom: 15px;">
+                        We believe that with great power comes great responsibility. Modern technologies—deep neural networks, cryptographic systems, and IoT devices—possess tremendous potential to improve lives and solve critical problems. Our mission is to ensure these powerful technologies remain secure and trustworthy as they become more prevalent in society.
+                    </p>
 
-                    <p style="font-size: 16px; color: var(--primary-color); margin-bottom: 20px; font-weight: bold;">
+                    <p style="font-size: 16px; color: var(--primary-color); margin-bottom: 20px; font-weight: bold; margin-top: 25px;">
                         Securing the Intelligent and Connected World
                     </p>
 
@@ -573,61 +754,55 @@
                         Under the leadership of <strong>Dr. Sk. Subidh Ali</strong>, our team of researchers focuses on developing innovative security solutions across three interconnected domains: securing artificial intelligence systems, protecting cryptographic implementations, and ensuring the safety of IoT ecosystems.
                     </p>
 
-                    <h3 style="margin-top: 30px;">Our Research Mission</h3>
-                    <p style="line-height: 1.8; margin-bottom: 10px;">
-                        We believe that with great power comes great responsibility. Modern technologies—deep neural networks, cryptographic systems, and IoT devices—possess tremendous potential to improve lives and solve critical problems. Our mission is to ensure these powerful technologies remain secure and trustworthy as they become more prevalent in society.
-                    </p>
-
-                    <h3 style="margin-top: 25px;">Artificial Intelligence Security</h3>
-                    <p style="line-height: 1.8; margin-bottom: 10px;">
-                        Deep neural networks have revolutionized artificial intelligence, enabling remarkable applications in computer vision, natural language processing, and autonomous systems. However, recent research has shown that these sophisticated models can be deceived by imperceptible adversarial perturbations—carefully crafted inputs designed to fool AI systems.
-                    </p>
-                    <p style="line-height: 1.8; margin-bottom: 10px;">
-                        MIST Lab investigates the mechanisms of adversarial attacks on machine learning systems and develops robust defenses. We also address the emerging threat of deepfakes—synthetic media created using generative models that can convincingly impersonate real people. Our research ensures that AI systems remain reliable in real-world deployments where security is critical.
-                    </p>
-
-                    <h3 style="margin-top: 25px;">Cryptographic Implementation Security</h3>
-                    <p style="line-height: 1.8; margin-bottom: 10px;">
-                        While cryptographic algorithms are mathematically proven to be secure, their physical implementations in hardware can be vulnerable to sophisticated attacks. Power analysis, electromagnetic side-channels, and fault injection attacks can compromise encryption keys and protected data.
-                    </p>
-                    <p style="line-height: 1.8; margin-bottom: 10px;">
-                        Our team pioneered research on scan-based attacks that exploit test infrastructure in modern chips. We develop provably secure defenses and analyze emerging vulnerabilities in cryptographic hardware, ensuring that encryption remains practical and trustworthy across all application domains.
-                    </p>
-
-                    <h3 style="margin-top: 25px;">IoT and Smart Infrastructure Security</h3>
-                    <p style="line-height: 1.8; margin-bottom: 10px;">
-                        The Internet of Things has transformed modern society. Billions of connected devices—from wearables and smart homes to industrial systems and critical infrastructure—create unprecedented opportunities. However, they also create new vulnerabilities.
-                    </p>
-                    <p style="line-height: 1.8; margin-bottom: 10px;">
-                        Historically, IoT devices were designed prioritizing cost and performance over security. The 2016 Mirai botnet attack, which compromised millions of unsecured IoT devices and disrupted major services worldwide, highlighted the critical need for secure IoT design. MIST Lab develops security solutions that balance efficiency, cost-effectiveness, and robust protection—ensuring IoT devices can safely support smart cities, intelligent healthcare systems, and critical infrastructure.
-                    </p>
-
-                    <h3 style="margin-top: 30px;">Laboratory Information</h3>
-                    <div style="background-color: var(--light-bg); padding: 20px; border-radius: 5px; margin-top: 15px;">
-                        <p style="margin: 10px 0; line-height: 1.8;">
-                            <strong>Location:</strong> Room 412, ED1, IIT Bhilai<br>
-                            Kutelabhala, Durg - 491002, India
-                        </p>
-                        <p style="margin: 10px 0; line-height: 1.8;">
-                            <strong>Principal Investigator:</strong> Dr. Sk. Subidh Ali<br>
-                            <span style="font-size: 14px; color: var(--text-light);">Associate Professor, Department of Computer Science & Engineering</span>
-                        </p>
-                        <p style="margin: 10px 0; line-height: 1.8;">
-                            <strong>Email:</strong> <a href="mailto:subidh@iitbhilai.ac.in">subidh@iitbhilai.ac.in</a>
-                        </p>
-                        <p style="margin: 10px 0; line-height: 1.8;">
-                            <strong>Phone:</strong> +91-771-255-1300 Extn. 6122
-                        </p>
-                        <p style="margin: 10px 0; line-height: 1.8;">
-                            <strong>Research Citations:</strong> 1,545+ citations (Google Scholar)<br>
-                            <strong>Publications:</strong> 305+ publications
-                        </p>
-                        <p style="margin: 10px 0; line-height: 1.8;">
-                            <strong>Institute Profile:</strong> <a href="https://www.iitbhilai.ac.in/index.php?pid=subidh" target="_blank">View Faculty Profile</a>
-                        </p>
+                    <!-- AI Security Dropdown -->
+                    <div class="home-section" style="margin-bottom: 20px;">
+                        <div class="home-section-header" onclick="toggleHomeSection(this)">
+                            <h3 style="margin: 0; cursor: pointer;">Artificial Intelligence Security</h3>
+                            <span class="home-toggle">▼</span>
+                        </div>
+                        <div class="home-section-content">
+                            <p style="line-height: 1.8; margin-bottom: 10px; margin-top: 15px;">
+                                Deep neural networks have revolutionized artificial intelligence, enabling remarkable applications in computer vision, natural language processing, and autonomous systems. However, recent research has shown that these sophisticated models can be deceived by imperceptible adversarial perturbations—carefully crafted inputs designed to fool AI systems.
+                            </p>
+                            <p style="line-height: 1.8; margin-bottom: 10px;">
+                                MIST Lab investigates the mechanisms of adversarial attacks on machine learning systems and develops robust defenses. We also address the emerging threat of deepfakes—synthetic media created using generative models that can convincingly impersonate real people. Our research ensures that AI systems remain reliable in real-world deployments where security is critical.
+                            </p>
+                        </div>
                     </div>
 
-                    <h3 style="margin-top: 30px;">Why MIST Lab?</h3>
+                    <!-- Cryptographic Security Dropdown -->
+                    <div class="home-section" style="margin-bottom: 20px;">
+                        <div class="home-section-header" onclick="toggleHomeSection(this)">
+                            <h3 style="margin: 0; cursor: pointer;">Cryptographic Implementation Security</h3>
+                            <span class="home-toggle">▼</span>
+                        </div>
+                        <div class="home-section-content">
+                            <p style="line-height: 1.8; margin-bottom: 10px; margin-top: 15px;">
+                                While cryptographic algorithms are mathematically proven to be secure, their physical implementations in hardware can be vulnerable to sophisticated attacks. Power analysis, electromagnetic side-channels, and fault injection attacks can compromise encryption keys and protected data.
+                            </p>
+                            <p style="line-height: 1.8; margin-bottom: 10px;">
+                                Our team pioneered research on scan-based attacks that exploit test infrastructure in modern chips. We develop provably secure defenses and analyze emerging vulnerabilities in cryptographic hardware, ensuring that encryption remains practical and trustworthy across all application domains.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- IoT Security Dropdown -->
+                    <div class="home-section" style="margin-bottom: 30px;">
+                        <div class="home-section-header" onclick="toggleHomeSection(this)">
+                            <h3 style="margin: 0; cursor: pointer;">IoT and Smart Infrastructure Security</h3>
+                            <span class="home-toggle">▼</span>
+                        </div>
+                        <div class="home-section-content">
+                            <p style="line-height: 1.8; margin-bottom: 10px; margin-top: 15px;">
+                                The Internet of Things has transformed modern society. Billions of connected devices—from wearables and smart homes to industrial systems and critical infrastructure—create unprecedented opportunities. However, they also create new vulnerabilities.
+                            </p>
+                            <p style="line-height: 1.8; margin-bottom: 10px;">
+                                Historically, IoT devices were designed prioritizing cost and performance over security. The 2016 Mirai botnet attack, which compromised millions of unsecured IoT devices and disrupted major services worldwide, highlighted the critical need for secure IoT design. MIST Lab develops security solutions that balance efficiency, cost-effectiveness, and robust protection—ensuring IoT devices can safely support smart cities, intelligent healthcare systems, and critical infrastructure.
+                            </p>
+                        </div>
+                    </div>
+
+                    <h3 style="margin-top: 40px;">Why MIST Lab?</h3>
                     <p style="line-height: 1.8; margin-bottom: 10px;">
                         The convergence of AI, cryptography, and IoT creates complex security challenges that require interdisciplinary expertise. MIST Lab uniquely addresses these challenges through:
                     </p>
@@ -658,26 +833,121 @@
 
             <div class="research-item">
                 <h3>Adversarial Machine Learning</h3>
-                <p>Machine learning systems have become integral to critical applications, from autonomous vehicles to medical diagnosis. However, these systems are vulnerable to adversarial attacks—carefully crafted inputs designed to fool AI models.</p>
-                <p><strong>Our Research:</strong> We investigate the mechanisms behind adversarial perturbations and develop robust defenses to protect deep neural networks. Our work includes:</p>
-                <ul style="color: var(--text-light); margin: 15px 0;">
-                    <li><strong>Attack Development:</strong> Creating gradient-guided adversarial patches that can fool vision-based ML systems</li>
-                    <li><strong>Defense Mechanisms:</strong> Developing adversarial training and detection techniques to enhance model robustness</li>
-                    <li><strong>Feature Space Analysis:</strong> Understanding the underlying vulnerabilities in neural network feature representations</li>
-                    <li><strong>Real-world Impact Assessment:</strong> Evaluating implications for autonomous systems and security-critical applications</li>
-                </ul>
+                <div class="research-item-wrapper">
+                    <div>
+                        <p>Machine learning systems have become integral to critical applications, from autonomous vehicles to medical diagnosis. However, these systems are vulnerable to adversarial attacks—carefully crafted inputs designed to fool AI models.</p>
+                        <p><strong>Our Research:</strong> We investigate the mechanisms behind adversarial perturbations and develop robust defenses to protect deep neural networks. Our work includes:</p>
+                        <ul style="color: var(--text-light); margin: 15px 0;">
+                            <li><strong>Attack Development:</strong> Creating gradient-guided adversarial patches that can fool vision-based ML systems</li>
+                            <li><strong>Defense Mechanisms:</strong> Developing adversarial training and detection techniques to enhance model robustness</li>
+                            <li><strong>Feature Space Analysis:</strong> Understanding the underlying vulnerabilities in neural network feature representations</li>
+                            <li><strong>Real-world Impact Assessment:</strong> Evaluating implications for autonomous systems and security-critical applications</li>
+                        </ul>
+                    </div>
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Neural Network visualization -->
+                        <circle cx="100" cy="80" r="25" fill="url(#grad1)" opacity="0.7"/>
+                        <circle cx="100" cy="150" r="25" fill="url(#grad1)" opacity="0.7"/>
+                        <circle cx="100" cy="220" r="25" fill="url(#grad1)" opacity="0.7"/>
+
+                        <circle cx="200" cy="60" r="25" fill="url(#grad1)" opacity="0.7"/>
+                        <circle cx="200" cy="130" r="25" fill="url(#grad1)" opacity="0.7"/>
+                        <circle cx="200" cy="200" r="25" fill="url(#grad1)" opacity="0.7"/>
+                        <circle cx="200" cy="270" r="25" fill="url(#grad1)" opacity="0.7"/>
+
+                        <circle cx="300" cy="115" r="25" fill="url(#grad1)" opacity="0.7"/>
+                        <circle cx="300" cy="185" r="25" fill="url(#grad1)" opacity="0.7"/>
+
+                        <!-- Connections -->
+                        <line x1="125" y1="80" x2="175" y2="60" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="125" y1="150" x2="175" y2="130" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="125" y1="220" x2="175" y2="200" stroke="#e0e0e0" stroke-width="1"/>
+
+                        <line x1="225" y1="60" x2="275" y2="115" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="225" y1="130" x2="275" y2="115" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="225" y1="200" x2="275" y2="185" stroke="#e0e0e0" stroke-width="1"/>
+                        <line x1="225" y1="270" x2="275" y2="185" stroke="#e0e0e0" stroke-width="1"/>
+
+                        <!-- Adversarial perturbation -->
+                        <circle cx="100" cy="80" r="28" fill="none" stroke="#ff6b6b" stroke-width="2" stroke-dasharray="5,5"/>
+                        <text x="50" y="25" font-size="14" fill="#ff6b6b" font-weight="bold">Adversarial</text>
+                        <text x="35" y="45" font-size="14" fill="#ff6b6b" font-weight="bold">Perturbation</text>
+
+                        <text x="130" y="295" font-size="12" fill="#555">Neural Network with Attack</text>
+                    </svg>
+                </div>
             </div>
 
-            <div class="research-item">
+            <div class="research-item reverse">
                 <h3>Deepfake Detection & Media Authentication</h3>
-                <p>Deepfake technology—using GANs and deep learning to synthesize realistic fake videos—poses significant risks to information integrity, personal reputation, and democratic processes. Detecting these sophisticated forgeries is a critical challenge.</p>
-                <p><strong>Our Research:</strong> We develop machine learning models and techniques to detect synthetic media while defending against adversarial attacks on detection systems. Our contributions include:</p>
-                <ul style="color: var(--text-light); margin: 15px 0;">
-                    <li><strong>Style-Based Detection:</strong> De-Fake approach using style analysis and anomaly detection patterns</li>
-                    <li><strong>Attribution Methods:</strong> Generalized deepfake attribution to identify synthesis techniques used</li>
-                    <li><strong>Robustness Against Attacks:</strong> SHIELD framework for defending detectors against adversarial perturbations</li>
-                    <li><strong>Image Authentication:</strong> Watermarking and copyright protection for digital media</li>
-                </ul>
+                <div class="research-item-wrapper">
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Real vs Fake representation -->
+                        <rect x="20" y="40" width="160" height="220" fill="none" stroke="#4caf50" stroke-width="2" rx="5"/>
+                        <text x="60" y="30" font-size="14" fill="#4caf50" font-weight="bold">AUTHENTIC</text>
+
+                        <rect x="200" y="40" width="160" height="220" fill="none" stroke="#ff6b6b" stroke-width="2" rx="5"/>
+                        <text x="235" y="30" font-size="14" fill="#ff6b6b" font-weight="bold">DEEPFAKE</text>
+
+                        <!-- Authentic features -->
+                        <circle cx="60" cy="90" r="8" fill="#4caf50"/>
+                        <line x1="75" y1="90" x2="130" y2="90" stroke="#666" stroke-width="1"/>
+                        <text x="85" y="95" font-size="11" fill="#555">Natural artifacts</text>
+
+                        <circle cx="60" cy="130" r="8" fill="#4caf50"/>
+                        <line x1="75" y1="130" x2="130" y2="130" stroke="#666" stroke-width="1"/>
+                        <text x="85" y="135" font-size="11" fill="#555">Consistent lighting</text>
+
+                        <circle cx="60" cy="170" r="8" fill="#4caf50"/>
+                        <line x1="75" y1="170" x2="130" y2="170" stroke="#666" stroke-width="1"/>
+                        <text x="85" y="175" font-size="11" fill="#555">Valid frequencies</text>
+
+                        <circle cx="60" cy="210" r="8" fill="#4caf50"/>
+                        <line x1="75" y1="210" x2="130" y2="210" stroke="#666" stroke-width="1"/>
+                        <text x="85" y="215" font-size="11" fill="#555">Real metadata</text>
+
+                        <!-- Deepfake features -->
+                        <circle cx="240" cy="90" r="8" fill="#ff6b6b"/>
+                        <line x1="255" y1="90" x2="310" y2="90" stroke="#666" stroke-width="1"/>
+                        <text x="265" y="95" font-size="11" fill="#555">GAN artifacts</text>
+
+                        <circle cx="240" cy="130" r="8" fill="#ff6b6b"/>
+                        <line x1="255" y1="130" x2="310" y2="130" stroke="#666" stroke-width="1"/>
+                        <text x="255" y="135" font-size="11" fill="#555">Blending anomalies</text>
+
+                        <circle cx="240" cy="170" r="8" fill="#ff6b6b"/>
+                        <line x1="255" y1="170" x2="310" y2="170" stroke="#666" stroke-width="1"/>
+                        <text x="265" y="175" font-size="11" fill="#555">Freq. mismatch</text>
+
+                        <circle cx="240" cy="210" r="8" fill="#ff6b6b"/>
+                        <line x1="255" y1="210" x2="310" y2="210" stroke="#666" stroke-width="1"/>
+                        <text x="265" y="215" font-size="11" fill="#555">Style inconsistent</text>
+
+                        <text x="75" y="280" font-size="12" fill="#555" font-weight="bold">Detection Framework</text>
+                    </svg>
+                    <div>
+                        <p>Deepfake technology—using GANs and deep learning to synthesize realistic fake videos—poses significant risks to information integrity, personal reputation, and democratic processes. Detecting these sophisticated forgeries is a critical challenge.</p>
+                        <p><strong>Our Research:</strong> We develop machine learning models and techniques to detect synthetic media while defending against adversarial attacks on detection systems. Our contributions include:</p>
+                        <ul style="color: var(--text-light); margin: 15px 0;">
+                            <li><strong>Style-Based Detection:</strong> De-Fake approach using style analysis and anomaly detection patterns</li>
+                            <li><strong>Attribution Methods:</strong> Generalized deepfake attribution to identify synthesis techniques used</li>
+                            <li><strong>Robustness Against Attacks:</strong> SHIELD framework for defending detectors against adversarial perturbations</li>
+                            <li><strong>Image Authentication:</strong> Watermarking and copyright protection for digital media</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <!-- CYBER SECURITY -->
@@ -685,44 +955,238 @@
 
             <div class="research-item">
                 <h3>Cryptographic Implementation Security</h3>
-                <p>While cryptographic algorithms are mathematically sound, their physical implementations in hardware can be vulnerable to various attacks. Our research protects cryptographic systems from both theoretical and practical threats.</p>
-                <p><strong>Our Research Focuses On:</strong></p>
-                <ul style="color: var(--text-light); margin: 15px 0;">
-                    <li><strong>Differential Fault Analysis (DFA):</strong> Understanding how fault injection can break encryption algorithms like AES, Twofish, and CLEFIA</li>
-                    <li><strong>Side-Channel Attacks:</strong> Power analysis, electromagnetic analysis, and timing attacks on cryptographic chips</li>
-                    <li><strong>Countermeasures:</strong> Developing cost-effective defense mechanisms for secure implementations</li>
-                    <li><strong>Certification Support:</strong> Helping design chips that resist modern cryptanalytic attacks</li>
-                </ul>
+                <div class="research-item-wrapper">
+                    <div>
+                        <p>While cryptographic algorithms are mathematically sound, their physical implementations in hardware can be vulnerable to various attacks. Our research protects cryptographic systems from both theoretical and practical threats.</p>
+                        <p><strong>Our Research Focuses On:</strong></p>
+                        <ul style="color: var(--text-light); margin: 15px 0;">
+                            <li><strong>Differential Fault Analysis (DFA):</strong> Understanding how fault injection can break encryption algorithms like AES, Twofish, and CLEFIA</li>
+                            <li><strong>Side-Channel Attacks:</strong> Power analysis, electromagnetic analysis, and timing attacks on cryptographic chips</li>
+                            <li><strong>Countermeasures:</strong> Developing cost-effective defense mechanisms for secure implementations</li>
+                            <li><strong>Certification Support:</strong> Helping design chips that resist modern cryptanalytic attacks</li>
+                        </ul>
+                    </div>
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Secure Chip/IC visualization -->
+                        <rect x="50" y="60" width="300" height="180" fill="url(#grad3)" opacity="0.3" stroke="#2d5a7b" stroke-width="2" rx="10"/>
+                        <text x="180" y="45" font-size="14" fill="#2d5a7b" font-weight="bold">Secure Hardware</text>
+
+                        <!-- Core components -->
+                        <rect x="70" y="90" width="70" height="50" fill="#e8f4f8" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="90" y="115" font-size="12" fill="#1a3a52" font-weight="bold">Encrypt</text>
+
+                        <rect x="160" y="90" width="70" height="50" fill="#e8f4f8" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="180" y="115" font-size="12" fill="#1a3a52" font-weight="bold">Verify</text>
+
+                        <rect x="250" y="90" width="70" height="50" fill="#e8f4f8" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="260" y="115" font-size="12" fill="#1a3a52" font-weight="bold">Protect</text>
+
+                        <!-- Threat arrows -->
+                        <g stroke="#ff6b6b" stroke-width="2" fill="none">
+                            <path d="M 105 160 L 105 200" marker-end="url(#arrowhead)"/>
+                            <path d="M 195 160 L 195 200" marker-end="url(#arrowhead)"/>
+                            <path d="M 285 160 L 285 200" marker-end="url(#arrowhead)"/>
+                        </g>
+
+                        <defs>
+                            <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                                <polygon points="0 0, 10 5, 0 10" fill="#ff6b6b"/>
+                            </marker>
+                        </defs>
+
+                        <!-- Threats -->
+                        <text x="80" y="225" font-size="11" fill="#ff6b6b" font-weight="bold">Fault</text>
+                        <text x="75" y="240" font-size="11" fill="#ff6b6b" font-weight="bold">Injection</text>
+
+                        <text x="180" y="225" font-size="11" fill="#ff6b6b" font-weight="bold">Side</text>
+                        <text x="180" y="240" font-size="11" fill="#ff6b6b" font-weight="bold">Channel</text>
+
+                        <text x="270" y="225" font-size="11" fill="#ff6b6b" font-weight="bold">Timing</text>
+                        <text x="270" y="240" font-size="11" fill="#ff6b6b" font-weight="bold">Attacks</text>
+                    </svg>
+                </div>
             </div>
 
-            <div class="research-item">
+            <div class="research-item reverse">
                 <h3>Scan-Based Attacks & Design-for-Test Security</h3>
-                <p>Modern integrated circuits use scan-based Design-for-Testability (DfT) to improve manufacturing test coverage. However, this test infrastructure can become a backdoor, allowing attackers to extract secret information from supposedly secure chips.</p>
-                <p><strong>Our Research:</strong> We have been pioneers in identifying and defending against scan-based attacks. Key contributions include:</p>
-                <ul style="color: var(--text-light); margin: 15px 0;">
-                    <li><strong>Vulnerability Analysis:</strong> New scan attack techniques against state-of-the-art defense mechanisms</li>
-                    <li><strong>DefScan Framework:</strong> Provably secure defense mechanisms against scan attacks on AES-like ciphers</li>
-                    <li><strong>Scan Obfuscation:</strong> Security analysis of existing obfuscation techniques with improved countermeasures</li>
-                    <li><strong>Hamming Weight Distribution:</strong> Novel perspective on securing cryptographic ICs</li>
-                </ul>
+                <div class="research-item-wrapper">
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Scan chain visualization -->
+                        <text x="140" y="30" font-size="14" fill="#2d5a7b" font-weight="bold">Scan Chain Attack</text>
+
+                        <!-- Input -->
+                        <rect x="20" y="70" width="50" height="50" fill="#e8f4f8" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="25" y="100" font-size="11" fill="#1a3a52" font-weight="bold">IN</text>
+
+                        <!-- Flip-flops in scan chain -->
+                        <circle cx="100" cy="95" r="20" fill="url(#grad4)" opacity="0.5" stroke="#2d5a7b" stroke-width="2"/>
+                        <text x="95" y="100" font-size="10" fill="white">FF1</text>
+
+                        <circle cx="160" cy="95" r="20" fill="url(#grad4)" opacity="0.5" stroke="#2d5a7b" stroke-width="2"/>
+                        <text x="155" y="100" font-size="10" fill="white">FF2</text>
+
+                        <circle cx="220" cy="95" r="20" fill="url(#grad4)" opacity="0.5" stroke="#2d5a7b" stroke-width="2"/>
+                        <text x="215" y="100" font-size="10" fill="white">FF3</text>
+
+                        <circle cx="280" cy="95" r="20" fill="url(#grad4)" opacity="0.5" stroke="#2d5a7b" stroke-width="2"/>
+                        <text x="275" y="100" font-size="10" fill="white">FF4</text>
+
+                        <!-- Output -->
+                        <rect x="330" y="70" width="50" height="50" fill="#e8f4f8" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="335" y="100" font-size="11" fill="#1a3a52" font-weight="bold">OUT</text>
+
+                        <!-- Connecting lines -->
+                        <line x1="70" y1="95" x2="80" y2="95" stroke="#2d5a7b" stroke-width="2"/>
+                        <line x1="120" y1="95" x2="140" y2="95" stroke="#2d5a7b" stroke-width="2"/>
+                        <line x1="180" y1="95" x2="200" y2="95" stroke="#2d5a7b" stroke-width="2"/>
+                        <line x1="240" y1="95" x2="260" y2="95" stroke="#2d5a7b" stroke-width="2"/>
+                        <line x1="300" y1="95" x2="330" y2="95" stroke="#2d5a7b" stroke-width="2"/>
+
+                        <!-- Secret data leak indication -->
+                        <path d="M 100 120 Q 100 180 100 220" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M 160 120 Q 160 180 160 220" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M 220 120 Q 220 180 220 220" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M 280 120 Q 280 180 280 220" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+
+                        <text x="110" y="250" font-size="11" fill="#ff6b6b" font-weight="bold">Secret Data</text>
+                        <text x="105" y="265" font-size="11" fill="#ff6b6b" font-weight="bold">Leakage</text>
+
+                        <text x="340" y="250" font-size="11" fill="#4caf50" font-weight="bold">DefScan</text>
+                        <text x="330" y="265" font-size="11" fill="#4caf50" font-weight="bold">Protection</text>
+
+                        <!-- Shield -->
+                        <path d="M 340 50 L 360 60 L 360 80 L 350 90 L 340 80 Z" fill="#4caf50" opacity="0.6"/>
+                    </svg>
+                    <div>
+                        <p>Modern integrated circuits use scan-based Design-for-Testability (DfT) to improve manufacturing test coverage. However, this test infrastructure can become a backdoor, allowing attackers to extract secret information from supposedly secure chips.</p>
+                        <p><strong>Our Research:</strong> We have been pioneers in identifying and defending against scan-based attacks. Key contributions include:</p>
+                        <ul style="color: var(--text-light); margin: 15px 0;">
+                            <li><strong>Vulnerability Analysis:</strong> New scan attack techniques against state-of-the-art defense mechanisms</li>
+                            <li><strong>DefScan Framework:</strong> Provably secure defense mechanisms against scan attacks on AES-like ciphers</li>
+                            <li><strong>Scan Obfuscation:</strong> Security analysis of existing obfuscation techniques with improved countermeasures</li>
+                            <li><strong>Hamming Weight Distribution:</strong> Novel perspective on securing cryptographic ICs</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="research-item">
                 <h3>Side-Channel Analysis</h3>
-                <p>Electronic devices leak information through physical side channels—power consumption, electromagnetic radiation, and timing variations. These leakages can compromise even mathematically secure encryption.</p>
-                <p><strong>Our Research:</strong> We study and develop defenses against various side-channel attacks:</p>
-                <ul style="color: var(--text-light); margin: 15px 0;">
-                    <li><strong>Power Analysis:</strong> Differential and Correlation Power Analysis (DPA/CPA) on cryptographic implementations</li>
-                    <li><strong>EM Analysis:</strong> Electromagnetic side-channel attacks on wireless devices, smart cards, and IoT systems</li>
-                    <li><strong>Timing Attacks:</strong> Extracting secrets through execution time variations in NEMS relay and traditional circuits</li>
-                    <li><strong>Countermeasures:</strong> Masking, hiding, and detection techniques for implementation-level protection</li>
-                </ul>
+                <div class="research-item-wrapper">
+                    <div>
+                        <p>Electronic devices leak information through physical side channels—power consumption, electromagnetic radiation, and timing variations. These leakages can compromise even mathematically secure encryption.</p>
+                        <p><strong>Our Research:</strong> We study and develop defenses against various side-channel attacks:</p>
+                        <ul style="color: var(--text-light); margin: 15px 0;">
+                            <li><strong>Power Analysis:</strong> Differential and Correlation Power Analysis (DPA/CPA) on cryptographic implementations</li>
+                            <li><strong>EM Analysis:</strong> Electromagnetic side-channel attacks on wireless devices, smart cards, and IoT systems</li>
+                            <li><strong>Timing Attacks:</strong> Extracting secrets through execution time variations in NEMS relay and traditional circuits</li>
+                            <li><strong>Countermeasures:</strong> Masking, hiding, and detection techniques for implementation-level protection</li>
+                        </ul>
+                    </div>
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad5" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Device emitting side channels -->
+                        <rect x="80" y="80" width="120" height="100" fill="url(#grad5)" opacity="0.3" stroke="#2d5a7b" stroke-width="2" rx="5"/>
+                        <text x="110" y="135" font-size="12" fill="#2d5a7b" font-weight="bold">Cryptographic</text>
+                        <text x="125" y="150" font-size="12" fill="#2d5a7b" font-weight="bold">Device</text>
+
+                        <!-- Power leakage waves -->
+                        <path d="M 220 120 Q 240 110 260 120 T 300 120 T 340 120" stroke="#ff6b6b" stroke-width="2" fill="none"/>
+                        <text x="210" y="110" font-size="11" fill="#ff6b6b">Power</text>
+
+                        <!-- EM radiation waves -->
+                        <circle cx="260" cy="150" r="20" fill="none" stroke="#ff9800" stroke-width="2" opacity="0.7"/>
+                        <circle cx="260" cy="150" r="35" fill="none" stroke="#ff9800" stroke-width="1" opacity="0.5"/>
+                        <circle cx="260" cy="150" r="50" fill="none" stroke="#ff9800" stroke-width="1" opacity="0.3"/>
+                        <text x="280" y="150" font-size="11" fill="#ff9800">EM</text>
+
+                        <!-- Timing variations -->
+                        <line x1="210" y1="200" x2="250" y2="200" stroke="#4caf50" stroke-width="3"/>
+                        <line x1="260" y1="200" x2="285" y2="200" stroke="#4caf50" stroke-width="3"/>
+                        <line x1="295" y1="200" x2="340" y2="200" stroke="#4caf50" stroke-width="3"/>
+                        <text x="210" y="220" font-size="11" fill="#4caf50">Timing</text>
+
+                        <!-- Information extraction -->
+                        <path d="M 340 130 L 360 130 M 340 150 L 360 150 M 340 200 L 360 200" stroke="#ff6b6b" stroke-width="2"/>
+                        <rect x="360" y="120" width="35" height="100" fill="#ffe0e0" stroke="#ff6b6b" stroke-width="2" rx="3"/>
+                        <text x="362" y="170" font-size="11" fill="#ff6b6b" font-weight="bold">Key</text>
+
+                        <text x="135" y="270" font-size="11" fill="#555">Physical Information Leakage</text>
+                    </svg>
+                </div>
             </div>
 
-            <div class="research-item">
+            <div class="research-item reverse">
                 <h3>Logic Locking & Hardware IP Protection</h3>
-                <p>With globalized chip manufacturing, protecting intellectual property against reverse engineering and unauthorized modifications is critical. Logic locking provides a promising solution.</p>
-                <p><strong>Our Work:</strong> We analyze security improvements and countermeasures against state-of-the-art attacks on locked circuits, ensuring IP remains protected throughout the supply chain.</p>
+                <div class="research-item-wrapper">
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad6" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Original Circuit -->
+                        <text x="140" y="30" font-size="13" fill="#2d5a7b" font-weight="bold">Logic Locking Protection</text>
+
+                        <!-- Original Functional Logic -->
+                        <g id="logic">
+                            <rect x="40" y="60" width="140" height="80" fill="#e8f4f8" stroke="#2d5a7b" stroke-width="2" rx="5"/>
+                            <text x="80" y="85" font-size="11" fill="#1a3a52" font-weight="bold">Functional</text>
+                            <text x="90" y="105" font-size="11" fill="#1a3a52" font-weight="bold">Logic</text>
+                        </g>
+
+                        <!-- Lock Mechanism -->
+                        <rect x="220" y="60" width="140" height="80" fill="url(#grad6)" opacity="0.4" stroke="#2d5a7b" stroke-width="2" rx="5"/>
+                        <text x="250" y="85" font-size="11" fill="#1a3a52" font-weight="bold">Locking</text>
+                        <text x="260" y="105" font-size="11" fill="#1a3a52" font-weight="bold">Logic</text>
+
+                        <!-- Connection arrow -->
+                        <path d="M 180 100 L 220 100" stroke="#2d5a7b" stroke-width="2" fill="none" marker-end="url(#arrowhead2)"/>
+
+                        <defs>
+                            <marker id="arrowhead2" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                                <polygon points="0 0, 10 5, 0 10" fill="#2d5a7b"/>
+                            </marker>
+                        </defs>
+
+                        <!-- Key input -->
+                        <rect x="150" y="160" width="100" height="50" fill="#ffeaa7" stroke="#f39c12" stroke-width="2" rx="3"/>
+                        <text x="165" y="180" font-size="11" fill="#333" font-weight="bold">Key Input</text>
+                        <text x="160" y="195" font-size="9" fill="#333">(Unlock Only)</text>
+
+                        <!-- Wrong key attempt -->
+                        <path d="M 150 185 L 120 230" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <text x="100" y="250" font-size="10" fill="#ff6b6b" font-weight="bold">Reverse Eng.</text>
+                        <text x="95" y="265" font-size="10" fill="#ff6b6b" font-weight="bold">Blocked</text>
+
+                        <!-- Correct key -->
+                        <path d="M 250 185 L 280 230" stroke="#4caf50" stroke-width="2" fill="none"/>
+                        <text x="270" y="250" font-size="10" fill="#4caf50" font-weight="bold">Authorized</text>
+                        <text x="280" y="265" font-size="10" fill="#4caf50" font-weight="bold">Access</text>
+                    </svg>
+                    <div>
+                        <p>With globalized chip manufacturing, protecting intellectual property against reverse engineering and unauthorized modifications is critical. Logic locking provides a promising solution.</p>
+                        <p><strong>Our Work:</strong> We analyze security improvements and countermeasures against state-of-the-art attacks on locked circuits, ensuring IP remains protected throughout the supply chain.</p>
+                    </div>
+                </div>
             </div>
 
             <!-- IOT SECURITY -->
@@ -730,59 +1194,314 @@
 
             <div class="research-item">
                 <h3>IoT Device Security</h3>
-                <p>The Internet of Things has transformed our world—from smart homes and wearables to industrial systems and critical infrastructure. However, IoT devices often sacrifice security for cost and performance, creating massive attack surfaces.</p>
-                <p><strong>MIST Lab's Vision:</strong> Develop secure IoT solutions that balance functionality, cost-effectiveness, and robust security without compromising device capabilities.</p>
-                <p><strong>Research Directions:</strong></p>
-                <ul style="color: var(--text-light); margin: 15px 0;">
-                    <li><strong>Low-Power Secure Design:</strong> Cryptographic implementations optimized for resource-constrained IoT devices</li>
-                    <li><strong>Threat Modeling:</strong> Understanding vulnerabilities in deployed IoT ecosystems</li>
-                    <li><strong>Device Authentication:</strong> Secure device identification and mutual authentication in IoT networks</li>
-                    <li><strong>Side-Channel Resilience:</strong> Protecting battery-powered devices from power and EM analysis attacks</li>
-                    <li><strong>Hardware Trojans Detection:</strong> Identifying malicious modifications in IoT hardware</li>
-                </ul>
+                <div class="research-item-wrapper">
+                    <div>
+                        <p>The Internet of Things has transformed our world—from smart homes and wearables to industrial systems and critical infrastructure. However, IoT devices often sacrifice security for cost and performance, creating massive attack surfaces.</p>
+                        <p><strong>MIST Lab's Vision:</strong> Develop secure IoT solutions that balance functionality, cost-effectiveness, and robust security without compromising device capabilities.</p>
+                        <p><strong>Research Directions:</strong></p>
+                        <ul style="color: var(--text-light); margin: 15px 0;">
+                            <li><strong>Low-Power Secure Design:</strong> Cryptographic implementations optimized for resource-constrained IoT devices</li>
+                            <li><strong>Threat Modeling:</strong> Understanding vulnerabilities in deployed IoT ecosystems</li>
+                            <li><strong>Device Authentication:</strong> Secure device identification and mutual authentication in IoT networks</li>
+                            <li><strong>Side-Channel Resilience:</strong> Protecting battery-powered devices from power and EM analysis attacks</li>
+                            <li><strong>Hardware Trojans Detection:</strong> Identifying malicious modifications in IoT hardware</li>
+                        </ul>
+                    </div>
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad7" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- IoT Devices -->
+                        <text x="130" y="25" font-size="13" fill="#2d5a7b" font-weight="bold">Secure IoT Ecosystem</text>
+
+                        <!-- Smart Home Device -->
+                        <rect x="30" y="70" width="50" height="50" fill="url(#grad7)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="40" y="100" font-size="9" fill="white">Smart</text>
+                        <text x="42" y="110" font-size="9" fill="white">Home</text>
+
+                        <!-- Wearable -->
+                        <circle cx="130" cy="95" r="25" fill="url(#grad7)" opacity="0.5" stroke="#2d5a7b" stroke-width="2"/>
+                        <text x="115" y="100" font-size="9" fill="white">Wearable</text>
+
+                        <!-- Industrial Device -->
+                        <rect x="200" y="70" width="50" height="50" fill="url(#grad7)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="210" y="100" font-size="9" fill="white">Industrial</text>
+                        <text x="215" y="110" font-size="9" fill="white">IoT</text>
+
+                        <!-- Security Gateway -->
+                        <rect x="280" y="70" width="50" height="50" fill="#e8f4f8" stroke="#4caf50" stroke-width="2" rx="3"/>
+                        <text x="290" y="100" font-size="9" fill="#4caf50" font-weight="bold">Secure</text>
+                        <text x="295" y="110" font-size="9" fill="#4caf50" font-weight="bold">Gate</text>
+
+                        <!-- Connection lines -->
+                        <line x1="55" y1="120" x2="55" y2="160" stroke="#2d5a7b" stroke-width="2"/>
+                        <line x1="130" y1="120" x2="130" y2="160" stroke="#2d5a7b" stroke-width="2"/>
+                        <line x1="225" y1="120" x2="225" y2="160" stroke="#2d5a7b" stroke-width="2"/>
+                        <line x1="305" y1="120" x2="305" y2="160" stroke="#4caf50" stroke-width="2"/>
+
+                        <!-- Central Network -->
+                        <rect x="100" y="160" width="200" height="50" fill="#f0f0f0" stroke="#666" stroke-width="1" rx="3" stroke-dasharray="5,5"/>
+                        <text x="155" y="190" font-size="10" fill="#333" font-weight="bold">Secure Network</text>
+
+                        <!-- Protection layers -->
+                        <g fill="none" stroke="#4caf50" stroke-width="1">
+                            <circle cx="200" cy="250" r="60"/>
+                            <circle cx="200" cy="250" r="75"/>
+                            <circle cx="200" cy="250" r="90"/>
+                        </g>
+                        <text x="175" y="255" font-size="10" fill="#4caf50" font-weight="bold">Multi-layer</text>
+                        <text x="175" y="270" font-size="10" fill="#4caf50" font-weight="bold">Protection</text>
+                    </svg>
+                </div>
             </div>
 
-            <div class="research-item">
+            <div class="research-item reverse">
                 <h3>Smart Infrastructure & Connected Systems</h3>
-                <p>Smart infrastructure—from intelligent transportation systems to smart cities and industrial IoT—depends on billions of connected devices. Security failures can have cascading real-world consequences.</p>
-                <p><strong>Historical Context:</strong> The 2016 Mirai botnet attack demonstrated the vulnerability of unprotected IoT devices. This watershed moment led to the development of IoT security standards and best practices. However, vulnerabilities persist.</p>
-                <p><strong>Our Research Addresses:</strong></p>
-                <ul style="color: var(--text-light); margin: 15px 0;">
-                    <li><strong>Device Fingerprinting:</strong> Unique identification of devices in 5G and beyond networks</li>
-                    <li><strong>Distributed Attestation:</strong> Verifying integrity of devices in large-scale deployments</li>
-                    <li><strong>5G Security:</strong> Next-generation wireless security for critical infrastructure</li>
-                    <li><strong>Robotic Systems:</strong> Security in teleoperation and edge computing for robotic applications</li>
-                </ul>
+                <div class="research-item-wrapper">
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad8" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Smart City Infrastructure -->
+                        <text x="110" y="25" font-size="13" fill="#2d5a7b" font-weight="bold">Smart Infrastructure</text>
+
+                        <!-- Traffic Management -->
+                        <rect x="20" y="60" width="60" height="50" fill="url(#grad8)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="28" y="90" font-size="9" fill="white">Traffic</text>
+
+                        <!-- Power Grid -->
+                        <rect x="100" y="60" width="60" height="50" fill="url(#grad8)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="115" y="90" font-size="9" fill="white">Power</text>
+
+                        <!-- Water System -->
+                        <rect x="180" y="60" width="60" height="50" fill="url(#grad8)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="195" y="90" font-size="9" fill="white">Water</text>
+
+                        <!-- Telecom -->
+                        <rect x="260" y="60" width="60" height="50" fill="url(#grad8)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="275" y="90" font-size="9" fill="white">5G/6G</text>
+
+                        <!-- Central Hub -->
+                        <circle cx="200" cy="150" r="35" fill="#e8f4f8" stroke="#4caf50" stroke-width="2"/>
+                        <text x="190" y="155" font-size="10" fill="#4caf50" font-weight="bold">Control</text>
+                        <text x="195" y="170" font-size="10" fill="#4caf50" font-weight="bold">Hub</text>
+
+                        <!-- Connection arrows -->
+                        <line x1="50" y1="110" x2="175" y2="125" stroke="#2d5a7b" stroke-width="1"/>
+                        <line x1="130" y1="110" x2="190" y2="120" stroke="#2d5a7b" stroke-width="1"/>
+                        <line x1="210" y1="110" x2="210" y2="115" stroke="#2d5a7b" stroke-width="1"/>
+                        <line x1="290" y1="110" x2="225" y2="135" stroke="#2d5a7b" stroke-width="1"/>
+
+                        <!-- Attack vectors (threats) -->
+                        <path d="M 50 130 L 30 200" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+                        <path d="M 350 130 L 370 200" stroke="#ff6b6b" stroke-width="2" fill="none" stroke-dasharray="5,5"/>
+
+                        <text x="15" y="220" font-size="10" fill="#ff6b6b" font-weight="bold">Attacks</text>
+                        <text x="340" y="220" font-size="10" fill="#ff6b6b" font-weight="bold">Threats</text>
+
+                        <!-- Security indicators -->
+                        <circle cx="200" cy="240" r="40" fill="none" stroke="#4caf50" stroke-width="2"/>
+                        <text x="180" y="245" font-size="9" fill="#4caf50" font-weight="bold">Resilient</text>
+                        <text x="175" y="258" font-size="9" fill="#4caf50" font-weight="bold">Protection</text>
+                    </svg>
+                    <div>
+                        <p>Smart infrastructure—from intelligent transportation systems to smart cities and industrial IoT—depends on billions of connected devices. Security failures can have cascading real-world consequences.</p>
+                        <p><strong>Historical Context:</strong> The 2016 Mirai botnet attack demonstrated the vulnerability of unprotected IoT devices. This watershed moment led to the development of IoT security standards and best practices. However, vulnerabilities persist.</p>
+                        <p><strong>Our Research Addresses:</strong></p>
+                        <ul style="color: var(--text-light); margin: 15px 0;">
+                            <li><strong>Device Fingerprinting:</strong> Unique identification of devices in 5G and beyond networks</li>
+                            <li><strong>Distributed Attestation:</strong> Verifying integrity of devices in large-scale deployments</li>
+                            <li><strong>5G Security:</strong> Next-generation wireless security for critical infrastructure</li>
+                            <li><strong>Robotic Systems:</strong> Security in teleoperation and edge computing for robotic applications</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="research-item">
                 <h3>Secure Hardware Design for IoT</h3>
-                <p>Security must be designed in from the ground up, not added as an afterthought. We work on hardware architectures and designs that provide security guarantees while meeting IoT constraints.</p>
-                <ul style="color: var(--text-light); margin: 15px 0;">
-                    <li><strong>Security-by-Design:</strong> Incorporating security at the hardware architecture level</li>
-                    <li><strong>Medical IoT Security:</strong> Special focus on security-critical medical IoT devices and wearables</li>
-                    <li><strong>Edge Device Protection:</strong> Securing intelligence at the edge of networks</li>
-                    <li><strong>Supply Chain Security:</strong> Protecting IoT devices from manufacturing through deployment</li>
-                </ul>
+                <div class="research-item-wrapper">
+                    <div>
+                        <p>Security must be designed in from the ground up, not added as an afterthought. We work on hardware architectures and designs that provide security guarantees while meeting IoT constraints.</p>
+                        <ul style="color: var(--text-light); margin: 15px 0;">
+                            <li><strong>Security-by-Design:</strong> Incorporating security at the hardware architecture level</li>
+                            <li><strong>Medical IoT Security:</strong> Special focus on security-critical medical IoT devices and wearables</li>
+                            <li><strong>Edge Device Protection:</strong> Securing intelligence at the edge of networks</li>
+                            <li><strong>Supply Chain Security:</strong> Protecting IoT devices from manufacturing through deployment</li>
+                        </ul>
+                    </div>
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad9" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Hardware Design Layers -->
+                        <text x="110" y="25" font-size="13" fill="#2d5a7b" font-weight="bold">Security-by-Design</text>
+
+                        <!-- Layer 1: Design -->
+                        <rect x="40" y="50" width="320" height="40" fill="url(#grad9)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="55" y="77" font-size="11" fill="white" font-weight="bold">Design Phase</text>
+                        <text x="200" y="77" font-size="9" fill="white">Threat Modeling • Security Specifications</text>
+
+                        <!-- Layer 2: Implementation -->
+                        <rect x="40" y="100" width="320" height="40" fill="#e8f4f8" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="55" y="127" font-size="11" fill="#1a3a52" font-weight="bold">Implementation</text>
+                        <text x="200" y="127" font-size="9" fill="#555">Secure Hardware Modules • Cryptographic Cores</text>
+
+                        <!-- Layer 3: Verification -->
+                        <rect x="40" y="150" width="320" height="40" fill="url(#grad9)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="3"/>
+                        <text x="55" y="177" font-size="11" fill="white" font-weight="bold">Verification</text>
+                        <text x="200" y="177" font-size="9" fill="white">Security Testing • Formal Verification</text>
+
+                        <!-- Layer 4: Supply Chain -->
+                        <rect x="40" y="200" width="320" height="40" fill="#e8f4f8" stroke="#4caf50" stroke-width="2" rx="3"/>
+                        <text x="55" y="227" font-size="11" fill="#4caf50" font-weight="bold">Supply Chain</text>
+                        <text x="200" y="227" font-size="9" fill="#555">Authentication • Integrity Verification</text>
+
+                        <!-- Checkmarks -->
+                        <g fill="#4caf50">
+                            <circle cx="370" cy="70" r="8"/>
+                            <text x="364" y="75" font-size="12" fill="white" font-weight="bold">✓</text>
+
+                            <circle cx="370" cy="120" r="8"/>
+                            <text x="364" y="125" font-size="12" fill="white" font-weight="bold">✓</text>
+
+                            <circle cx="370" cy="170" r="8"/>
+                            <text x="364" y="175" font-size="12" fill="white" font-weight="bold">✓</text>
+
+                            <circle cx="370" cy="220" r="8"/>
+                            <text x="364" y="225" font-size="12" fill="white" font-weight="bold">✓</text>
+                        </g>
+
+                        <text x="110" y="270" font-size="11" fill="#555">Integrated Security Architecture</text>
+                    </svg>
+                </div>
             </div>
 
             <!-- CROSS-DOMAIN RESEARCH -->
             <h3 style="color: var(--primary-color); margin-top: 40px; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 3px solid #e8f4f8;">🔗 Cross-Domain Security Tools & Techniques</h3>
 
-            <div class="research-item">
+            <div class="research-item reverse">
                 <h3>Security Evaluation Frameworks</h3>
-                <p>Beyond developing individual defenses, we create comprehensive evaluation tools and frameworks to assess security across domains.</p>
-                <ul style="color: var(--text-light); margin: 15px 0;">
-                    <li><strong>DLOVE:</strong> Security evaluation tool for deep learning-based watermarking techniques</li>
-                    <li><strong>AGAN (Attack GAN):</strong> Framework for evaluating perceptual encryption security using adversarial approaches</li>
-                    <li><strong>Threat Assessment Tools:</strong> Methodologies for evaluating system vulnerabilities across IoT, crypto, and AI domains</li>
-                </ul>
+                <div class="research-item-wrapper">
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad10" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Evaluation Framework -->
+                        <text x="90" y="25" font-size="13" fill="#2d5a7b" font-weight="bold">Security Evaluation Tools</text>
+
+                        <!-- DLOVE -->
+                        <rect x="30" y="60" width="100" height="70" fill="url(#grad10)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="5"/>
+                        <text x="50" y="85" font-size="11" fill="white" font-weight="bold">DLOVE</text>
+                        <text x="35" y="105" font-size="8" fill="white">Watermarking</text>
+                        <text x="38" y="115" font-size="8" fill="white">Security</text>
+
+                        <!-- AGAN -->
+                        <rect x="150" y="60" width="100" height="70" fill="url(#grad10)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="5"/>
+                        <text x="170" y="85" font-size="11" fill="white" font-weight="bold">AGAN</text>
+                        <text x="155" y="105" font-size="8" fill="white">Encryption</text>
+                        <text x="160" y="115" font-size="8" fill="white">Evaluation</text>
+
+                        <!-- Threat Assessment -->
+                        <rect x="270" y="60" width="100" height="70" fill="url(#grad10)" opacity="0.5" stroke="#2d5a7b" stroke-width="2" rx="5"/>
+                        <text x="285" y="85" font-size="11" fill="white" font-weight="bold">Threats</text>
+                        <text x="280" y="105" font-size="8" fill="white">Assessment</text>
+                        <text x="285" y="115" font-size="8" fill="white">Tools</text>
+
+                        <!-- Analysis -->
+                        <g fill="none" stroke="#2d5a7b" stroke-width="1">
+                            <line x1="80" y1="140" x2="80" y2="170"/>
+                            <line x1="200" y1="140" x2="200" y2="170"/>
+                            <line x1="320" y1="140" x2="320" y2="170"/>
+                        </g>
+
+                        <!-- Central Integration -->
+                        <rect x="120" y="170" width="160" height="60" fill="#e8f4f8" stroke="#4caf50" stroke-width="2" rx="5"/>
+                        <text x="150" y="190" font-size="10" fill="#4caf50" font-weight="bold">Comprehensive</text>
+                        <text x="155" y="205" font-size="10" fill="#4caf50" font-weight="bold">Analysis</text>
+                        <text x="125" y="220" font-size="9" fill="#555">Cross-domain Assessment</text>
+
+                        <!-- Outputs -->
+                        <path d="M 200 230 L 200 260" stroke="#4caf50" stroke-width="2" fill="none" marker-end="url(#arrowhead3)"/>
+                        <defs>
+                            <marker id="arrowhead3" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+                                <polygon points="0 0, 10 5, 0 10" fill="#4caf50"/>
+                            </marker>
+                        </defs>
+
+                        <text x="150" y="280" font-size="10" fill="#4caf50" font-weight="bold">Security Reports</text>
+                    </svg>
+                    <div>
+                        <p>Beyond developing individual defenses, we create comprehensive evaluation tools and frameworks to assess security across domains.</p>
+                        <ul style="color: var(--text-light); margin: 15px 0;">
+                            <li><strong>DLOVE:</strong> Security evaluation tool for deep learning-based watermarking techniques</li>
+                            <li><strong>AGAN (Attack GAN):</strong> Framework for evaluating perceptual encryption security using adversarial approaches</li>
+                            <li><strong>Threat Assessment Tools:</strong> Methodologies for evaluating system vulnerabilities across IoT, crypto, and AI domains</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <div class="research-item">
                 <h3>Integration of Security Domains</h3>
-                <p>The future of security lies at the intersection of these domains. As AI systems are deployed on IoT devices protected by cryptographic hardware, we must ensure that security advances in one area complement others.</p>
-                <p><strong>Our Integrated Approach:</strong> Understanding how adversarial robustness of ML models interacts with hardware security constraints, how IoT deployment affects cryptographic key management, and how physical side-channels can compromise AI systems.</p>
+                <div class="research-item-wrapper">
+                    <div>
+                        <p>The future of security lies at the intersection of these domains. As AI systems are deployed on IoT devices protected by cryptographic hardware, we must ensure that security advances in one area complement others.</p>
+                        <p><strong>Our Integrated Approach:</strong> Understanding how adversarial robustness of ML models interacts with hardware security constraints, how IoT deployment affects cryptographic key management, and how physical side-channels can compromise AI systems.</p>
+                    </div>
+                    <svg class="research-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+                        <defs>
+                            <linearGradient id="grad11" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#2d5a7b;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#1a3a52;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <!-- Three Security Domains -->
+                        <text x="100" y="25" font-size="13" fill="#2d5a7b" font-weight="bold">Cross-Domain Integration</text>
+
+                        <!-- AI Security -->
+                        <circle cx="100" cy="100" r="50" fill="url(#grad11)" opacity="0.4" stroke="#2d5a7b" stroke-width="2"/>
+                        <text x="80" y="100" font-size="11" fill="#1a3a52" font-weight="bold">AI</text>
+                        <text x="75" y="115" font-size="11" fill="#1a3a52" font-weight="bold">Security</text>
+
+                        <!-- Cryptography -->
+                        <circle cx="300" cy="100" r="50" fill="url(#grad11)" opacity="0.4" stroke="#2d5a7b" stroke-width="2"/>
+                        <text x="280" y="100" font-size="11" fill="#1a3a52" font-weight="bold">Crypto</text>
+                        <text x="280" y="115" font-size="11" fill="#1a3a52" font-weight="bold">Security</text>
+
+                        <!-- IoT Security -->
+                        <circle cx="200" cy="200" r="50" fill="url(#grad11)" opacity="0.4" stroke="#2d5a7b" stroke-width="2"/>
+                        <text x="180" y="200" font-size="11" fill="#1a3a52" font-weight="bold">IoT</text>
+                        <text x="175" y="215" font-size="11" fill="#1a3a52" font-weight="bold">Security</text>
+
+                        <!-- Central intersection -->
+                        <circle cx="200" cy="125" r="35" fill="#e8f4f8" stroke="#4caf50" stroke-width="3"/>
+                        <text x="185" y="130" font-size="10" fill="#4caf50" font-weight="bold">Integrated</text>
+                        <text x="190" y="145" font-size="10" fill="#4caf50" font-weight="bold">Security</text>
+
+                        <!-- Connection lines -->
+                        <line x1="140" y1="100" x2="170" y2="120" stroke="#2d5a7b" stroke-width="2"/>
+                        <line x1="260" y1="100" x2="230" y2="120" stroke="#2d5a7b" stroke-width="2"/>
+                        <line x1="200" y1="160" x2="200" y2="150" stroke="#2d5a7b" stroke-width="2"/>
+
+                        <!-- Interaction indicators -->
+                        <text x="160" y="150" font-size="8" fill="#ff9800">Interactions</text>
+                        <text x="240" y="150" font-size="8" fill="#ff9800">Synergies</text>
+                        <text x="180" y="240" font-size="8" fill="#555">Comprehensive Coverage</text>
+                    </svg>
+                </div>
             </div>
 
             <div style="margin-top: 40px; padding-top: 30px; border-top: 2px solid var(--border-color);">
@@ -1152,7 +1871,7 @@
                 <div class="team-members">
                     <div class="member-card">
                         <div class="member-image">
-                            <div class="placeholder-avatar">👤</div>
+                            <img src="umesh.jpg" alt="Umesh Kashyap">
                         </div>
                         <div class="member-info">
                             <h4>Umesh Kashyap</h4>
@@ -1161,14 +1880,14 @@
                                 <div class="member-email"><a href="mailto:umesh.kashyap@iitbhilai.ac.in">umesh.kashyap@iitbhilai.ac.in</a></div>
                             </div>
                             <div class="member-links">
-                                <a href="https://umesh-21.github.io/umeshkashyap/" target="_blank" class="member-link" title="Website">🔗</a>
+                                <a href="https://www.linkedin.com/in/umesh-kashyap-491744172/" target="_blank" class="member-link" title="LinkedIn">in</a>
                             </div>
                         </div>
                     </div>
 
                     <div class="member-card">
                         <div class="member-image">
-                            <div class="placeholder-avatar">👤</div>
+                            <img src="deepesh.jpg" alt="Deepesh Kumar Dwivedi">
                         </div>
                         <div class="member-info">
                             <h4>Deepesh Kumar Dwivedi</h4>
@@ -1184,7 +1903,7 @@
 
                     <div class="member-card">
                         <div class="member-image">
-                            <div class="placeholder-avatar">👤</div>
+                            <img src="shivani.jpg" alt="Shivani Singh">
                         </div>
                         <div class="member-info">
                             <h4>Shivani Singh</h4>
@@ -1216,7 +1935,7 @@
 
                     <div class="member-card">
                         <div class="member-image">
-                            <div class="placeholder-avatar">👤</div>
+                            <img src="shubham.jpg" alt="Shubham Kumar Sahu">
                         </div>
                         <div class="member-info">
                             <h4>Shubham Kumar Sahu</h4>
@@ -1225,7 +1944,7 @@
                                 <div class="member-email"><a href="mailto:skumars@iitbhilai.ac.in">skumars@iitbhilai.ac.in</a></div>
                             </div>
                             <div class="member-links">
-                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                                <a href="https://www.linkedin.com/in/sksdbest/" target="_blank" class="member-link" title="LinkedIn">in</a>
                             </div>
                         </div>
                     </div>
@@ -1238,7 +1957,7 @@
                 <div class="team-members">
                     <div class="member-card">
                         <div class="member-image">
-                            <div class="placeholder-avatar">👤</div>
+                            <img src="archana.jpg" alt="Archana Tiwari">
                         </div>
                         <div class="member-info">
                             <h4>Archana Tiwari</h4>
@@ -1247,7 +1966,7 @@
                                 <div class="member-email"><a href="mailto:archana.tiwari@iitbhilai.ac.in">archana.tiwari@iitbhilai.ac.in</a></div>
                             </div>
                             <div class="member-links">
-                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                                <a href="https://www.linkedin.com/in/dr-archana-tiwari-45773a16/" target="_blank" class="member-link" title="LinkedIn">in</a>
                             </div>
                         </div>
                     </div>
@@ -1448,7 +2167,7 @@
 
                     <div class="member-card">
                         <div class="member-image">
-                            <div class="placeholder-avatar">👤</div>
+                            <img src="yogendra.jpg" alt="Yogendra Sao">
                         </div>
                         <div class="member-info">
                             <h4>Yogendra Sao</h4>
@@ -1458,7 +2177,7 @@
                                 <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
                             </div>
                             <div class="member-links">
-                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                                <a href="https://www.linkedin.com/in/yogendra-sao/" target="_blank" class="member-link" title="LinkedIn">in</a>
                             </div>
                         </div>
                     </div>
@@ -1475,7 +2194,7 @@
                                 <div style="font-size: 12px; color: var(--accent-color); margin-top: 5px;"><strong>Current Position:</strong> Industry/Research</div>
                             </div>
                             <div class="member-links">
-                                <a href="https://www.linkedin.com" target="_blank" class="member-link" title="LinkedIn">in</a>
+                                <a href="https://www.linkedin.com/in/sudev-kumar-padhi-616956338/" target="_blank" class="member-link" title="LinkedIn">in</a>
                             </div>
                         </div>
                     </div>
@@ -1661,7 +2380,8 @@
         <p style="margin-top: 10px; font-size: 12px;">Machine Intelligence & Security of Things Lab</p>
         <p style="margin-top: 15px; font-size: 12px;">
             <a href="copyright-policy.html" style="color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 10px;">Copyright Policy</a> |
-            <a href="privacy-policy.html" style="color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 10px;">Privacy Policy</a>
+            <a href="privacy-policy.html" style="color: rgba(255,255,255,0.8); text-decoration: none; margin: 0 10px;">Privacy Policy</a> |
+            Developed by <a href="https://www.linkedin.com/in/sksdbest/" target="_blank" style="color: rgba(255,255,255,0.9); text-decoration: none; margin: 0 5px;">Shubham Kumar</a>
         </p>
     </footer>
 
@@ -1685,6 +2405,65 @@
                 const sectionId = link.getAttribute('data-section');
                 document.getElementById(sectionId).classList.add('active');
             });
+        });
+
+        // Home section toggle functionality
+        function toggleHomeSection(header) {
+            header.classList.toggle('active');
+            const content = header.nextElementSibling;
+            content.classList.toggle('active');
+        }
+
+        // Image slider functionality
+        let currentSlide = 0;
+        let sliderInterval;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slider-item');
+            const dots = document.querySelectorAll('.slider-dot');
+
+            if (index >= slides.length) {
+                currentSlide = 0;
+            } else if (index < 0) {
+                currentSlide = slides.length - 1;
+            } else {
+                currentSlide = index;
+            }
+
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+            resetSliderTimer();
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+            resetSliderTimer();
+        }
+
+        function goToSlide(index) {
+            showSlide(index);
+            resetSliderTimer();
+        }
+
+        function autoSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function resetSliderTimer() {
+            clearInterval(sliderInterval);
+            sliderInterval = setInterval(autoSlide, 3000);
+        }
+
+        // Start slider when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            sliderInterval = setInterval(autoSlide, 3000);
         });
     </script>
 </body>
