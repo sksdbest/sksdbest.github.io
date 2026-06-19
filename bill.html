@@ -144,6 +144,60 @@
             width: auto;
         }
         
+        .extra-expenses {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #e1e8ed;
+        }
+        
+        .expense-item {
+            background: white;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            display: grid;
+            grid-template-columns: 1fr 100px 40px;
+            gap: 10px;
+            align-items: end;
+        }
+        
+        .expense-item input {
+            margin-bottom: 0;
+        }
+        
+        .remove-btn {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 6px 10px;
+            border-radius: 3px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .remove-btn:hover {
+            background: #c82333;
+        }
+        
+        .add-expense-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 12px;
+            font-weight: bold;
+            width: 100%;
+        }
+        
+        .add-expense-btn:hover {
+            background: #764ba2;
+        }
+        
         .buttons {
             display: flex;
             flex-direction: column;
@@ -459,6 +513,13 @@
                     </div>
                 </div>
                 
+                <!-- Extra Expenses -->
+                <div class="form-section">
+                    <h3>💰 Extra Expenses (Optional)</h3>
+                    <div id="expensesList" class="extra-expenses"></div>
+                    <button type="button" class="add-expense-btn" onclick="addExpenseField()">+ Add Expense</button>
+                </div>
+                
                 <!-- Previous Due -->
                 <div class="form-section">
                     <h3>पिछला बकाया</h3>
@@ -493,7 +554,8 @@
     </div>
 
     <script>
-        // Generate unique hash-based bill number
+        let expenseCount = 0;
+        
         function generateHashBillNumber() {
             const timestamp = Date.now().toString(36);
             const randomStr = Math.random().toString(36).substring(2, 8);
@@ -526,6 +588,40 @@
             });
         }
 
+        function addExpenseField() {
+            expenseCount++;
+            const expensesList = document.getElementById('expensesList');
+            const expenseDiv = document.createElement('div');
+            expenseDiv.className = 'expense-item';
+            expenseDiv.id = `expense-${expenseCount}`;
+            expenseDiv.innerHTML = `
+                <input type="text" placeholder="Expense name" class="expense-name" value="">
+                <input type="number" placeholder="₹ Amount" class="expense-amount" step="0.01" value="0">
+                <button type="button" class="remove-btn" onclick="removeExpense(${expenseCount})">Remove</button>
+            `;
+            expensesList.appendChild(expenseDiv);
+        }
+
+        function removeExpense(id) {
+            const expenseDiv = document.getElementById(`expense-${id}`);
+            if (expenseDiv) {
+                expenseDiv.remove();
+            }
+        }
+
+        function getExpenses() {
+            const expenses = [];
+            const expenseItems = document.querySelectorAll('.expense-item');
+            expenseItems.forEach(item => {
+                const name = item.querySelector('.expense-name').value;
+                const amount = parseFloat(item.querySelector('.expense-amount').value) || 0;
+                if (name && amount > 0) {
+                    expenses.push({ name, amount });
+                }
+            });
+            return expenses;
+        }
+
         window.onload = function() {
             generateNewBillNumber();
             const today = new Date();
@@ -552,23 +648,26 @@
             const nayaQty = parseFloat(document.getElementById('nayaQty').value) || 0;
             const nayaRate = parseFloat(document.getElementById('nayaRate').value) || 0;
             const prevDue = parseFloat(document.getElementById('prevDue').value) || 0;
+            const expenses = getExpenses();
             
-            // Get current bill number (will use existing or create new)
             const billNumber = getCurrentBillNumber();
 
-            // Validation
             if (!name || !date || !vehicle || !paraQty || !paraRate || !labor) {
                 alert('Please fill all required fields (*)');
                 return;
             }
 
-            // Calculations
             const paraAmount = paraQty * paraRate;
             const nayaAmount = nayaQty * nayaRate;
-            const subtotal = paraAmount + union + labor + nayaAmount;
+            
+            let expensesTotal = 0;
+            expenses.forEach(exp => {
+                expensesTotal += exp.amount;
+            });
+            
+            const subtotal = paraAmount + union + labor + nayaAmount + expensesTotal;
             const totalDue = subtotal + prevDue;
 
-            // Count rows for numbering
             let rowNum = 1;
             let tableRows = '';
             
@@ -614,6 +713,19 @@
             `;
             rowNum++;
             
+            // Add extra expenses
+            expenses.forEach(exp => {
+                tableRows += `
+                    <tr>
+                        <td>${rowNum}</td>
+                        <td>${exp.name}</td>
+                        <td>1</td>
+                        <td>${formatCurrency(exp.amount)}</td>
+                    </tr>
+                `;
+                rowNum++;
+            });
+            
             tableRows += `
                 <tr class="empty-row">
                     <td>${rowNum}</td>
@@ -623,7 +735,6 @@
                 </tr>
             `;
 
-            // Build bill HTML
             let billHTML = `
                 <div class="bill-header">
                     <div class="bill-logo">
@@ -687,16 +798,13 @@
                 </div>
             `;
 
-            // Display bill
             document.getElementById('billContent').innerHTML = billHTML;
             document.getElementById('billDisplay').style.display = 'block';
             document.getElementById('emptyState').style.display = 'none';
             
-            // Store bill data for download
             window.currentBillName = name;
             window.currentBillData = { name, date, vehicle, billNumber };
             
-            // Generate new bill number for next bill
             generateNewBillNumber();
         }
 
@@ -750,6 +858,8 @@
 
         function clearForm() {
             document.getElementById('billingForm').reset();
+            document.getElementById('expensesList').innerHTML = '';
+            expenseCount = 0;
             const today = new Date();
             const day = String(today.getDate()).padStart(2, '0');
             const month = String(today.getMonth() + 1).padStart(2, '0');
