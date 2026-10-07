@@ -420,11 +420,63 @@
             }
         }
         
+        .container > * { min-width: 0; }
+        .bill { overflow-wrap: anywhere; }
+        .bill-info-row span { overflow-wrap: anywhere; }
+
         @media (max-width: 1200px) {
             .container {
                 grid-template-columns: 1fr;
             }
+            .form-panel, .bill-panel {
+                max-height: none;
+                overflow-y: visible;
+            }
         }
+
+        /* Mobile layout (only for the on-screen bill, not the export clone) */
+        @media (max-width: 600px) {
+            body { padding: 8px; }
+            .form-panel, .bill-panel { padding: 14px; }
+            .form-row { grid-template-columns: 1fr; gap: 0; }
+            .expense-item { grid-template-columns: 1fr 80px 36px; gap: 6px; padding: 8px; }
+            .remove-btn { padding: 6px 4px; font-size: 10px; }
+            .download-buttons { flex-direction: column; }
+
+            .bill-panel .bill { padding: 10px; border-width: 2px; }
+            .bill-panel .bill-header {
+                grid-template-columns: 1fr;
+                gap: 10px;
+                text-align: center;
+            }
+            .bill-panel .bill-number-box {
+                text-align: center;
+                border-left: none;
+                border-top: 1px solid #ccc;
+                padding: 8px 0 0 0;
+            }
+            .bill-panel .bill-info-row {
+                grid-template-columns: 100px 1fr;
+                padding: 8px;
+            }
+            .bill-panel th, .bill-panel td {
+                padding: 5px;
+                font-size: 11px;
+            }
+            .bill-panel .bill-company-info h1 { font-size: 15px; }
+            .bill-panel .bill-company-info p { font-size: 11px; }
+        }
+
+        /* Fixed-width desktop layout used only while exporting image/PDF */
+        #exportStage {
+            position: fixed;
+            left: -10000px;
+            top: 0;
+            width: 800px;
+            background: #fff;
+            z-index: -1;
+        }
+        #exportStage .bill { width: 800px; padding: 20px; }
     </style>
 </head>
 <body>
@@ -539,8 +591,8 @@
         
         <!-- Bill Panel -->
         <div class="bill-panel">
-            <div id="billDisplay" class="bill" style="display: none;">
-                <div id="billContent"></div>
+            <div id="billDisplay" style="display: none;">
+                <div id="billContent" class="bill"></div>
                 <div class="download-buttons">
                     <button class="btn-download" onclick="downloadAsImage()" title="Download as JPG image">📥 Download as Image</button>
                     <button class="btn-download" onclick="downloadAsPDF()" title="Download as PDF">📥 Download as PDF</button>
@@ -808,52 +860,76 @@
             generateNewBillNumber();
         }
 
-        function downloadAsImage() {
-            const billElement = document.getElementById('billContent');
-            const billName = window.currentBillName || 'Bill';
-            const billNumber = window.currentBillData?.billNumber || 'BA-000';
-            
-            html2canvas(billElement, {
-                scale: 2,
-                backgroundColor: '#ffffff',
-                useCORS: true
-            }).then(canvas => {
-                const link = document.createElement('a');
-                link.href = canvas.toDataURL('image/jpeg', 0.95);
-                link.download = `${billNumber}_${billName.replace(/\s+/g, '_')}.jpg`;
-                link.click();
-            }).catch(err => {
-                alert('Error downloading image: ' + err);
-            });
+        // Render the bill in a fixed 800px off-screen copy so the export
+        // looks identical on phones and desktops.
+        async function captureBill() {
+            const src = document.getElementById('billContent');
+            const stage = document.createElement('div');
+            stage.id = 'exportStage';
+            const clone = src.cloneNode(true);
+            clone.removeAttribute('id');
+            stage.appendChild(clone);
+            document.body.appendChild(stage);
+            try {
+                if (document.fonts && document.fonts.ready) await document.fonts.ready;
+                return await html2canvas(stage, {
+                    scale: 2,
+                    backgroundColor: '#ffffff',
+                    useCORS: true,
+                    width: 800,
+                    windowWidth: 1200,
+                    scrollX: 0,
+                    scrollY: 0
+                });
+            } finally {
+                document.body.removeChild(stage);
+            }
         }
 
-        function downloadAsPDF() {
-            const billElement = document.getElementById('billContent');
-            const billName = window.currentBillName || 'Bill';
+        function safeFileName(ext) {
+            const billName = (window.currentBillName || 'Bill').replace(/\s+/g, '_');
             const billNumber = window.currentBillData?.billNumber || 'BA-000';
-            
-            html2canvas(billElement, {
-                scale: 2,
-                backgroundColor: '#ffffff',
-                useCORS: true
-            }).then(canvas => {
+            return `${billNumber}_${billName}.${ext}`;
+        }
+
+        async function downloadAsImage() {
+            try {
+                const canvas = await captureBill();
+                const link = document.createElement('a');
+                link.href = canvas.toDataURL('image/jpeg', 0.95);
+                link.download = safeFileName('jpg');
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+            } catch (err) {
+                alert('Error downloading image: ' + err);
+            }
+        }
+
+        async function downloadAsPDF() {
+            try {
+                const canvas = await captureBill();
                 const imgData = canvas.toDataURL('image/jpeg', 0.95);
-                const pdf = new jspdf.jsPDF({
-                    orientation: 'portrait',
-                    unit: 'mm',
-                    format: 'a4'
-                });
-                
+                const pdf = new jspdf.jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+
                 const pageWidth = pdf.internal.pageSize.getWidth();
                 const pageHeight = pdf.internal.pageSize.getHeight();
-                const imgWidth = pageWidth - 20;
-                const imgHeight = (canvas.height * imgWidth) / canvas.width;
-                
-                pdf.addImage(imgData, 'JPEG', 10, 10, imgWidth, imgHeight);
-                pdf.save(`${billNumber}_${billName.replace(/\s+/g, '_')}.pdf`);
-            }).catch(err => {
+                const margin = 10;
+                const maxW = pageWidth - margin * 2;
+                const maxH = pageHeight - margin * 2;
+                let imgWidth = maxW;
+                let imgHeight = (canvas.height * imgWidth) / canvas.width;
+                if (imgHeight > maxH) {
+                    imgHeight = maxH;
+                    imgWidth = (canvas.width * imgHeight) / canvas.height;
+                }
+                const x = (pageWidth - imgWidth) / 2;
+
+                pdf.addImage(imgData, 'JPEG', x, margin, imgWidth, imgHeight);
+                pdf.save(safeFileName('pdf'));
+            } catch (err) {
                 alert('Error downloading PDF: ' + err);
-            });
+            }
         }
 
         function clearForm() {
